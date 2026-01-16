@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pristine Perfume Price List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{font-family:Arial;background:#f9f9f9;margin:0}
+.container{max-width:1200px;margin:auto;background:#fff;padding:15px}
+h1{text-align:center}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:15px}
+select,button,input{padding:8px;font-size:14px}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #ddd;padding:8px;text-align:center}
+th{background:#f1f1f1}
+tr.hide{display:none}
+.login-box{display:flex;gap:8px;justify-content:center;margin-bottom:15px}
+.badge{padding:4px 8px;border-radius:6px;background:#eee;font-size:12px}
+.badge.dealer{background:#e6f4ea;color:#137333}
+@media(max-width:768px){
+ table,thead,tbody,th,td,tr{display:block}
+ tr{margin-bottom:15px}
+ td{text-align:right;position:relative;padding-left:50%}
+ td::before{content:attr(data-label);position:absolute;left:10px;font-weight:bold}
+ th{display:none}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Pristine Perfume – Wholesale Attar Price List</h1>
+
+<div class="login-box">
+  <span id="modeBadge" class="badge">Public View</span>
+  <input type="password" id="dealerPass" placeholder="Dealer password">
+  <button onclick="login()">Dealer Login</button>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<div class="controls">
+<select id="category"></select>
+<select id="sort">
+<option value="">Sort by price</option>
+<option value="asc">Low → High</option>
+<option value="desc">High → Low</option>
+</select>
+<button onclick="exportPDF()">Export Category PDF</button>
+</div>
+
+<table id="table"></table>
+</div>
+
+<script>
+// ===== CONFIG =====
+const DEALER_PASSWORD = "PRISTINE@2025"; // CHANGE THIS
+let isDealer = localStorage.getItem('dealer') === '1';
+
+// ===== AUTO LOAD CSV =====
+fetch('pricelist.csv').then(r=>r.text()).then(loadData);
+
+let rows=[], headers=[];
+
+function login(){
+  const p = document.getElementById('dealerPass').value;
+  if(p === DEALER_PASSWORD){
+    localStorage.setItem('dealer','1');
+    isDealer = true;
+    renderMode();
+    loadDataFromCache();
+  } else {
+    alert('Wrong password');
+  }
+}
+function logout(){
+  localStorage.removeItem('dealer');
+  isDealer = false;
+  renderMode();
+  loadDataFromCache();
+}
+function renderMode(){
+  const b = document.getElementById('modeBadge');
+  b.textContent = isDealer ? 'Dealer View' : 'Public View';
+  b.className = 'badge ' + (isDealer ? 'dealer' : '');
+}
+
+let cachedCSV = '';
+function loadDataFromCache(){
+  if(cachedCSV) loadData(cachedCSV);
+}
+
+function loadData(text){
+ cachedCSV = text;
+ const data=text.split('\n').map(r=>r.split(','));
+ headers=data[0];
+
+ let catSet=new Set();
+ let html='<thead><tr>';
+ headers.forEach(h=>{
+   if(!isDealer && (h==='25 g' || h==='50 g')) return;
+   html+='<th>'+h+'</th>';
+ });
+ html+='</tr></thead><tbody>';
+
+ for(let i=1;i<data.length;i++){
+  if(data[i].length>1){
+   html+='<tr>';
+   data[i].forEach((c,j)=>{
+    if(!isDealer && (headers[j]==='25 g' || headers[j]==='50 g')) return;
+    let v=c;
+    if(j>0 && j<7 && c) v='₹'+Number(c).toLocaleString('en-IN');
+    html+='<td data-label="'+headers[j]+'">'+v+'</td>';
+    if(headers[j]==='Category') catSet.add(c);
+   });
+   html+='</tr>';
+  }
+ }
+ html+='</tbody>';
+ document.getElementById('table').innerHTML=html;
+ rows=[...document.querySelectorAll('#table tbody tr')];
+
+ const sel=document.getElementById('category');
+ sel.innerHTML='<option value="">All Categories</option>';
+ catSet.forEach(c=>{
+  let o=document.createElement('option');
+  o.value=c;o.textContent=c;
+  sel.appendChild(o);
+ });
+
+ const urlCat=new URLSearchParams(window.location.search).get('cat');
+ if(urlCat){ sel.value=urlCat; filter(); }
+ renderMode();
+}
+
+document.getElementById('category').addEventListener('change',filter);
+document.getElementById('sort').addEventListener('change',sortPrice);
+
+function filter(){
+ const c=document.getElementById('category').value.toLowerCase();
+ rows.forEach(r=>{
+  const cat=r.lastChild.innerText.toLowerCase();
+  r.classList.toggle('hide',!(c===''||cat===c));
+ });
+}
+
+function sortPrice(){
+ const dir=document.getElementById('sort').value;
+ if(!dir) return;
+ const tbody=document.querySelector('#table tbody');
+ rows.sort((a,b)=>{
+  const pa=Number(a.children[1].innerText.replace(/[^0-9]/g,''));
+  const pb=Number(b.children[1].innerText.replace(/[^0-9]/g,''));
+  return dir==='asc'?pa-pb:pb-pa;
+ });
+ rows.forEach(r=>tbody.appendChild(r));
+}
+
+function exportPDF(){ window.print(); }
+</script>
+</body>
+</html>
