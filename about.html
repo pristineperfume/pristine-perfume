@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>About Us – Pristine Perfume</title>
+  <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
@@ -41,12 +42,10 @@ a{color:#25D366;text-decoration:none;font-weight:bold}
   box-shadow:0 4px 12px rgba(0,0,0,0.4);
   box-sizing:border-box;
 }
-.navbar .logo{
-  font-family: 'Cinzel', serif;
-  font-size:24px;
-  font-weight:700;
-  letter-spacing:2px;
-  color:#fff;
+.navbar .logo img{
+  height:36px;
+  width:auto;
+  display:block;
 }
 .navbar .links{
   display:flex;
@@ -105,7 +104,9 @@ a{color:#25D366;text-decoration:none;font-weight:bold}
 </style>
 
 <div class="navbar">
-  <div class="logo">Pristine Perfume</div>
+  <div class="logo">
+  <img src="logo.png" alt="Pristine Perfume">
+</div>
   <div class="links">
     <a href="./index.html">Home</a>
     <a href="./pricelist.html">Price List</a>
