@@ -33,6 +33,33 @@ th{background:#f1f1f1}
  td::before{content:attr(data-label);position:absolute;left:10px;font-weight:bold}
  th{display:none}
 }
+.price-info{
+  background:#f8f6f2;
+  padding:30px 20px;
+  margin-bottom:20px;
+  border-radius:8px;
+}
+
+.price-info h2{
+  font-family:'Cinzel', serif;
+  margin-bottom:8px;
+}
+
+.price-info p{
+  color:#555;
+  line-height:1.5;
+}
+
+.whatsapp-btn{
+  display:inline-block;
+  margin-top:12px;
+  background:#25D366;
+  color:#fff;
+  padding:10px 18px;
+  border-radius:20px;
+  text-decoration:none;
+  font-weight:600;
+}
 </style>
 </head>
 <body>
@@ -132,7 +159,16 @@ th{background:#f1f1f1}
       <option value="">All Categories</option>
     </select>
   </div>
-
+<div class="price-info">
+  <h2>Wholesale Price List</h2>
+  <p>
+    Prices are indicative and subject to change.<br>
+    For bulk orders and confirmation, contact us on WhatsApp.
+  </p>
+  <a href="https://wa.me/917985494998" class="whatsapp-btn">
+    WhatsApp for Order
+  </a>
+</div>
   <table id="table"></table>
 </div>
 
