@@ -39,7 +39,15 @@ body{
   max-width:900px;
   margin:auto;
 }
-
+  
+.bs-item img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:6px;
+  margin-bottom:12px;
+}
+  
 .bs-item{
   background:#f8f6f2;
   padding:25px;
@@ -246,11 +254,26 @@ body{
   <h2>Best Sellers</h2>
 
   <div class="bs-grid">
-    <div class="bs-item">French Collection</div>
-    <div class="bs-item">Arabian Oud Range</div>
-    <div class="bs-item">Ajmal Inspired</div>
-    <div class="bs-item">Indian Traditional Attars</div>
+  <div class="bs-item">
+    <img src="./bs1.jpg" alt="French Collection">
+    French Collection
   </div>
+
+  <div class="bs-item">
+    <img src="./bs2.jpg" alt="Arabian Oud Range">
+    Arabian Oud Range
+  </div>
+
+  <div class="bs-item">
+    <img src="./bs3.jpg" alt="Ajmal Inspired">
+    Ajmal Inspired
+  </div>
+
+  <div class="bs-item">
+    <img src="./bs4.jpg" alt="Indian Traditional Attars">
+    Indian Traditional Attars
+  </div>
+</div>
 </section>
 
 <section class="cta">
