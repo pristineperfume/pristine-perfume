@@ -97,12 +97,6 @@ td{
   color:#333;
 }
 
-/* Mobile readability */
-@media(max-width:768px){
-  td, th{
-    font-size:13px;
-  }
-}
 /* ===== WATERMARK ===== */
 .watermark{
   position:fixed;
@@ -129,6 +123,18 @@ td{
     transparent 2px,
     transparent 120px
   );
+}
+/* ===== MOBILE TABLE READABILITY ===== */
+@media (max-width:768px){
+  td, th{
+    font-size:13px;
+  }
+}
+/* ===== MOBILE WATERMARK SIZE ===== */
+@media (max-width:768px){
+  .watermark{
+    font-size:22px;
+  }
 }
 </style>
 </head>
