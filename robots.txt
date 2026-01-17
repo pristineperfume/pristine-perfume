@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pristineperfume.github.io/pristine-perfume/sitemap.xml
