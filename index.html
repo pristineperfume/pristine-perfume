@@ -10,88 +10,46 @@
 <link rel="icon" type="image/png" href="favicon.png">
 
 <style>
-html, body{
+html,body{
   margin:0;
   padding:0;
   width:100%;
   overflow-x:hidden;
 }
-
 body{
   font-family:'Playfair Display', serif;
   padding-top:56px;
   background:#fafafa;
   color:#222;
 }
-.bestsellers{
-  padding:60px 20px;
-  text-align:center;
-}
 
-.bestsellers h2{
-  font-family:'Cinzel', serif;
-  margin-bottom:30px;
-}
-
-.bs-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-  max-width:900px;
-  margin:auto;
-}
-  
-.bs-item img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  border-radius:6px;
-  margin-bottom:12px;
-}
-  
-.bs-item{
-  background:#f9f7f3;
-  padding:25px;
-  border-radius:8px;
-  font-weight:600;
-  transition:all 0.3s ease;
-}
-
-.bs-item:hover{
-  transform:translateY(-6px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.12);
-}
-  
 /* ===== NAVBAR ===== */
 .navbar{
   position:fixed;
-  top:0;
-  left:0;
-  right:0;
+  top:0; left:0; right:0;
   height:56px;
-  z-index:1000;
   background:#f8f6f2;
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:0 20px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.08);
-  box-sizing:border-box;
+  z-index:1000;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
-
+.navbar .logo{
+  flex:1;
+}
 .navbar .logo img{
   height:36px;
 }
-
 .navbar .links a{
   color:#333;
   text-decoration:none;
+  margin-left:20px;
   padding-bottom:4px;
 }
-
-.navbar .links a:hover,
-.navbar .links a.active{
-  color:#000;
+.navbar .links a.active,
+.navbar .links a:hover{
   border-bottom:2px solid #000;
 }
 .navbar .links .whatsapp{
@@ -99,168 +57,128 @@ body{
   color:#fff;
   padding:8px 16px;
   border-radius:20px;
-  margin-left:28px;
   font-weight:600;
 }
 
 /* ===== HERO ===== */
 .hero{
-  position:relative;
   min-height:80vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:30px 20px;
-  max-width:100%;
-  margin-top:0;
+  padding:40px 20px;
   background:
-    linear-gradient(
-      rgba(0,0,0,0.55),
-      rgba(0,0,0,0.55)
-    ),
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
     url('./hero-bg.jpg');
   background-size:cover;
   background-position:center;
   color:#fff;
 }
-
 .hero h1{
   font-family:'Cinzel', serif;
   font-size:48px;
   letter-spacing:3px;
   margin-bottom:10px;
 }
-.hero h1{
-  text-shadow:0 6px 20px rgba(0,0,0,0.5);
-}
-
 .hero p{
-  line-height:1.6;
-}
-.hero p{
-  font-size:18px;
-  color:#eee;
   max-width:600px;
+  line-height:1.6;
+  color:#eee;
 }
-
 .hero-actions{
   margin-top:28px;
 }
-
 .btn{
   display:inline-block;
   padding:12px 22px;
   border-radius:6px;
   text-decoration:none;
-  font-size:16px;
   margin-right:12px;
 }
-.btn{
-  transition:all 0.25s ease;
-}
+.btn.primary{background:#000;color:#fff;}
+.btn.whatsapp{background:#25D366;color:#fff;}
 
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
-}
-.btn.primary{
-  background:#000;
-  color:#fff;
-}
-
-.btn.whatsapp{
-  background:#25D366;
-  color:#fff;
-}
 /* ===== TRUST BADGES ===== */
 .trust-badges{
   background:#111;
-  color:#fff;
   padding:40px 20px;
 }
-
 .trust-inner{
   max-width:1100px;
   margin:auto;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
-  text-align:center;
 }
-
-.trust-inner .badge{
+.badge{
   background:#1c1c1c;
   padding:18px;
   border-radius:10px;
+  color:#fff;
   font-weight:600;
-  border:1px solid rgba(255,255,255,0.08);
-}
-/* ===== FEATURES ===== */
-.features{
-  background:#f8f6f2;
-  padding:50px 20px;
+  text-align:center;
 }
 
-.features-inner{
-  max-width:1100px;
+/* ===== BEST SELLERS ===== */
+.bestsellers{
+  padding:60px 20px;
+  text-align:center;
+}
+.bestsellers h2{
+  font-family:'Cinzel', serif;
+  margin-bottom:30px;
+}
+.bs-grid{
+  max-width:900px;
   margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+.bs-item{
+  background:#f9f7f3;
+  padding:25px;
+  border-radius:8px;
+  font-weight:600;
+  text-decoration:none;
+  color:#000;
+  transition:.3s;
+}
+.bs-item img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:6px;
+  margin-bottom:12px;
+}
+.bs-item:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 25px rgba(0,0,0,.12);
 }
 
-.features h3{
-  font-family:'Cinzel', serif;
-  margin-bottom:8px;
-}
+/* ===== CTA + FOOTER ===== */
+.cta{text-align:center;padding:60px 20px;}
+.footer{text-align:center;padding:20px;font-size:14px;color:#777;}
 
-/* ===== CTA ===== */
-.cta{
-  text-align:center;
-  padding:60px 20px;
-}
-
-.cta h2{
-  font-family:'Cinzel', serif;
-  margin-bottom:10px;
-}
-
-/* ===== FOOTER ===== */
-.footer{
-  text-align:center;
-  padding:20px;
-  font-size:14px;
-  color:#777;
-}
-
-/* ===== MOBILE ===== */
+/* ===== MOBILE FIX ===== */
 @media(max-width:768px){
-  .hero h1{
-    font-size:36px;
+  body{padding-top:72px;}
+  .navbar{
+    flex-direction:column;
+    height:auto;
+    padding:10px;
+  }
+  .navbar .logo{
+    text-align:center;
+    margin-bottom:6px;
+  }
+  .navbar .links{
+    text-align:center;
   }
   .navbar .links a{
-    margin-left:14px;
+    margin:0 10px;
   }
-}
-/* SCROLL FIX */
-section{
-  scroll-margin-top:90px;
-}
-/* ===== NAVBAR MOBILE FIX ===== */
-@media(max-width:768px){
-  .navbar{
-    flex-wrap:wrap;
-  }
-
-  .navbar .links{
-    width:100%;
-    justify-content:center;
-    margin-top:8px;
-  }
-
-  .navbar .whatsapp-btn{
-    margin-top:10px;
-  }
+  .hero h1{font-size:36px;}
 }
 </style>
 </head>
@@ -275,17 +193,20 @@ section{
     <a href="./index.html" class="active">Home</a>
     <a href="./pricelist.html">Price List</a>
     <a href="./about.html">About</a>
-    <a href="https://wa.me/917985494998" target="_blank" class="whatsapp">WhatsApp</a>
+    <a href="https://wa.me/917985494998" class="whatsapp">WhatsApp</a>
   </div>
 </div>
 
 <section class="hero">
   <h1>Pristine Perfume</h1>
-  <p>
-    Premium wholesale attars & perfume oils.<br>
-    Trusted by retailers and dealers across India.
-  </p>
-  
+  <p>Premium wholesale attars & perfume oils.<br>
+  Trusted by retailers and dealers across India.</p>
+  <div class="hero-actions">
+    <a href="./pricelist.html" class="btn primary">View Price List</a>
+    <a href="https://wa.me/917985494998" class="btn whatsapp">WhatsApp Us</a>
+  </div>
+</section>
+
 <section class="trust-badges">
   <div class="trust-inner">
     <div class="badge">✔ Trusted by Retailers</div>
@@ -295,56 +216,26 @@ section{
   </div>
 </section>
 
-  <div class="hero-actions">
-    <a href="./pricelist.html" class="btn primary">View Price List</a>
-    <a href="https://wa.me/917985494998" class="btn whatsapp">WhatsApp Us</a>
-  </div>
-</section>
-
-<section class="features">
-  <div class="features-inner">
-    <div>
-      <h3>Wholesale Focused</h3>
-      <p>Special pricing for retailers & bulk buyers.</p>
-    </div>
-    <div>
-      <h3>650+ Fragrances</h3>
-      <p>French, Arabian, Indian & designer ranges.</p>
-    </div>
-    <div>
-      <h3>Pan-India Supply</h3>
-      <p>Trusted by dealers across multiple states.</p>
-    </div>
-  </div>
-  <section class="bestsellers">
+<section class="bestsellers">
   <h2>Best Sellers</h2>
-
   <div class="bs-grid">
-  <div class="bs-item">
-    <img src="./bs1.jpg" alt="French Collection">
-    French Collection
+    <a href="./pricelist.html#french" class="bs-item">
+      <img src="./bs1.jpg">French Collection
+    </a>
+    <a href="./pricelist.html#arabian" class="bs-item">
+      <img src="./bs2.jpg">Arabian Oud Range
+    </a>
+    <a href="./pricelist.html#ajmal" class="bs-item">
+      <img src="./bs3.jpg">Ajmal Inspired
+    </a>
+    <a href="./pricelist.html#indian" class="bs-item">
+      <img src="./bs4.jpg">Indian Traditional Attars
+    </a>
   </div>
-
-  <div class="bs-item">
-    <img src="./bs2.jpg" alt="Arabian Oud Range">
-    Arabian Oud Range
-  </div>
-
-  <div class="bs-item">
-    <img src="./bs3.jpg" alt="Ajmal Inspired">
-    Ajmal Inspired
-  </div>
-
-  <div class="bs-item">
-    <img src="./bs4.jpg" alt="Indian Traditional Attars">
-    Indian Traditional Attars
-  </div>
-</div>
 </section>
 
 <section class="cta">
   <h2>Get the Latest Wholesale Price List</h2>
-  <p>Instant access via WhatsApp</p>
   <a href="https://wa.me/917985494998" class="btn whatsapp">Chat on WhatsApp</a>
 </section>
 
