@@ -6,11 +6,18 @@
  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body{
+html, body{
   margin:0;
-  padding-top:70px; /*                   */
+  padding:0;
+  width:100%;
+  overflow-x:hidden; /* SIDE CUT FIX */
+}
+
+body{
   font-family:'Playfair Display', serif;
-}background:#f9f9f9;margin:0}
+  padding-top:70px;   /* NAVBAR SPACE */
+  background:#fafafa;
+}
 .container{max-width:1200px;margin:auto;background:#fff;padding:15px}
 h1{text-align:center}
 .controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:15px;justify-content:center}
@@ -34,14 +41,15 @@ th{background:#f1f1f1}
   position:fixed;
   top:0;
   left:0;
-  width:100%;
+  right:0;           /* 👈 instead of width:100% */
   z-index:1000;
   background:#0b0b0b;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:14px 26px;
+  padding:14px 20px; /* reduced padding */
   box-shadow:0 4px 12px rgba(0,0,0,0.4);
+  box-sizing:border-box;
 }
 .navbar .logo{
   font-family: 'Cinzel', serif;
