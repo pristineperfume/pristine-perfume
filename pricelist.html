@@ -71,6 +71,38 @@ th{background:#f1f1f1}
   text-decoration:none;
   font-weight:600;
 }
+/* ===== TABLE READABILITY ===== */
+
+table{
+  background:#fff;
+}
+
+tr:nth-child(even){
+  background:#fafafa;
+}
+
+tr:hover{
+  background:#f1f1f1;
+}
+
+th{
+  background:#111;
+  color:#fff;
+  font-weight:600;
+  font-size:14px;
+}
+
+td{
+  font-size:14px;
+  color:#333;
+}
+
+/* Mobile readability */
+@media(max-width:768px){
+  td, th{
+    font-size:13px;
+  }
+}
 </style>
 </head>
 <body>
