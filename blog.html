@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <title>Fragrance Knowledge Hub | Attar & Perfume Blog – Pristine Perfume</title>
 
-<meta name="description" content="Learn about attars, perfume oils, Kannauj fragrance heritage and wholesale perfume business. Insights from Pristine Perfume.">
-
+<meta name="description" content="Learn about attars, perfume oils, Kannauj fragrance heritage and wholesale perfume business in India. Expert insights by Pristine Perfume.">
+<meta name="keywords" content="what is attar, attar meaning, kannauj perfume, perfume oils wholesale, indian attars, alcohol free perfume">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="icon" type="image/png" href="favicon.png">
@@ -19,14 +18,15 @@ html,body{
   width:100%;
   overflow-x:hidden;
 }
+
 body{
   font-family:'Playfair Display', serif;
-  padding-top:56px;
+  padding-top:70px;
   background:#fafafa;
-  color:#333;
+  color:#222;
 }
 
-/* ===== NAVBAR (SAME AS OTHER PAGES) ===== */
+/* ===== NAVBAR (CLEAN + SAFE) ===== */
 .navbar{
   position:fixed;
   top:0; left:0; right:0;
@@ -39,17 +39,32 @@ body{
   z-index:1000;
   box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
-.navbar .logo img{height:36px;}
+
+.navbar .logo img{height:36px}
+
+.navbar .links{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
 .navbar .links a{
-  color:#333;
   text-decoration:none;
-  margin-left:20px;
+  color:#333;
   padding-bottom:4px;
+  position:relative;
 }
-.navbar .links a.active,
-.navbar .links a:hover{
-  border-bottom:2px solid #000;
+
+.navbar .links a.active::after{
+  content:'';
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:100%;
+  height:2px;
+  background:#c9a14a;
 }
+
 .navbar .whatsapp{
   background:#25D366;
   color:#fff;
@@ -57,57 +72,52 @@ body{
   border-radius:20px;
   font-weight:600;
 }
-/* ===== NAVBAR MOBILE FINAL FIX (SAFE) ===== */
-@media (max-width:768px){
 
+/* Mobile Navbar */
+@media(max-width:768px){
+  body{padding-top:90px;}
   .navbar{
     flex-direction:column;
     height:auto;
-    padding:10px 12px;
+    padding:10px;
   }
-
-  .navbar .logo{
-    margin-bottom:6px;
-  }
-
   .navbar .links{
-    display:flex;              /* 🔴 ye missing tha */
     flex-wrap:wrap;
     justify-content:center;
-    align-items:center;
-    width:100%;
-    gap:14px;                  /* margin-left ko neutralize karta */
-  }
-
-  .navbar .links a{
-    margin-left:0 !important;  /* desktop untouched */
-  }
-
-  .navbar .links .whatsapp{
-    margin-left:0 !important;
-    margin-top:8px;
-    order:99;                  /* WhatsApp last me */
   }
 }
-  
-/* ===== BLOG LAYOUT ===== */
-.blog-hero{
-  background:#111;
-  color:#fff;
-  padding:60px 20px;
+
+/* ===== HERO ===== */
+.hero{
+  min-height:60vh;
+  background:
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+    url('./hero-bg.jpg');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:40px 20px;
   text-align:center;
+  color:#fff;
 }
-.blog-hero h1{
+
+.hero h1{
   font-family:'Cinzel', serif;
-  margin-bottom:10px;
+  font-size:42px;
+  letter-spacing:2px;
 }
-.blog-hero p{
-  color:#ddd;
+
+.hero p{
   max-width:700px;
   margin:auto;
+  font-size:18px;
+  color:#eee;
 }
 
-.blog-container{
+/* ===== CONTENT ===== */
+.container{
   max-width:900px;
   margin:auto;
   padding:50px 20px;
@@ -116,29 +126,44 @@ body{
 .article{
   margin-bottom:60px;
 }
+
 .article h2{
   font-family:'Cinzel', serif;
+  font-size:32px;
   margin-bottom:10px;
 }
+
 .article p{
-  line-height:1.7;
   font-size:17px;
+  line-height:1.7;
   color:#444;
 }
 
-/* ===== CTA ===== */
-.blog-cta{
-  text-align:center;
+/* ===== FAQ ===== */
+.faq{
   background:#f8f6f2;
-  padding:50px 20px;
+  padding:40px 20px;
+  border-radius:8px;
 }
-.blog-cta a{
-  background:#25D366;
-  color:#fff;
-  padding:12px 24px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:600;
+
+.faq h2{
+  font-family:'Cinzel', serif;
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.faq-item{
+  margin-bottom:20px;
+}
+
+.faq-item h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.faq-item p{
+  font-size:16px;
+  color:#555;
 }
 
 /* ===== FOOTER ===== */
@@ -148,23 +173,12 @@ body{
   font-size:14px;
   color:#777;
 }
-
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-  body{padding-top:72px;}
-  .navbar{
-    flex-direction:column;
-    height:auto;
-    padding:10px;
-  }
-  .navbar .logo{margin-bottom:6px;}
-  .navbar .links a{margin:0 10px;}
-}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <div class="navbar">
   <div class="logo">
     <img src="logo.png" alt="Pristine Perfume">
@@ -178,7 +192,8 @@ body{
   </div>
 </div>
 
-<section class="blog-hero">
+<!-- HERO -->
+<section class="hero">
   <h1>Fragrance Knowledge Hub</h1>
   <p>
     Insights on attars, perfume oils, Kannauj fragrance heritage  
@@ -186,63 +201,96 @@ body{
   </p>
 </section>
 
-<div class="blog-container">
+<!-- BLOG CONTENT -->
+<div class="container">
 
   <div class="article">
-    <h2>What Is Attar? Meaning, History & Uses</h2>
+    <h2>What is Attar? Meaning, History & Uses</h2>
     <p>
-      Attar is an oil-based, alcohol-free perfume made from natural ingredients.
-      Traditionally crafted using slow distillation, attars are known for their
-      long-lasting fragrance and skin-friendly nature.
+      Attar is an oil-based, alcohol-free perfume derived from natural
+      botanical ingredients. Traditionally crafted using slow hydro-distillation,
+      attars are known for their long-lasting fragrance and skin-friendly nature.
     </p>
     <p>
-      India, especially Kannauj, has been producing attars for centuries using
-      traditional techniques that preserve the purity of aroma.
-    </p>
-    <p>
-      <a href="./pricelist.html">Explore wholesale attar price list →</a>
+      India, especially Kannauj, has been the heart of traditional attar making
+      for centuries. These perfumes are widely used for daily wear, religious
+      purposes and luxury perfumery.
     </p>
   </div>
 
   <div class="article">
-    <h2>Kannauj: The Perfume Capital of India</h2>
+    <h2>Why Kannauj is Called the Perfume Capital of India</h2>
     <p>
-      Kannauj is globally recognized as the perfume capital of India due to its
-      centuries-old tradition of fragrance manufacturing. The region specializes
-      in natural attars and perfume oils.
-    </p>
-    <p>
-      Retailers across India source from Kannauj for authentic, long-lasting
-      fragrance oils suitable for wholesale supply.
-    </p>
-    <p>
-      <a href="./about.html">Learn about our Kannauj heritage →</a>
+      Kannauj has preserved the ancient deg-bhapka distillation process
+      passed down through generations. The region supplies natural attars
+      and perfume oils across India and internationally.
     </p>
   </div>
 
   <div class="article">
-    <h2>Difference Between Attar and Perfume</h2>
+    <h2>Difference Between Attar and Alcohol-Based Perfume</h2>
     <p>
-      While perfumes are alcohol-based, attars are oil-based and alcohol-free.
-      This makes attars more suitable for sensitive skin and longer wear.
+      Attars are concentrated oils with no alcohol, making them ideal for
+      sensitive skin and religious use. Alcohol-based perfumes evaporate faster,
+      while attars mature on the skin over time.
     </p>
-    <p>
-      Understanding this difference helps retailers choose the right product
-      mix for their customers.
-    </p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <h3>Is attar better than perfume?</h3>
+      <p>Attars last longer, are alcohol-free and are ideal for sensitive skin.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is attar used daily?</h3>
+      <p>Yes, attars are suitable for daily wear due to their natural composition.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Which attar is best from Kannauj?</h3>
+      <p>Rose, jasmine, sandalwood and oud-based attars are highly popular.</p>
+    </div>
   </div>
 
 </div>
 
-<section class="blog-cta">
-  <h2>Looking for Wholesale Attars?</h2>
-  <p>Get the complete price list on WhatsApp</p>
-  <a href="https://wa.me/917985494998">Request Price List</a>
-</section>
-
 <footer class="footer">
-  © Pristine Perfume – Wholesale Attar Supplier
+  © Pristine Perfume – Wholesale Attar & Perfume Supplier
 </footer>
+
+<!-- FAQ SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "Is attar better than perfume?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Attars last longer, are alcohol-free and suitable for sensitive skin."
+    }
+  },{
+    "@type": "Question",
+    "name": "Is attar used daily?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, attars are suitable for daily wear due to their natural ingredients."
+    }
+  },{
+    "@type": "Question",
+    "name": "Which attar is best from Kannauj?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Rose, jasmine, sandalwood and oud-based attars are among the best from Kannauj."
+    }
+  }]
+}
+</script>
 
 </body>
 </html>
