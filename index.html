@@ -11,7 +11,13 @@ body{
   padding-top:70px; /*                      */
   font-family:'Playfair Display', serif;
 }background:#fafafa}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
+.hero{
+  min-height:calc(100vh - 70px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:40px;
+}
 <h1 style="font-family:'Cinzel', serif; letter-spacing:3px;">
   Pristine Perfume
 </h1>
@@ -25,12 +31,17 @@ a.btn{display:inline-block;margin:8px;padding:12px 22px;text-decoration:none;bor
 <body>
 <style>
 .navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  background:#0b0b0b;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:12px 20px;
-  background:#000;
-  color:#fff;
+  padding:14px 26px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.4);
 }
 .navbar .logo{
   font-family: 'Cinzel', serif;
@@ -62,9 +73,9 @@ a.btn{display:inline-block;margin:8px;padding:12px 22px;text-decoration:none;bor
 <div class="navbar">
   <div class="logo">Pristine Perfume</div>
   <div class="links">
-    <a href="index.html"class="active">Home</a>
-    <a href="pricelist.html">Price List</a>
-    <a href="about.html">About</a>
+    <a href="./index.html"class="active">Home</a>
+    <a href="./pricelist.html">Price List</a>
+    <a href="./about.html">About</a>
     <a href="https://wa.me/917985494998" target="_blank">WhatsApp</a>
   </div>
 </div>
