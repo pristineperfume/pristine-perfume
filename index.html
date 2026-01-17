@@ -171,7 +171,29 @@ body{
   background:#25D366;
   color:#fff;
 }
+/* ===== TRUST BADGES ===== */
+.trust-badges{
+  background:#111;
+  color:#fff;
+  padding:40px 20px;
+}
 
+.trust-inner{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  text-align:center;
+}
+
+.trust-inner .badge{
+  background:#1c1c1c;
+  padding:18px;
+  border-radius:10px;
+  font-weight:600;
+  border:1px solid rgba(255,255,255,0.08);
+}
 /* ===== FEATURES ===== */
 .features{
   background:#f8f6f2;
@@ -190,34 +212,7 @@ body{
   font-family:'Cinzel', serif;
   margin-bottom:8px;
 }
-/* ===== TRUST BADGES ===== */
-.trust-badges{
-  background:#f8f8f8;
-  padding:40px 20px;
-}
 
-.trust-inner{
-  max-width:1000px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-  text-align:center;
-}
-
-.badge{
-  background:#fff;
-  padding:18px 16px;
-  border-radius:10px;
-  font-weight:600;
-  box-shadow:0 6px 18px rgba(0,0,0,0.06);
-  font-size:15px;
-}
-@media(max-width:768px){
-  .badge{
-    font-size:14px;
-  }
-}
 /* ===== CTA ===== */
 .cta{
   text-align:center;
