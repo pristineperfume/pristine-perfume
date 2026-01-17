@@ -62,7 +62,38 @@ body{
   border-radius:20px;
   font-weight:600;
 }
+/* ===== NAVBAR MOBILE FINAL FIX (SAFE) ===== */
+@media (max-width:768px){
 
+  .navbar{
+    flex-direction:column;
+    height:auto;
+    padding:10px 12px;
+  }
+
+  .navbar .logo{
+    margin-bottom:6px;
+  }
+
+  .navbar .links{
+    display:flex;              /* 🔴 ye missing tha */
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    gap:14px;                  /* margin-left ko neutralize karta */
+  }
+
+  .navbar .links a{
+    margin-left:0 !important;  /* desktop untouched */
+  }
+
+  .navbar .links .whatsapp{
+    margin-left:0 !important;
+    margin-top:8px;
+    order:99;                  /* WhatsApp last me */
+  }
+}
 /* ===== HERO ===== */
 .hero{
   min-height:calc(100vh - 56px);
