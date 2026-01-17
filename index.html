@@ -9,7 +9,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Site Verification -->
 <meta name="google-site-verification" content="3LBOF1wiHHmlrIwNPotInQBjjC8bcVD7PdUFm45dOnk" />
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
@@ -42,9 +41,7 @@ body{
   z-index:1000;
   box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
-.navbar .logo img{
-  height:36px;
-}
+.navbar .logo img{height:36px;}
 .navbar .links a{
   color:#333;
   text-decoration:none;
@@ -52,9 +49,7 @@ body{
   padding-bottom:4px;
 }
 .navbar .links a.active,
-.navbar .links a:hover{
-  border-bottom:2px solid #000;
-}
+.navbar .links a:hover{border-bottom:2px solid #000;}
 .navbar .links .whatsapp{
   background:#25D366;
   color:#fff;
@@ -62,44 +57,25 @@ body{
   border-radius:20px;
   font-weight:600;
 }
-/* ===== NAVBAR MOBILE FINAL FIX (SAFE) ===== */
+
+/* ===== MOBILE NAVBAR SAFE FIX ===== */
 @media (max-width:768px){
-
-  .navbar{
-    flex-direction:column;
-    height:auto;
-    padding:10px 12px;
-  }
-
-  .navbar .logo{
-    margin-bottom:6px;
-  }
-
+  .navbar{flex-direction:column;height:auto;padding:10px 12px;}
+  .navbar .logo{margin-bottom:6px;}
   .navbar .links{
-    display:flex;              /* 🔴 ye missing tha */
+    display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    align-items:center;
+    gap:14px;
     width:100%;
-    gap:14px;                  /* margin-left ko neutralize karta */
   }
-
-  .navbar .links a{
-    margin-left:0 !important;  /* desktop untouched */
-  }
-
-  .navbar .links .whatsapp{
-    margin-left:0 !important;
-    margin-top:8px;
-    order:99;                  /* WhatsApp last me */
-  }
+  .navbar .links a{margin-left:0;}
+  .navbar .links .whatsapp{order:99;margin-top:6px;}
 }
+
 /* ===== HERO ===== */
 .hero{
   min-height:calc(100vh - 56px);
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
   padding:60px 20px 40px;
   background:
     linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
@@ -112,136 +88,114 @@ body{
   font-family:'Cinzel', serif;
   font-size:48px;
   letter-spacing:3px;
-  margin-bottom:10px;
 }
-.hero p{
-  max-width:600px;
-  line-height:1.6;
-  color:#eee;
-}
-.hero-actions{
-  margin-top:28px;
-}
-.btn{
-  display:inline-block;
-  padding:12px 22px;
-  border-radius:6px;
-  text-decoration:none;
-  margin-right:12px;
-}
+.hero p{max-width:600px;line-height:1.6;color:#eee;}
+.hero-actions{margin-top:28px;}
+.btn{display:inline-block;padding:12px 22px;border-radius:6px;text-decoration:none;margin-right:12px;}
 .btn.primary{background:#000;color:#fff;}
 .btn.whatsapp{background:#25D366;color:#fff;}
 
 /* ===== TRUST BADGES ===== */
-.trust-badges{
-  background:#111;
-  padding:40px 20px;
-}
+.trust-badges{background:#111;padding:40px 20px;}
 .trust-inner{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  max-width:1100px;margin:auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
 }
 .badge{
-  background:#1c1c1c;
-  padding:18px;
-  border-radius:10px;
-  color:#fff;
-  font-weight:600;
-  text-align:center;
+  background:#1c1c1c;padding:18px;border-radius:10px;
+  color:#fff;font-weight:600;text-align:center;
 }
 
 /* ===== BEST SELLERS ===== */
-.bestsellers{
-  padding:60px 20px;
-  text-align:center;
-}
-.bestsellers h2{
-  font-family:'Cinzel', serif;
-  margin-bottom:30px;
-}
+.bestsellers{padding:60px 20px;text-align:center;}
+.bestsellers h2{font-family:'Cinzel', serif;margin-bottom:30px;}
 .bs-grid{
-  max-width:900px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  max-width:900px;margin:auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:20px;
 }
 .bs-item{
-  background:#f9f7f3;
-  padding:25px;
-  border-radius:8px;
-  font-weight:600;
+  background:#f9f7f3;padding:25px;border-radius:8px;
+  font-weight:600;text-decoration:none;color:#000;transition:.3s;
+}
+.bs-item img{
+  width:100%;height:180px;object-fit:cover;
+  border-radius:6px;margin-bottom:12px;
+}
+.bs-item:hover{transform:translateY(-6px);box-shadow:0 10px 25px rgba(0,0,0,.12);}
+
+/* ===== BLOG PREVIEW ===== */
+.blog-preview{
+  background:#fff;
+  padding:70px 20px;
+}
+.blog-preview h2{
+  font-family:'Cinzel', serif;
+  text-align:center;
+  margin-bottom:12px;
+}
+.blog-preview p.subtitle{
+  text-align:center;
+  color:#555;
+  max-width:700px;
+  margin:0 auto 40px;
+}
+.blog-grid{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+.blog-card{
+  background:#f8f6f2;
+  border-radius:10px;
+  overflow:hidden;
   text-decoration:none;
   color:#000;
   transition:.3s;
 }
-.bs-item img{
+.blog-card img{
   width:100%;
-  height:180px;
+  height:200px;
   object-fit:cover;
-  border-radius:6px;
-  margin-bottom:12px;
 }
-.bs-item:hover{
+.blog-card div{padding:18px;}
+.blog-card h3{
+  font-family:'Cinzel', serif;
+  font-size:18px;
+  margin-bottom:6px;
+}
+.blog-card p{font-size:14px;color:#555;line-height:1.5;}
+.blog-card:hover{
   transform:translateY(-6px);
-  box-shadow:0 10px 25px rgba(0,0,0,.12);
+  box-shadow:0 12px 28px rgba(0,0,0,.15);
 }
 
 /* ===== LOCATION ===== */
-.location{
-  background:#f8f6f2;
-  padding:60px 20px;
-}
+.location{background:#f8f6f2;padding:60px 20px;}
 .location-inner{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  max-width:1100px;margin:auto;
+  display:grid;grid-template-columns:1fr 1fr;
   gap:30px;
 }
-.location h2{
-  font-family:'Cinzel', serif;
-  margin-bottom:10px;
-}
-.location p{
-  line-height:1.6;
+@media(max-width:768px){
+  body{padding-top:72px;}
+  .hero h1{font-size:36px;}
+  .location-inner{grid-template-columns:1fr;}
 }
 
 /* ===== CTA + FOOTER ===== */
 .cta{text-align:center;padding:60px 20px;}
 .footer{text-align:center;padding:20px;font-size:14px;color:#777;}
-
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-  body{padding-top:72px;}
-  .navbar{
-    flex-direction:column;
-    height:auto;
-    padding:10px;
-  }
-  .navbar .logo{
-    margin-bottom:6px;
-  }
-  .navbar .links a{
-    margin:0 10px;
-  }
-  .hero h1{font-size:36px;}
-  .location-inner{
-    grid-template-columns:1fr;
-  }
-}
 </style>
 </head>
 
 <body>
 
 <div class="navbar">
-  <div class="logo">
-    <img src="./logo.png" alt="Pristine Perfume">
-  </div>
+  <div class="logo"><img src="./logo.png" alt="Pristine Perfume"></div>
   <div class="links">
     <a href="./index.html" class="active">Home</a>
     <a href="./pricelist.html">Price List</a>
@@ -253,10 +207,7 @@ body{
 
 <section class="hero">
   <h1>Pristine Perfume</h1>
-  <p>
-    Wholesale attar & perfume oil supplier from Kannauj.<br>
-    Trusted by retailers across India.
-  </p>
+  <p>Wholesale attar & perfume oil supplier from Kannauj.<br>Trusted by retailers across India.</p>
   <div class="hero-actions">
     <a href="./pricelist.html" class="btn primary">View Price List</a>
     <a href="https://wa.me/917985494998" class="btn whatsapp">WhatsApp Us</a>
@@ -282,25 +233,47 @@ body{
   </div>
 </section>
 
+<!-- BLOG PREVIEW -->
+<section class="blog-preview">
+  <h2>Fragrance Knowledge Hub</h2>
+  <p class="subtitle">Learn about attars, perfume oils, Kannauj heritage & wholesale fragrance business in India.</p>
+
+  <div class="blog-grid">
+    <a href="./blog.html#attar" class="blog-card">
+      <img src="./blog1.jpg" alt="What is Attar">
+      <div>
+        <h3>What is Attar? Meaning & Uses</h3>
+        <p>Understand oil-based attars, their history and why they last longer than perfumes.</p>
+      </div>
+    </a>
+
+    <a href="./blog.html#kannauj" class="blog-card">
+      <img src="./blog2.jpg" alt="Kannauj perfume industry">
+      <div>
+        <h3>Why Kannauj is India's Perfume Capital</h3>
+        <p>Explore the centuries-old fragrance heritage of Kannauj.</p>
+      </div>
+    </a>
+
+    <a href="./blog.html#attar-vs-perfume" class="blog-card">
+      <img src="./blog3.jpg" alt="Attar vs Perfume Oil">
+      <div>
+        <h3>Attar vs Perfume Oil</h3>
+        <p>A clear comparison for retailers and fragrance buyers.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
 <section class="location">
   <div class="location-inner">
     <div>
       <h2>Our Location</h2>
-      <p>
-        <strong>Pristine Perfume</strong><br>
-        Kannauj, Uttar Pradesh, India<br>
-        📞 +91 7985494998<br>
-        Wholesale Attars & Perfume Oils
-      </p>
-      <a href="https://www.google.com/maps/search/Kannauj+Uttar+Pradesh" target="_blank" class="btn primary">
-        Open in Google Maps
-      </a>
+      <p><strong>Pristine Perfume</strong><br>Kannauj, Uttar Pradesh, India<br>📞 +91 7985494998</p>
+      <a href="https://www.google.com/maps/search/Kannauj+Uttar+Pradesh" target="_blank" class="btn primary">Open in Google Maps</a>
     </div>
     <div>
-      <iframe
-        src="https://www.google.com/maps?q=Kannauj%20Uttar%20Pradesh&output=embed"
-        width="100%" height="260" style="border:0;" loading="lazy">
-      </iframe>
+      <iframe src="https://www.google.com/maps?q=Kannauj%20Uttar%20Pradesh&output=embed" width="100%" height="260" style="border:0;" loading="lazy"></iframe>
     </div>
   </div>
 </section>
