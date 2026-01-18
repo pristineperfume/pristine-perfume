@@ -71,6 +71,24 @@ body{
   background: #999;
   opacity: 0.6;
 }
+/* ===== NAVBAR LINK SEPARATORS ===== */
+.navbar .links a{
+  position: relative;
+  padding: 6px 18px;
+}
+
+/* vertical divider line */
+.navbar .links a:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 22px;
+  width: 1px;
+  background: #999;
+  opacity: 0.6;
+}
 /* ===== MOBILE NAVBAR ===== */
 @media (max-width:768px){
 
