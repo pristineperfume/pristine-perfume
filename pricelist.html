@@ -194,90 +194,105 @@ tbody tr:nth-child(even){background:#f6f6f6;}
 </a>
 
 <script>
-let DATA=[],PAGE=1,PER_PAGE=50,MAX_PRICE=0;
+let DATA = [];
+let PAGE = 1;
+const PER_PAGE = 50;
 
 fetch('pricelist.csv')
-.then(r=>r.text())
-.then(t=>{
-  const rows=t.trim().split('\n').map(r=>r.split(','));
-  const headers=rows[0];
-  const idx={}; headers.forEach((h,i)=>idx[h]=i);
+.then(r => r.text())
+.then(text => {
+  const rows = text.trim().split('\n').map(r => r.split(','));
+  const headers = rows[0].map(h => h.trim());
 
-  const tbody=[];
-  const cats=new Set();
+  const col = {};
+  headers.forEach((h,i)=>col[h]=i);
 
-  rows.slice(1).forEach(r=>{
-    const price=parseInt(r[idx['1 Kg']]||0);
-    MAX_PRICE=Math.max(MAX_PRICE,price);
-    cats.add(r[idx['Category']]);
-    tbody.push({r,price});
+  const catSet = new Set();
+  let maxPrice = 0;
+
+  DATA = rows.slice(1).map(r=>{
+    const price = parseInt(r[col['1 Kg']] || 0);
+    if(price > maxPrice) maxPrice = price;
+
+    catSet.add(r[col['Category']]);
+
+    return {
+      row: r,
+      text: r.join(' ').toLowerCase(),
+      category: r[col['Category']],
+      price
+    };
   });
 
-  const range=document.getElementById('priceRange');
-  range.max=MAX_PRICE;
-  document.getElementById('priceVal').textContent=MAX_PRICE;
-
-  const catSel=document.getElementById('category');
-  cats.forEach(c=>{
+  /* category dropdown */
+  const catSel = document.getElementById('category');
+  catSet.forEach(c=>{
     const o=document.createElement('option');
-    o.value=c;o.textContent=c;
+    o.value=c;
+    o.textContent=c;
     catSel.appendChild(o);
   });
 
-  DATA=tbody;
+  /* price slider */
+  const range = document.getElementById('priceRange');
+  range.max = maxPrice;
+  range.value = maxPrice;
+  document.getElementById('priceVal').textContent = maxPrice;
+
   render();
 });
 
+/* ---------- RENDER ---------- */
 function render(){
-  const q=search.value.toLowerCase();
-  const c=category.value;
-  const max=priceRange.value||MAX_PRICE;
-  priceVal.textContent=max;
+  const q = search.value.toLowerCase();
+  const c = category.value;
+  const max = parseInt(priceRange.value);
+  priceVal.textContent = max;
 
-  const filtered=DATA.filter(d=>
-    (!q||d.r.join(' ').toLowerCase().includes(q)) &&
-    (!c||d.r.includes(c)) &&
-    d.price<=max
+  const filtered = DATA.filter(d =>
+    (!q || d.text.includes(q)) &&
+    (!c || d.category === c) &&
+    d.price <= max
   );
 
-  const table=document.getElementById('table');
-  const headers=Object.keys(filtered[0].r||{});
-  let html='<thead><tr>';
+  const table = document.getElementById('table');
+  let html = '<thead><tr>';
   ['Product Name','1 Kg','500 g','250 g','100 g','50 g','25 g','Category']
-  .forEach(h=>html+=`<th>${h}</th>`);
+    .forEach(h=>html+=`<th>${h}</th>`);
   html+='</tr></thead><tbody>';
 
-  filtered.slice((PAGE-1)*PER_PAGE,PAGE*PER_PAGE)
+  filtered.slice((PAGE-1)*PER_PAGE, PAGE*PER_PAGE)
   .forEach(d=>{
     html+='<tr>';
     ['Product Name','1 Kg','500 g','250 g','100 g','50 g','25 g','Category']
-    .forEach((h,i)=>{
-      html+=`<td data-label="${h}">${d.r[i]}</td>`;
-    });
+      .forEach(h=>{
+        html+=`<td data-label="${h}">${d.row[col[h]]}</td>`;
+      });
     html+='</tr>';
   });
-  table.innerHTML=html+'</tbody>';
 
-  renderPages(filtered.length);
+  table.innerHTML = html+'</tbody>';
+  renderPagination(filtered.length);
 }
 
-function renderPages(total){
-  const p=document.getElementById('pagination');
-  p.innerHTML='';
-  const pages=Math.ceil(total/PER_PAGE);
+/* ---------- PAGINATION ---------- */
+function renderPagination(total){
+  const pages = Math.ceil(total / PER_PAGE);
+  const wrap = document.getElementById('pagination');
+  wrap.innerHTML='';
   for(let i=1;i<=pages;i++){
     const b=document.createElement('button');
     b.textContent=i;
-    if(i===PAGE)b.className='active';
+    if(i===PAGE) b.className='active';
     b.onclick=()=>{PAGE=i;render();}
-    p.appendChild(b);
+    wrap.appendChild(b);
   }
 }
 
+/* events */
 search.oninput=()=>{PAGE=1;render();}
 category.onchange=()=>{PAGE=1;render();}
 priceRange.oninput=()=>{PAGE=1;render();}
 </script>
-
 </body>
 </html>
