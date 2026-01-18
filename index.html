@@ -5,22 +5,17 @@
 
 <title>Wholesale Attar Supplier in Kannauj | Pristine Perfume</title>
 
-<meta name="description" content="Pristine Perfume is a wholesale attar and perfume oil supplier from Kannauj. Trusted by retailers across India for bulk fragrance supply.">
+<meta name="description" content="Pristine Perfume is a wholesale attar and perfume oil supplier from Kannauj, Uttar Pradesh. Trusted by retailers across India for bulk fragrance supply.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="google-site-verification" content="3LBOF1wiHHmlrIwNPotInQBjjC8bcVD7PdUFm45dOnk" />
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-html,body{
-  margin:0;
-  padding:0;
-  width:100%;
-  overflow-x:hidden;
-}
+html,body{margin:0;padding:0;width:100%;overflow-x:hidden;}
 body{
   font-family:'Playfair Display', serif;
   padding-top:56px;
@@ -30,8 +25,7 @@ body{
 
 /* ===== NAVBAR ===== */
 .navbar{
-  position:fixed;
-  top:0; left:0; right:0;
+  position:fixed;top:0;left:0;right:0;
   height:56px;
   background:#f8f6f2;
   display:flex;
@@ -43,40 +37,26 @@ body{
 }
 .navbar .logo img{height:36px;}
 .navbar .links a{
-  color:#333;
-  text-decoration:none;
-  margin-left:20px;
-  padding-bottom:4px;
+  color:#333;text-decoration:none;
+  margin-left:20px;padding-bottom:4px;
 }
 .navbar .links a.active,
 .navbar .links a:hover{border-bottom:2px solid #000;}
-.navbar .links .whatsapp{
-  background:#25D366;
-  color:#fff;
-  padding:8px 16px;
-  border-radius:20px;
-  font-weight:600;
+.navbar .whatsapp{
+  background:#25D366;color:#fff;
+  padding:8px 16px;border-radius:20px;font-weight:600;
 }
-
-/* ===== MOBILE NAVBAR SAFE FIX ===== */
-@media (max-width:768px){
-  .navbar{flex-direction:column;height:auto;padding:10px 12px;}
+@media(max-width:768px){
+  .navbar{flex-direction:column;height:auto;padding:10px;}
   .navbar .logo{margin-bottom:6px;}
-  .navbar .links{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:14px;
-    width:100%;
-  }
+  .navbar .links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
   .navbar .links a{margin-left:0;}
-  .navbar .links .whatsapp{order:99;margin-top:6px;}
 }
 
 /* ===== HERO ===== */
 .hero{
   min-height:calc(100vh - 56px);
-  padding:60px 20px 40px;
+  padding:70px 20px 40px;
   background:
     linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
     url('./hero-bg.jpg');
@@ -86,16 +66,16 @@ body{
 }
 .hero h1{
   font-family:'Cinzel', serif;
-  font-size:48px;
-  letter-spacing:3px;
+  font-size:42px;
+  max-width:900px;
 }
-.hero p{max-width:600px;line-height:1.6;color:#eee;}
+.hero p{max-width:650px;line-height:1.6;color:#eee;}
 .hero-actions{margin-top:28px;}
 .btn{display:inline-block;padding:12px 22px;border-radius:6px;text-decoration:none;margin-right:12px;}
 .btn.primary{background:#000;color:#fff;}
 .btn.whatsapp{background:#25D366;color:#fff;}
 
-/* ===== TRUST BADGES ===== */
+/* ===== TRUST ===== */
 .trust-badges{background:#111;padding:40px 20px;}
 .trust-inner{
   max-width:1100px;margin:auto;
@@ -103,8 +83,11 @@ body{
   gap:20px;
 }
 .badge{
-  background:#1c1c1c;padding:18px;border-radius:10px;
-  color:#fff;font-weight:600;text-align:center;
+  background:#1c1c1c;padding:18px;
+  border-radius:10px;color:#fff;font-weight:600;text-align:center;
+}
+.trust-note{
+  text-align:center;margin-top:25px;color:#ccc;font-size:15px;
 }
 
 /* ===== BEST SELLERS ===== */
@@ -113,87 +96,47 @@ body{
 .bs-grid{
   max-width:900px;margin:auto;
   display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
+  gap:22px;
 }
 .bs-item{
   background:#f9f7f3;
   padding:18px;
   border-radius:8px;
-  font-weight:600;
   text-decoration:none;
   color:#000;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  gap:10px;
+  font-weight:600;
 }
 .bs-item img{
   width:100%;height:180px;object-fit:cover;
-  border-radius:6px;margin-bottom:12px;
+  border-radius:6px;margin-bottom:10px;
 }
-.bs-item:hover{transform:translateY(-6px);box-shadow:0 10px 25px rgba(0,0,0,.12);}
+.bs-item span{display:block;margin-top:6px;}
 
 /* ===== BLOG PREVIEW ===== */
-.blog-preview{
-  background:#fff;
-  padding:70px 20px;
-}
-.blog-preview h2{
-  font-family:'Cinzel', serif;
-  text-align:center;
-  margin-bottom:12px;
-}
-.blog-preview p.subtitle{
-  text-align:center;
-  color:#555;
-  max-width:700px;
-  margin:0 auto 40px;
-}
+.blog-preview{background:#fff;padding:70px 20px;}
+.blog-preview h2{text-align:center;font-family:'Cinzel', serif;}
+.blog-preview p{text-align:center;color:#555;max-width:700px;margin:10px auto 40px;}
 .blog-grid{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  max-width:1100px;margin:auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:24px;
 }
 .blog-card{
-  background:#f8f6f2;
-  border-radius:10px;
-  overflow:hidden;
-  text-decoration:none;
-  color:#000;
-  transition:.3s;
+  background:#f8f6f2;border-radius:10px;
+  overflow:hidden;text-decoration:none;color:#000;
 }
-.blog-card img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-}
+.blog-card img{width:100%;height:200px;object-fit:cover;}
 .blog-card div{padding:18px;}
-.blog-card h3{
-  font-family:'Cinzel', serif;
-  font-size:18px;
-  margin-bottom:6px;
-}
-.blog-card p{font-size:14px;color:#555;line-height:1.5;}
-.blog-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 12px 28px rgba(0,0,0,.15);
-}
+.blog-card h3{font-family:'Cinzel', serif;font-size:18px;margin-bottom:6px;}
+.blog-card p{font-size:14px;color:#555;}
 
 /* ===== LOCATION ===== */
 .location{background:#f8f6f2;padding:60px 20px;}
 .location-inner{
   max-width:1100px;margin:auto;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:30px;
+  display:grid;grid-template-columns:1fr 1fr;gap:30px;
 }
-@media(max-width:768px){
-  body{padding-top:72px;}
-  .hero h1{font-size:36px;}
-  .location-inner{grid-template-columns:1fr;}
-}
+@media(max-width:768px){.location-inner{grid-template-columns:1fr;}}
 
 /* ===== CTA + FOOTER ===== */
 .cta{text-align:center;padding:60px 20px;}
@@ -204,7 +147,7 @@ body{
 <body>
 
 <div class="navbar">
-  <div class="logo"><img src="./logo.png" alt="Pristine Perfume"></div>
+  <div class="logo"><img src="logo.png" alt="Pristine Perfume"></div>
   <div class="links">
     <a href="./index.html" class="active">Home</a>
     <a href="./pricelist.html">Price List</a>
@@ -216,10 +159,7 @@ body{
 
 <section class="hero">
   <h1>Pristine Perfume – Wholesale Attar & Perfume Supplier from Kannauj</h1>
-  <p>
-  Wholesale attar & perfume oil supplier from Kannauj, Uttar Pradesh.<br>
-  Trusted by perfume retailers and fragrance businesses across India.
-</p>
+  <p>Wholesale attar & perfume oil supplier from Kannauj, Uttar Pradesh. Trusted by retailers across India.</p>
   <div class="hero-actions">
     <a href="./pricelist.html" class="btn primary">View Price List</a>
     <a href="https://wa.me/917985494998" class="btn whatsapp">WhatsApp Us</a>
@@ -228,54 +168,41 @@ body{
 
 <section class="trust-badges">
   <div class="trust-inner">
-    <div class="badge">✔ Trusted Wholesale Perfume Supplier</div>
-<div class="badge">✔ PAN India Attar Supply</div>
-<div class="badge">✔ Kannauj Traditional Fragrances</div>
-<div class="badge">✔ Retailer & Distributor Support</div>
+    <div class="badge">✔ Trusted Wholesale Supplier</div>
+    <div class="badge">✔ PAN India Supply</div>
+    <div class="badge">✔ Kannauj Fragrance Heritage</div>
+    <div class="badge">✔ Retailer Support</div>
   </div>
-  <div style="text-align:center;margin-top:30px;color:#ddd;font-size:15px;">
-  Google-verified perfume store from Kannauj supplying wholesale attars and perfume oils across India
-</div>
+  <div class="trust-note">
+    Google-verified perfume store from Kannauj supplying wholesale attars across India
+  </div>
 </section>
+
 <section class="bestsellers">
   <h2>Best Sellers</h2>
   <div class="bs-grid">
-    <a href="./pricelist.html#french" class="bs-item"><img src="./bs1.jpg" alt="French perfume oil collection wholesale from Kannauj">
-    <a href="./pricelist.html#arabian" class="bs-item"><img src="./bs2.jpg" alt="Arabian oud attar wholesale supplier in Kannauj">
-    <a href="./pricelist.html#ajmal" class="bs-item"><img src="./bs3.jpg" alt="Ajmal inspired attar perfume oils wholesale">
-    <a href="./pricelist.html#indian" class="bs-item"><img src="./bs4.jpg" alt="Traditional Indian attars from Kannauj wholesale">
+    <a href="./pricelist.html#french" class="bs-item">
+      <img src="./bs1.jpg"><span>French Collection</span>
+    </a>
+    <a href="./pricelist.html#arabian" class="bs-item">
+      <img src="./bs2.jpg"><span>Arabian Oud Range</span>
+    </a>
+    <a href="./pricelist.html#ajmal" class="bs-item">
+      <img src="./bs3.jpg"><span>Ajmal Inspired Attars</span>
+    </a>
+    <a href="./pricelist.html#indian" class="bs-item">
+      <img src="./bs4.jpg"><span>Indian Traditional Attars</span>
+    </a>
   </div>
 </section>
 
-<!-- BLOG PREVIEW -->
 <section class="blog-preview">
   <h2>Fragrance Knowledge Hub</h2>
-  <p class="subtitle">Learn about attars, perfume oils, Kannauj heritage & wholesale fragrance business in India.</p>
-
+  <p>Learn about attars, perfume oils & Kannauj fragrance heritage.</p>
   <div class="blog-grid">
-    <a href="./blog.html#attar" class="blog-card">
-      <img src="./blog1.jpg" alt="What is Attar">
-      <div>
-        <h3>What is Attar? Meaning & Uses</h3>
-        <p>Understand oil-based attars, their history and why they last longer than perfumes.</p>
-      </div>
-    </a>
-
-    <a href="./blog.html#kannauj" class="blog-card">
-      <img src="./blog2.jpg" alt="Kannauj perfume industry">
-      <div>
-        <h3>Why Kannauj is India's Perfume Capital</h3>
-        <p>Explore the centuries-old fragrance heritage of Kannauj.</p>
-      </div>
-    </a>
-
-    <a href="./blog.html#attar-vs-perfume" class="blog-card">
-      <img src="./blog3.jpg" alt="Attar vs Perfume Oil">
-      <div>
-        <h3>Attar vs Perfume Oil</h3>
-        <p>A clear comparison for retailers and fragrance buyers.</p>
-      </div>
-    </a>
+    <a href="./blog.html" class="blog-card"><img src="./blog1.jpg"><div><h3>What is Attar?</h3><p>Meaning, uses & benefits.</p></div></a>
+    <a href="./blog.html" class="blog-card"><img src="./blog2.jpg"><div><h3>Why Kannauj is Perfume Capital</h3><p>History & heritage.</p></div></a>
+    <a href="./blog.html" class="blog-card"><img src="./blog3.jpg"><div><h3>Attar vs Perfume</h3><p>Retailer guide.</p></div></a>
   </div>
 </section>
 
@@ -283,25 +210,12 @@ body{
   <div class="location-inner">
     <div>
       <h2>Our Location</h2>
-      <p>
-<strong>Pristine Perfume</strong><br>
-Bazariya Shekhana, Kannauj<br>
-Uttar Pradesh, India<br>
-📞 +91 7985494998
-</p>
-      <a href="https://www.google.com/maps/search/Kannauj+Uttar+Pradesh" target="_blank" class="btn primary">Open in Google Maps</a>
+      <p><strong>Pristine Perfume</strong><br>Bazariya Shekhana, Kannauj<br>Uttar Pradesh<br>📞 +91 7985494998</p>
     </div>
     <div>
-    <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3553.3391888776227!2d79.92797139999999!3d27.051039499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399e65b290f1c90f%3A0xc8b360b53b5b7e26!2sPristine%20Perfume!5e0!3m2!1sen!2sin!4v1768687301368!5m2!1sen!2sin"
-  width="100%"
-  height="260"
-  style="border:0;border-radius:8px;"
-  allowfullscreen
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>    
-</div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3553.3391888776227!2d79.9279714!3d27.0510395"
+      width="100%" height="260" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+    </div>
   </div>
 </section>
 
@@ -313,34 +227,6 @@ Uttar Pradesh, India<br>
 <footer class="footer">
   © Pristine Perfume – Wholesale Attar Supplier
 </footer>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "PerfumeStore",
-  "name": "Pristine Perfume",
-  "url": "https://pristineperfume.github.io/pristine-perfume/",
-  "logo": "https://pristineperfume.github.io/pristine-perfume/logo.png",
-  "image": "https://pristineperfume.github.io/pristine-perfume/hero-bg.jpg",
-  "telephone": "+91-7985494998",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Bazariya Shekhana",
-    "addressLocality": "Kannauj",
-    "addressRegion": "Uttar Pradesh",
-    "postalCode": "209725",
-    "addressCountry": "IN"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 27.0544,
-    "longitude": 79.9188
-  },
-  "openingHours": "Mo-Sa 09:00-19:00",
-  "priceRange": "₹₹",
-  "sameAs": [
-    "https://maps.app.goo.gl/LZUxAjF599RBrUm7A"
-  ]
-}
-</script>
+
 </body>
 </html>
