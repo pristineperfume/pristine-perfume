@@ -262,6 +262,9 @@ tr:hover{background:#f1f1f1;}
 </a>
 
 <script>
+let ROW_CACHE = [];
+let FILTER_TIMER = null;
+
 fetch('pricelist.csv')
 .then(res => res.text())
 .then(text => {
@@ -280,6 +283,7 @@ fetch('pricelist.csv')
   const tbody=table.querySelector('tbody');
 
   rows.slice(1).forEach(r=>{
+    let searchableText = '';
     if(!r[col['Product Name']]) return;
     let tr=document.createElement('tr');
     headers.forEach(h=>{
@@ -291,9 +295,16 @@ fetch('pricelist.csv')
       let td=document.createElement('td');
       td.dataset.label=h;
       td.textContent=val;
+      searchableText += ' ' + val.toLowerCase();
       tr.appendChild(td);
       if(h==='Category') categories.add(val);
     });
+    
+    ROW_CACHE.push({
+  el: tr,
+  text: searchableText
+});
+    
     tbody.appendChild(tr);
   });
 
@@ -304,18 +315,28 @@ fetch('pricelist.csv')
     catSel.appendChild(o);
   });
 
-  function filter(){
-    const q=document.getElementById('search').value.toLowerCase();
-    const c=catSel.value.toLowerCase();
-    document.querySelectorAll('#table tbody tr').forEach(tr=>{
-      const text=tr.innerText.toLowerCase();
-      const cat=tr.querySelector('td:last-child').innerText.toLowerCase();
-      tr.style.display=(!q||text.includes(q))&&(!c||cat===c)?'':'none';
-    });
-  }
+  function runFilter(){
+  const q = document.getElementById('search').value.toLowerCase();
+  const c = catSel.value.toLowerCase();
 
-  document.getElementById('search').addEventListener('input',filter);
-  catSel.addEventListener('change',filter);
+  requestAnimationFrame(()=>{
+    ROW_CACHE.forEach(row=>{
+      const show =
+        (!q || row.text.includes(q)) &&
+        (!c || row.text.includes(c));
+
+      row.el.style.display = show ? '' : 'none';
+    });
+  });
+}
+
+function debounceFilter(){
+  clearTimeout(FILTER_TIMER);
+  FILTER_TIMER = setTimeout(runFilter, 120);
+}
+
+document.getElementById('search').addEventListener('input', debounceFilter);
+catSel.addEventListener('change', runFilter);
 });
 </script>
 
