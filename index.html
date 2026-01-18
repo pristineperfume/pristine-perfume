@@ -59,16 +59,25 @@ body{
 /* ===== MOBILE NAVBAR ===== */
 @media(max-width:768px){
   body{padding-top:72px;}
+
   .navbar{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
     height:auto;
-    grid-template-columns:1fr;
-    padding:10px;
-    gap:8px;
+    padding:12px 10px;
   }
+
   .nav-left,
   .nav-right{
+    display:flex;
     justify-content:center;
-    flex-wrap:wrap;
+    gap:18px;
+  }
+
+  .logo{
+    order:-1; /* logo sabse upar */
   }
 }
 
