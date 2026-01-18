@@ -57,8 +57,11 @@ body{
 .navbar .logo img{height:36px;}
 
 /* ===== MOBILE NAVBAR ===== */
-@media(max-width:768px){
-  body{padding-top:72px;}
+@media (max-width:768px){
+
+  body{
+    padding-top:72px;
+  }
 
   .navbar{
     display:flex;
@@ -69,18 +72,24 @@ body{
     padding:12px 10px;
   }
 
-  .nav-left,
-  .nav-right{
-    display:flex;
-    justify-content:center;
-    gap:18px;
+  .navbar .logo{
+    order:-1;
   }
 
-  .logo{
-    order:-1; /* logo sabse upar */
+  .navbar .links{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;        /* ⭐ MAIN FIX */
+    gap:16px;
+    overflow-x:auto;         /* safety */
+    white-space:nowrap;
+  }
+
+  .navbar .links a{
+    margin:0;
+    font-size:15px;
   }
 }
-
 /* ===== HERO ===== */
 .hero{
   min-height:calc(100vh - 56px);
