@@ -60,34 +60,40 @@ body{
 @media (max-width:768px){
 
   body{
-    padding-top:84px;
+    padding-top:90px;
   }
 
   .navbar{
     display:grid;
     grid-template-rows:auto auto;
     justify-items:center;
-    row-gap:12px;
-    padding:12px 10px;
+    align-items:center;
+    row-gap:14px;
+    padding:14px 10px;
     height:auto;
   }
 
   .navbar .logo{
     order:1;
+    margin:0;
   }
 
   .navbar .links{
     order:2;
-    display:grid;
-    grid-auto-flow:column;
-    gap:20px;
+    display:flex;
+    flex-direction:row;
     justify-content:center;
+    align-items:center;
+    gap:22px;              /* ⭐ REAL FIX */
+    margin:0;
+    padding:0;
   }
 
   .navbar .links a{
+    margin:0;              /* ⭐ VERY IMPORTANT */
+    padding:0;
     font-size:14px;
     white-space:nowrap;
-    margin:0;
   }
 
 }
