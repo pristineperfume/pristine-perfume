@@ -20,7 +20,7 @@ body{
   color:#222;
 }
 
-/* ===== NAVBAR BASE ===== */
+/* ===== NAVBAR ===== */
 .navbar{
   position:fixed;
   top:0; left:0; right:0;
@@ -30,73 +30,53 @@ body{
   justify-content:space-between;
   padding:12px 20px;
   z-index:1000;
-  box-shadow:0;
 }
-
-.navbar .logo img{
-  height:36px;
-}
+.navbar .logo img{height:36px;}
 
 .nav-row{
-  margin: 0 auto;          /* ⭐ MAIN FIX */
-  justify-content: center; /* ⭐ center links */
+  margin:0 auto;
+  display:flex;
+  align-items:center;
 }
-
 .nav-row a{
+  position:relative;
   text-decoration:none;
   color:#333;
   font-size:15px;
-  padding-bottom:4px;
+  padding:6px 22px;
   white-space:nowrap;
 }
-
-.nav-row a.active{
-  border-bottom:2px solid #000;
-}
-/* === CLEAN NAV SEPARATORS (NO ALIGNMENT ISSUE) === */
-.nav-row a{
-  position: relative;
-  padding: 6px 22px;
-}
-
+.nav-row a.active{border-bottom:2px solid #000;}
 .nav-row a:not(:last-child)::after{
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 18px;
-  width: 1px;
-  background: rgba(0,0,0,0.35);
+  content:"";
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  height:18px;
+  width:1px;
+  background:rgba(0,0,0,.35);
 }
-/* ===== MOBILE NAVBAR ===== */
-@media (max-width:768px){
 
+@media(max-width:768px){
   .navbar{
     flex-direction:column;
-    align-items:center;
     gap:6px;
     padding:8px 12px;
   }
-
-  .navbar .logo img{
-    height:32px;
-  }
-
+  .navbar .logo img{height:32px;}
   .nav-row{
     width:100%;
     max-width:420px;
-    display:flex;
     justify-content:space-between;
     padding:0 6px;
   }
-
   .nav-row a{
     flex:1;
     text-align:center;
-    font-size:15px;
   }
 }
+
 /* ===== HERO ===== */
 .hero{
   min-height:calc(100vh - 56px);
@@ -115,6 +95,7 @@ body{
 }
 .hero p{max-width:650px;line-height:1.6;color:#eee;}
 .hero-actions{margin-top:22px;}
+
 .btn{
   display:inline-block;
   padding:12px 22px;
@@ -124,10 +105,14 @@ body{
 }
 .btn.primary{background:#000;color:#fff;}
 .btn.whatsapp{background:#25D366;color:#fff;}
-/* STEP 5C */
-.btn:active,.bs-item:active,.blog-card:active{transform:scale(.97);opacity:.9;}
-/* STEP 5D */
-.btn,.bs-item,.blog-card{transition:transform .25s ease,box-shadow .25s ease,opacity .25s ease;}
+
+.btn,.bs-item,.blog-card{
+  transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+}
+.btn:active,.bs-item:active,.blog-card:active{
+  transform:scale(.97);
+  opacity:.9;
+}
 
 /* ===== TRUST ===== */
 .trust-badges{background:#111;padding:40px 20px;}
@@ -138,21 +123,27 @@ body{
   gap:20px;
 }
 .badge{
-  background:#1c1c1c;padding:18px;
-  border-radius:10px;color:#fff;
-  font-weight:600;text-align:center;
+  background:#1c1c1c;
+  padding:18px;
+  border-radius:10px;
+  color:#fff;
+  font-weight:600;
+  text-align:center;
 }
 .trust-note{text-align:center;margin-top:24px;color:#ccc;font-size:15px;}
 
-/* ===== BEST SELLERS ===== */
+/* ===== BEST SELLERS (FIXED) ===== */
 .bestsellers{padding:60px 20px;text-align:center;}
 .bestsellers h2{font-family:'Cinzel', serif;margin-bottom:30px;}
+
 .bs-grid{
-  max-width:900px;margin:auto;
+  max-width:900px;
+  margin:auto;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:22px;
 }
+
 .bs-item{
   background:#f9f7f3;
   padding:18px;
@@ -161,92 +152,102 @@ body{
   color:#000;
   font-weight:600;
   text-align:center;
+  display:block;
 }
-.bs-item img{width:100%;height:180px;object-fit:cover;border-radius:8px;}
+.bs-item img{
+  width:100%;
+  height:auto;            /* 🔧 MOBILE CUT FIX */
+  object-fit:cover;
+  border-radius:8px;
+}
 .bs-item span{display:block;margin-top:10px;}
 
-/* ===== BLOG PREVIEW ===== */
+.bs-item:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 25px rgba(0,0,0,.12);
+}
+
+/* ===== BLOG PREVIEW (FIXED HOVER) ===== */
 .blog-preview{background:#fff;padding:70px 20px;}
 .blog-preview h2{text-align:center;font-family:'Cinzel', serif;}
 .blog-preview p{text-align:center;color:#555;max-width:700px;margin:10px auto 40px;}
+
 .blog-grid{
-  max-width:1100px;margin:auto;
+  max-width:1100px;
+  margin:auto;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:24px;
 }
+
 .blog-card{
   background:#f8f6f2;
   border-radius:14px;
   overflow:hidden;
   text-decoration:none;
   color:#000;
+  display:block;
 }
-.blog-card img{width:100%;height:220px;object-fit:cover;}
+.blog-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
 .blog-card div{padding:18px;text-align:center;}
 .blog-card h3{font-family:'Cinzel', serif;font-size:18px;margin-bottom:6px;}
 .blog-card p{font-size:14px;color:#555;}
 
+.blog-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 28px rgba(0,0,0,.15);
+}
+
 /* ===== LOCATION ===== */
 .location{background:#f8f6f2;padding:60px 20px;}
 .location-inner{
-  max-width:1100px;margin:auto;
+  max-width:1100px;
+  margin:auto;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:30px;
 }
-@media(max-width:768px){.location-inner{grid-template-columns:1fr;}}
+@media(max-width:768px){
+  .location-inner{grid-template-columns:1fr;}
+}
 
 /* ===== CTA + FOOTER ===== */
 .cta{text-align:center;padding:60px 20px;}
 .footer{text-align:center;padding:20px;font-size:14px;color:#777;}
-/* ===== FLOATING WHATSAPP BUTTON ===== */
+
+/* ===== FLOATING WHATSAPP ===== */
 .whatsapp-float{
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  width: 56px;
-  height: 56px;
-  background: #25D366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  width:56px;
+  height:56px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
 }
-
 .whatsapp-float img{
-  width: 38px;
-  height: 38px;
+  width:38px;
+  height:38px;
 }
-
-.whatsapp-float:active{
-  transform: scale(0.95);
-}
-
-/* mobile fine tuning */
-@media(max-width:768px){
-  .whatsapp-float{
-    right: 14px;
-    bottom: 14px;
-    width: 52px;
-    height: 52px;
-  }
-}
+.whatsapp-float:active{transform:scale(.95);}
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
   <div class="logo">
-    <a href="./index.html">
-    <img src="logo.png" alt="Pristine Perfume">
-    </a>
+    <a href="./index.html"><img src="logo.png" alt="Pristine Perfume"></a>
   </div>
-
   <div class="nav-row">
     <a href="./index.html" class="active">Home</a>
     <a href="./pricelist.html">Price List</a>
@@ -255,7 +256,6 @@ body{
   </div>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <h1>Pristine Perfume – Wholesale Attar & Perfume Supplier from Kannauj</h1>
   <p>Wholesale attar & perfume oil supplier from Kannauj, Uttar Pradesh. Trusted by retailers across India.</p>
@@ -265,7 +265,6 @@ body{
   </div>
 </section>
 
-<!-- TRUST -->
 <section class="trust-badges">
   <div class="trust-inner">
     <div class="badge">✔ Trusted Wholesale Supplier</div>
@@ -276,7 +275,6 @@ body{
   <div class="trust-note">Google-verified perfume store from Kannauj supplying wholesale attars across India</div>
 </section>
 
-<!-- BEST SELLERS -->
 <section class="bestsellers">
   <h2>Best Sellers</h2>
   <div class="bs-grid">
@@ -287,7 +285,6 @@ body{
   </div>
 </section>
 
-<!-- BLOG -->
 <section class="blog-preview">
   <h2>Fragrance Knowledge Hub</h2>
   <p>Learn about attars, perfume oils & Kannauj fragrance heritage.</p>
@@ -298,7 +295,6 @@ body{
   </div>
 </section>
 
-<!-- LOCATION -->
 <section class="location">
   <div class="location-inner">
     <div>
@@ -306,7 +302,7 @@ body{
       <p><strong>Pristine Perfume</strong><br>Bazariya Shekhana, Kannauj<br>Uttar Pradesh<br>📞 +91 7985494998</p>
     </div>
     <div>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3553.3391888776227!2d79.92797139999999!3d27.051039499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399e65b290f1c90f%3A0xc8b360b53b5b7e26!2sPristine%20Perfume!5e0!3m2!1sen!2sin!4v1768687301368!5m2!1sen!2sin"
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3553.3391888776227!2d79.9279714!3d27.0510395"
         width="100%" height="260" style="border:0;border-radius:8px;" loading="lazy"></iframe>
     </div>
   </div>
@@ -318,8 +314,10 @@ body{
 </section>
 
 <footer class="footer">© Pristine Perfume – Wholesale Attar Supplier</footer>
+
 <a href="https://wa.me/917985494998" class="whatsapp-float" target="_blank">
   <img src="whatsapp-icon.png" alt="WhatsApp">
 </a>
+
 </body>
 </html>
