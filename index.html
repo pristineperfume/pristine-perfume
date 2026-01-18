@@ -4,14 +4,11 @@
 <meta charset="UTF-8">
 
 <title>Wholesale Attar Supplier in Kannauj | Pristine Perfume</title>
-
 <meta name="description" content="Pristine Perfume is a wholesale attar and perfume oil supplier from Kannauj. Trusted by retailers across India for bulk fragrance supply.">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="3LBOF1wiHHmlrIwNPotInQBjjC8bcVD7PdUFm45dOnk">
 
-<meta name="google-site-verification" content="3LBOF1wiHHmlrIwNPotInQBjjC8bcVD7PdUFm45dOnk" />
-
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -46,6 +43,7 @@ body{
   background:#25D366;color:#fff;
   padding:8px 16px;border-radius:20px;font-weight:600;
 }
+
 @media(max-width:768px){
   .navbar{flex-direction:column;height:auto;padding:10px;}
   .navbar .logo{margin-bottom:6px;}
@@ -57,7 +55,7 @@ body{
 /* ===== HERO ===== */
 .hero{
   min-height:calc(100vh - 56px);
-  padding:70px 20px 40px;
+  padding:60px 20px 40px;
   background:
     linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
     url('./hero-bg.jpg');
@@ -71,74 +69,116 @@ body{
   max-width:900px;
 }
 .hero p{max-width:650px;line-height:1.6;color:#eee;}
-.hero-actions{margin-top:28px;}
-.btn{display:inline-block;padding:12px 22px;border-radius:6px;text-decoration:none;margin-right:12px;}
+.hero-actions{margin-top:22px;}
+.btn{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:6px;
+  text-decoration:none;
+  margin-right:12px;
+}
 .btn.primary{background:#000;color:#fff;}
 .btn.whatsapp{background:#25D366;color:#fff;}
+
+@media(max-width:768px){
+  .hero{min-height:auto;padding:50px 16px 36px;}
+  .hero h1{font-size:32px;}
+  .hero-actions{margin-top:18px;}
+}
 
 /* ===== TRUST ===== */
 .trust-badges{background:#111;padding:40px 20px;}
 .trust-inner{
   max-width:1100px;margin:auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
 }
 .badge{
   background:#1c1c1c;padding:18px;
-  border-radius:10px;color:#fff;font-weight:600;text-align:center;
+  border-radius:10px;color:#fff;
+  font-weight:600;text-align:center;
 }
-.trust-note{
-  text-align:center;margin-top:25px;color:#ccc;font-size:15px;
-}
+.trust-note{text-align:center;margin-top:24px;color:#ccc;font-size:15px;}
 
 /* ===== BEST SELLERS ===== */
 .bestsellers{padding:60px 20px;text-align:center;}
 .bestsellers h2{font-family:'Cinzel', serif;margin-bottom:30px;}
 .bs-grid{
   max-width:900px;margin:auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:22px;
 }
 .bs-item{
   background:#f9f7f3;
   padding:18px;
-  border-radius:8px;
+  border-radius:10px;
   text-decoration:none;
   color:#000;
   font-weight:600;
   text-align:center;
+  transition:.3s;
 }
 .bs-item img{
-  width:100%;height:180px;object-fit:cover;
-  border-radius:6px;margin-bottom:10px;
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:8px;
 }
-.bs-item span{display:block;margin-top:6px;}
+.bs-item span{display:block;margin-top:10px;}
+.bs-item:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 25px rgba(0,0,0,.12);
+}
+
+@media(max-width:768px){
+  .bs-item img{height:auto;}
+}
 
 /* ===== BLOG PREVIEW ===== */
 .blog-preview{background:#fff;padding:70px 20px;}
 .blog-preview h2{text-align:center;font-family:'Cinzel', serif;}
 .blog-preview p{text-align:center;color:#555;max-width:700px;margin:10px auto 40px;}
+
 .blog-grid{
   max-width:1100px;margin:auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:24px;
 }
 .blog-card{
-  background:#f8f6f2;border-radius:10px;
-  overflow:hidden;text-decoration:none;color:#000;
+  background:#f8f6f2;
+  border-radius:14px;
+  overflow:hidden;
+  text-decoration:none;
+  color:#000;
+  transition:.3s;
 }
-.blog-card img{width:100%;height:200px;object-fit:cover;}
-.blog-card div{padding:18px;}
+.blog-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+.blog-card div{padding:18px;text-align:center;}
 .blog-card h3{font-family:'Cinzel', serif;font-size:18px;margin-bottom:6px;}
 .blog-card p{font-size:14px;color:#555;}
+.blog-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 28px rgba(0,0,0,.15);
+}
 
 /* ===== LOCATION ===== */
 .location{background:#f8f6f2;padding:60px 20px;}
 .location-inner{
   max-width:1100px;margin:auto;
-  display:grid;grid-template-columns:1fr 1fr;gap:30px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
 }
-@media(max-width:768px){.location-inner{grid-template-columns:1fr;}}
+@media(max-width:768px){
+  .location-inner{grid-template-columns:1fr;}
+}
 
 /* ===== CTA + FOOTER ===== */
 .cta{text-align:center;padding:60px 20px;}
@@ -184,20 +224,16 @@ body{
   <h2>Best Sellers</h2>
   <div class="bs-grid">
     <a href="./pricelist.html#french" class="bs-item">
-      <img src="./bs1.jpg" alt="French perfume oils wholesale">
-      <span>French Collection</span>
+      <img src="./bs1.jpg"><span>French Collection</span>
     </a>
     <a href="./pricelist.html#arabian" class="bs-item">
-      <img src="./bs2.jpg" alt="Arabian oud attars wholesale">
-      <span>Arabian Oud Range</span>
+      <img src="./bs2.jpg"><span>Arabian Oud Range</span>
     </a>
     <a href="./pricelist.html#ajmal" class="bs-item">
-      <img src="./bs3.jpg" alt="Ajmal inspired attars">
-      <span>Ajmal Inspired Attars</span>
+      <img src="./bs3.jpg"><span>Ajmal Inspired Attars</span>
     </a>
     <a href="./pricelist.html#indian" class="bs-item">
-      <img src="./bs4.jpg" alt="Traditional Indian attars">
-      <span>Indian Traditional Attars</span>
+      <img src="./bs4.jpg"><span>Indian Traditional Attars</span>
     </a>
   </div>
 </section>
@@ -228,12 +264,8 @@ body{
       <p><strong>Pristine Perfume</strong><br>Bazariya Shekhana, Kannauj<br>Uttar Pradesh<br>📞 +91 7985494998</p>
     </div>
     <div>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3553.3391888776227!2d79.92797139999999!3d27.051039499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399e65b290f1c90f%3A0xc8b360b53b5b7e26!2sPristine%20Perfume!5e0!3m2!1sen!2sin!4v1768687301368!5m2!1sen!2sin"
-        width="100%" height="260"
-        style="border:0;border-radius:8px;"
-        loading="lazy" allowfullscreen>
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3553.3391888776227!2d79.92797139999999!3d27.051039499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399e65b290f1c90f%3A0xc8b360b53b5b7e26!2sPristine%20Perfume!5e0!3m2!1sen!2sin!4v1768687301368!5m2!1sen!2sin"
+        width="100%" height="260" style="border:0;border-radius:8px;" loading="lazy"></iframe>
     </div>
   </div>
 </section>
