@@ -172,6 +172,10 @@ tbody tr:nth-child(even){background:#f6f6f6;}
 <h1>Wholesale Attar Price List</h1>
 
 <div class="controls">
+  <input type="range" id="priceRange" min="0" value="0" step="100">
+<span>₹<span id="priceVal">0</span></span>
+
+<div id="pagination" style="margin-top:15px;text-align:center;"></div>
   <input id="search" placeholder="Search fragrance">
   <select id="category">
     <option value="">All Categories</option>
@@ -194,105 +198,99 @@ tbody tr:nth-child(even){background:#f6f6f6;}
 </a>
 
 <script>
-let DATA = [];
-let PAGE = 1;
-const PER_PAGE = 50;
+let DATA=[], PAGE=1;
+const PER_PAGE=50;
+
+const search=document.getElementById('search');
+const category=document.getElementById('category');
+const priceRange=document.getElementById('priceRange');
+const priceVal=document.getElementById('priceVal');
+const pagination=document.getElementById('pagination');
+const table=document.getElementById('table');
 
 fetch('pricelist.csv')
-.then(r => r.text())
-.then(text => {
-  const rows = text.trim().split('\n').map(r => r.split(','));
-  const headers = rows[0].map(h => h.trim());
-
-  const col = {};
+.then(r=>r.text())
+.then(text=>{
+  const rows=text.trim().split('\n').map(r=>r.split(','));
+  const headers=rows[0].map(h=>h.trim());
+  const col={};
   headers.forEach((h,i)=>col[h]=i);
 
-  const catSet = new Set();
-  let maxPrice = 0;
+  let max=0;
+  const cats=new Set();
 
-  DATA = rows.slice(1).map(r=>{
-    const price = parseInt(r[col['1 Kg']] || 0);
-    if(price > maxPrice) maxPrice = price;
-
-    catSet.add(r[col['Category']]);
-
-    return {
-      row: r,
-      text: r.join(' ').toLowerCase(),
-      category: r[col['Category']],
-      price
+  DATA=rows.slice(1).map(r=>{
+    const price=parseInt(r[col['1 Kg']]||0);
+    if(price>max) max=price;
+    cats.add(r[col['Category']]);
+    return{
+      r,
+      t:r.join(' ').toLowerCase(),
+      c:r[col['Category']],
+      p:price
     };
   });
 
-  /* category dropdown */
-  const catSel = document.getElementById('category');
-  catSet.forEach(c=>{
-    const o=document.createElement('option');
-    o.value=c;
-    o.textContent=c;
-    catSel.appendChild(o);
-  });
+  priceRange.max=max;
+  priceRange.value=max;
+  priceVal.textContent=max;
 
-  /* price slider */
-  const range = document.getElementById('priceRange');
-  range.max = maxPrice;
-  range.value = maxPrice;
-  document.getElementById('priceVal').textContent = maxPrice;
+  cats.forEach(c=>{
+    const o=document.createElement('option');
+    o.value=c;o.textContent=c;
+    category.appendChild(o);
+  });
 
   render();
 });
 
-/* ---------- RENDER ---------- */
 function render(){
-  const q = search.value.toLowerCase();
-  const c = category.value;
-  const max = parseInt(priceRange.value);
-  priceVal.textContent = max;
+  if(!DATA.length) return;
 
-  const filtered = DATA.filter(d =>
-    (!q || d.text.includes(q)) &&
-    (!c || d.category === c) &&
-    d.price <= max
+  const q=search.value.toLowerCase();
+  const c=category.value;
+  const max=parseInt(priceRange.value||0);
+  priceVal.textContent=max;
+
+  const list=DATA.filter(d=>
+    (!q||d.t.includes(q)) &&
+    (!c||d.c===c) &&
+    d.p<=max
   );
 
-  const table = document.getElementById('table');
-  let html = '<thead><tr>';
+  let html='<thead><tr>';
   ['Product Name','1 Kg','500 g','250 g','100 g','50 g','25 g','Category']
     .forEach(h=>html+=`<th>${h}</th>`);
   html+='</tr></thead><tbody>';
 
-  filtered.slice((PAGE-1)*PER_PAGE, PAGE*PER_PAGE)
+  list.slice((PAGE-1)*PER_PAGE,PAGE*PER_PAGE)
   .forEach(d=>{
     html+='<tr>';
     ['Product Name','1 Kg','500 g','250 g','100 g','50 g','25 g','Category']
-      .forEach(h=>{
-        html+=`<td data-label="${h}">${d.row[col[h]]}</td>`;
-      });
+    .forEach(h=>html+=`<td data-label="${h}">${d.r[col[h]]}</td>`);
     html+='</tr>';
   });
 
-  table.innerHTML = html+'</tbody>';
-  renderPagination(filtered.length);
+  table.innerHTML=html+'</tbody>';
+  renderPages(list.length);
 }
 
-/* ---------- PAGINATION ---------- */
-function renderPagination(total){
-  const pages = Math.ceil(total / PER_PAGE);
-  const wrap = document.getElementById('pagination');
-  wrap.innerHTML='';
+function renderPages(total){
+  pagination.innerHTML='';
+  const pages=Math.ceil(total/PER_PAGE);
   for(let i=1;i<=pages;i++){
     const b=document.createElement('button');
     b.textContent=i;
     if(i===PAGE) b.className='active';
     b.onclick=()=>{PAGE=i;render();}
-    wrap.appendChild(b);
+    pagination.appendChild(b);
   }
 }
 
-/* events */
 search.oninput=()=>{PAGE=1;render();}
 category.onchange=()=>{PAGE=1;render();}
 priceRange.oninput=()=>{PAGE=1;render();}
 </script>
+  
 </body>
 </html>
