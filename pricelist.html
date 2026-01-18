@@ -3,89 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <title>Wholesale Attar Price List | Pristine Perfume Kannauj</title>
-<meta name="description" content="Wholesale attar and perfume oil price list from Pristine Perfume, Kannauj.">
 
+<meta name="description" content="Wholesale attar and perfume oil price list from Pristine Perfume, Kannauj.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="icon" href="favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 html,body{margin:0;padding:0;width:100%;overflow-x:hidden;}
-body{font-family:'Playfair Display',serif;padding-top:56px;background:#fafafa}
+body{
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  padding-top:56px;
+  background:#fafafa;
+}
 
 /* ===== NAVBAR ===== */
 .navbar{
-  position:fixed;top:0;left:0;right:0;
+  position:fixed;
+  top:0;left:0;right:0;
   background:#f8f6f2;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:12px 20px;z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 20px;
+  z-index:1000;
 }
-.navbar img{height:36px}
-.nav-row{margin:0 auto;display:flex}
+.navbar img{height:36px;}
+
+.nav-row{
+  margin:0 auto;
+  display:flex;
+}
 .nav-row a{
-  position:relative;text-decoration:none;color:#333;
-  padding:6px 22px;font-size:15px
+  position:relative;
+  text-decoration:none;
+  color:#333;
+  font-size:15px;
+  padding:6px 22px;
 }
-.nav-row a.active{border-bottom:2px solid #000}
+.nav-row a.active{border-bottom:2px solid #000;}
 .nav-row a:not(:last-child)::after{
-  content:"";position:absolute;right:0;top:50%;
+  content:"";
+  position:absolute;
+  right:0;
+  top:50%;
   transform:translateY(-50%);
-  height:18px;width:1px;background:rgba(0,0,0,.35)
+  height:18px;
+  width:1px;
+  background:rgba(0,0,0,.35);
 }
 
-/* ===== LAYOUT ===== */
-.container{max-width:1200px;margin:auto;background:#fff;padding:20px}
-h1{text-align:center;margin-bottom:10px}
+/* ===== CONTAINER ===== */
+.container{
+  max-width:1200px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+}
+h1{text-align:center;margin-bottom:15px;}
 
 /* ===== CONTROLS ===== */
 .controls{
-  display:flex;flex-wrap:wrap;gap:10px;
-  justify-content:center;position:sticky;top:70px;
-  background:#fff;padding:10px;z-index:50
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  position:sticky;
+  top:70px;
+  background:#fff;
+  padding:10px;
+  z-index:50;
 }
-input,select{padding:8px 10px;font-size:14px}
-
-.price-chips button{
-  border:1px solid #ccc;background:#fff;
-  padding:6px 12px;border-radius:20px;
-  cursor:pointer;font-size:13px
+input,select{padding:8px 10px;font-size:14px;}
+.range-wrap{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:14px;
 }
-.price-chips button:hover{background:#eee}
 
 /* ===== TABLE ===== */
-table{width:100%;border-collapse:collapse}
-th,td{border:1px solid #ddd;padding:8px;text-align:center;font-size:14px}
-th{background:#111;color:#fff}
-tbody tr{transition:.2s}
-tbody tr:hover{background:#eef6ff;transform:scale(1.01)}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+}
+th,td{
+  border:1px solid #ddd;
+  padding:8px;
+  text-align:center;
+}
+th{
+  background:#111;
+  color:#fff;
+}
 
+/* ✅ ZEBRA */
+tbody tr:nth-child(odd){background:#fff;}
+tbody tr:nth-child(even){background:#f6f6f6;}
+
+/* Hover (desktop only) */
+@media (hover:hover){
+  tbody tr:hover{background:#eaeaea;}
+}
+
+/* ===== MOBILE TABLE ===== */
 @media(max-width:768px){
   table,thead,tbody,th,td,tr{display:block}
-  tr{margin-bottom:15px}
-  td{text-align:right;padding-left:50%;position:relative}
+  tr{margin-bottom:14px}
+  td{text-align:right;position:relative;padding-left:50%}
   td::before{
     content:attr(data-label);
-    position:absolute;left:10px;font-weight:bold
+    position:absolute;
+    left:10px;
+    font-weight:600;
   }
   th{display:none}
 }
 
 /* ===== PAGINATION ===== */
-.pagination{text-align:center;margin:20px}
+.pagination{
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  margin:20px 0;
+}
 .pagination button{
-  padding:6px 12px;margin:0 5px;
-  border:1px solid #ccc;background:#fff;cursor:pointer
+  padding:6px 10px;
+  border:1px solid #ccc;
+  background:#fff;
+  cursor:pointer;
+}
+.pagination button.active{
+  background:#111;
+  color:#fff;
 }
 
 /* ===== FLOATING WHATSAPP ===== */
 .whatsapp-float{
-  position:fixed;right:16px;bottom:16px;
-  width:56px;height:56px;border-radius:50%;
-  background:#25D366;display:flex;
-  align-items:center;justify-content:center;
-  box-shadow:0 8px 20px rgba(0,0,0,.25)
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  width:56px;
+  height:56px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.whatsapp-float img{width:38px}
+.whatsapp-float img{width:36px;height:36px;}
 </style>
 </head>
 
@@ -95,7 +162,7 @@ tbody tr:hover{background:#eef6ff;transform:scale(1.01)}
   <a href="./index.html"><img src="logo.png"></a>
   <div class="nav-row">
     <a href="./index.html">Home</a>
-    <a href="./pricelist.html" class="active">Price List</a>
+    <a class="active">Price List</a>
     <a href="./about.html">About</a>
     <a href="./blog.html">Blog</a>
   </div>
@@ -106,24 +173,20 @@ tbody tr:hover{background:#eef6ff;transform:scale(1.01)}
 
 <div class="controls">
   <input id="search" placeholder="Search fragrance">
-  <select id="category"><option value="">All Categories</option></select>
+  <select id="category">
+    <option value="">All Categories</option>
+  </select>
 
-  <input type="range" id="priceRange" min="0" step="50">
-  <span id="priceLabel"></span>
-
-  <div class="price-chips">
-    <button data-max="500">₹0–500</button>
-    <button data-max="1000">₹500–1000</button>
-    <button data-max="2000">₹1000–2000</button>
+  <!-- ✅ PRICE SLIDER (1 KG) -->
+  <div class="range-wrap">
+    ₹0
+    <input type="range" id="priceRange" min="0" step="100">
+    ₹<span id="priceVal">0</span>
   </div>
 </div>
 
 <table id="table"></table>
-<div class="pagination">
-  <button id="prev">Prev</button>
-  <span id="pageInfo"></span>
-  <button id="next">Next</button>
-</div>
+<div class="pagination" id="pagination"></div>
 </div>
 
 <a href="https://wa.me/917985494998" class="whatsapp-float">
@@ -131,72 +194,89 @@ tbody tr:hover{background:#eef6ff;transform:scale(1.01)}
 </a>
 
 <script>
-let ROWS=[],PAGE=1,PER_PAGE=50,MAX_PRICE=0;
+let DATA=[],PAGE=1,PER_PAGE=50,MAX_PRICE=0;
 
-fetch('pricelist.csv').then(r=>r.text()).then(text=>{
-  const rows=text.trim().split('\n').map(r=>r.split(','));
+fetch('pricelist.csv')
+.then(r=>r.text())
+.then(t=>{
+  const rows=t.trim().split('\n').map(r=>r.split(','));
   const headers=rows[0];
-  const col={};headers.forEach((h,i)=>col[h]=i);
+  const idx={}; headers.forEach((h,i)=>idx[h]=i);
 
-  const table=document.getElementById('table');
-  let thead='<thead><tr>';
-  headers.forEach(h=>thead+=`<th>${h}</th>`);
-  table.innerHTML=thead+'</tr></thead><tbody></tbody>';
-  const tbody=table.querySelector('tbody');
-
+  const tbody=[];
   const cats=new Set();
 
   rows.slice(1).forEach(r=>{
-    if(!r[col['Product Name']])return;
-    const tr=document.createElement('tr');
-    let text='',cat='',price=0;
-
-    headers.forEach(h=>{
-      let v=r[col[h]]||'';
-      if(h==='25 g'&&v){price=+v;MAX_PRICE=Math.max(MAX_PRICE,price);v='₹'+v}
-      const td=document.createElement('td');
-      td.dataset.label=h;td.textContent=v;tr.appendChild(td);
-      text+=v.toLowerCase();if(h==='Category')cat=v.toLowerCase();
-    });
-
-    ROWS.push({el:tr,text,cat,price});
-    cats.add(cat);tbody.appendChild(tr);
+    const price=parseInt(r[idx['1 Kg']]||0);
+    MAX_PRICE=Math.max(MAX_PRICE,price);
+    cats.add(r[idx['Category']]);
+    tbody.push({r,price});
   });
 
-  const sel=document.getElementById('category');
-  cats.forEach(c=>{if(c){let o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o)}});
+  const range=document.getElementById('priceRange');
+  range.max=MAX_PRICE;
+  document.getElementById('priceVal').textContent=MAX_PRICE;
 
-  const slider=document.getElementById('priceRange');
-  const label=document.getElementById('priceLabel');
-  slider.max=MAX_PRICE;slider.value=MAX_PRICE;
-  label.textContent=`₹0 – ₹${MAX_PRICE}`;
-
-  function apply(){
-    const q=search.value.toLowerCase();
-    const c=sel.value;
-    const max=+slider.value;
-    let visible=ROWS.filter(r=>
-      (!q||r.text.includes(q))&&
-      (!c||r.cat===c)&&
-      r.price<=max
-    );
-    ROWS.forEach(r=>r.el.style.display='none');
-    visible.slice((PAGE-1)*PER_PAGE,PAGE*PER_PAGE)
-      .forEach(r=>r.el.style.display='');
-    pageInfo.textContent=`Page ${PAGE}`;
-  }
-
-  search.oninput=()=>{PAGE=1;apply()};
-  sel.onchange=()=>{PAGE=1;apply()};
-  slider.oninput=()=>{label.textContent=`₹0 – ₹${slider.value}`;PAGE=1;apply()};
-  document.querySelectorAll('.price-chips button').forEach(b=>{
-    b.onclick=()=>{slider.value=b.dataset.max;slider.oninput()}
+  const catSel=document.getElementById('category');
+  cats.forEach(c=>{
+    const o=document.createElement('option');
+    o.value=c;o.textContent=c;
+    catSel.appendChild(o);
   });
 
-  prev.onclick=()=>{if(PAGE>1){PAGE--;apply()}};
-  next.onclick=()=>{PAGE++;apply()};
-  apply();
+  DATA=tbody;
+  render();
 });
+
+function render(){
+  const q=search.value.toLowerCase();
+  const c=category.value;
+  const max=priceRange.value||MAX_PRICE;
+  priceVal.textContent=max;
+
+  const filtered=DATA.filter(d=>
+    (!q||d.r.join(' ').toLowerCase().includes(q)) &&
+    (!c||d.r.includes(c)) &&
+    d.price<=max
+  );
+
+  const table=document.getElementById('table');
+  const headers=Object.keys(filtered[0].r||{});
+  let html='<thead><tr>';
+  ['Product Name','1 Kg','500 g','250 g','100 g','50 g','25 g','Category']
+  .forEach(h=>html+=`<th>${h}</th>`);
+  html+='</tr></thead><tbody>';
+
+  filtered.slice((PAGE-1)*PER_PAGE,PAGE*PER_PAGE)
+  .forEach(d=>{
+    html+='<tr>';
+    ['Product Name','1 Kg','500 g','250 g','100 g','50 g','25 g','Category']
+    .forEach((h,i)=>{
+      html+=`<td data-label="${h}">${d.r[i]}</td>`;
+    });
+    html+='</tr>';
+  });
+  table.innerHTML=html+'</tbody>';
+
+  renderPages(filtered.length);
+}
+
+function renderPages(total){
+  const p=document.getElementById('pagination');
+  p.innerHTML='';
+  const pages=Math.ceil(total/PER_PAGE);
+  for(let i=1;i<=pages;i++){
+    const b=document.createElement('button');
+    b.textContent=i;
+    if(i===PAGE)b.className='active';
+    b.onclick=()=>{PAGE=i;render();}
+    p.appendChild(b);
+  }
+}
+
+search.oninput=()=>{PAGE=1;render();}
+category.onchange=()=>{PAGE=1;render();}
+priceRange.oninput=()=>{PAGE=1;render();}
 </script>
 
 </body>
