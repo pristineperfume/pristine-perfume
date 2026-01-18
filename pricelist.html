@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Wholesale Attar Price List | Pristine Perfume Kannauj</title>
 
+<title>Wholesale Attar Price List | Pristine Perfume Kannauj</title>
 <meta name="description" content="Wholesale attar and perfume oil price list from Pristine Perfume, Kannauj.">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 html,body{margin:0;padding:0;width:100%;overflow-x:hidden;}
 body{
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  font-family:'Playfair Display', serif;
   padding-top:56px;
   background:#fafafa;
 }
@@ -23,33 +25,29 @@ body{
   top:0;left:0;right:0;
   background:#f8f6f2;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   padding:12px 20px;
   z-index:1000;
 }
 .navbar img{height:36px;}
-
 .nav-row{
   margin:0 auto;
   display:flex;
 }
 .nav-row a{
   position:relative;
+  padding:6px 22px;
   text-decoration:none;
   color:#333;
-  font-size:15px;
-  padding:6px 22px;
 }
 .nav-row a.active{border-bottom:2px solid #000;}
 .nav-row a:not(:last-child)::after{
   content:"";
   position:absolute;
-  right:0;
-  top:50%;
+  right:0;top:50%;
   transform:translateY(-50%);
-  height:18px;
-  width:1px;
+  width:1px;height:18px;
   background:rgba(0,0,0,.35);
 }
 
@@ -60,33 +58,40 @@ body{
   background:#fff;
   padding:20px;
 }
-h1{text-align:center;margin-bottom:15px;}
+h1{text-align:center;margin-bottom:20px;}
 
 /* ===== CONTROLS ===== */
 .controls{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:12px;
   justify-content:center;
   position:sticky;
   top:70px;
   background:#fff;
-  padding:10px;
-  z-index:50;
+  padding:12px;
+  z-index:10;
 }
-input,select{padding:8px 10px;font-size:14px;}
+input,select{
+  padding:8px 10px;
+  font-size:14px;
+}
+
+/* ===== PRICE SLIDER ===== */
 .range-wrap{
   display:flex;
   align-items:center;
-  gap:6px;
-  font-size:14px;
+  gap:10px;
+}
+.range-wrap span{
+  font-weight:600;
 }
 
 /* ===== TABLE ===== */
 table{
   width:100%;
   border-collapse:collapse;
-  font-size:14px;
+  font-family:'Playfair Display', serif;
 }
 th,td{
   border:1px solid #ddd;
@@ -97,46 +102,27 @@ th{
   background:#111;
   color:#fff;
 }
-
-/* ✅ ZEBRA */
-tbody tr:nth-child(odd){background:#fff;}
-tbody tr:nth-child(even){background:#f6f6f6;}
-
-/* Hover (desktop only) */
-@media (hover:hover){
-  tbody tr:hover{background:#eaeaea;}
+tbody tr:nth-child(even){background:#f9f9f9;}
+tbody tr:hover{
+  background:#eef3ff;
 }
 
 /* ===== MOBILE TABLE ===== */
 @media(max-width:768px){
   table,thead,tbody,th,td,tr{display:block}
-  tr{margin-bottom:14px}
-  td{text-align:right;position:relative;padding-left:50%}
+  tr{margin-bottom:15px}
+  td{
+    text-align:right;
+    padding-left:50%;
+    position:relative;
+  }
   td::before{
     content:attr(data-label);
     position:absolute;
     left:10px;
-    font-weight:600;
+    font-weight:bold;
   }
   th{display:none}
-}
-
-/* ===== PAGINATION ===== */
-.pagination{
-  display:flex;
-  justify-content:center;
-  gap:6px;
-  margin:20px 0;
-}
-.pagination button{
-  padding:6px 10px;
-  border:1px solid #ccc;
-  background:#fff;
-  cursor:pointer;
-}
-.pagination button.active{
-  background:#111;
-  color:#fff;
 }
 
 /* ===== FLOATING WHATSAPP ===== */
@@ -151,18 +137,19 @@ tbody tr:nth-child(even){background:#f6f6f6;}
   display:flex;
   align-items:center;
   justify-content:center;
+  z-index:2000;
 }
-.whatsapp-float img{width:36px;height:36px;}
+.whatsapp-float img{width:38px;height:38px;}
 </style>
 </head>
 
 <body>
 
 <div class="navbar">
-  <a href="./index.html"><img src="logo.png"></a>
+  <a href="./index.html"><img src="logo.png" alt="Pristine Perfume"></a>
   <div class="nav-row">
     <a href="./index.html">Home</a>
-    <a class="active">Price List</a>
+    <a href="./pricelist.html" class="active">Price List</a>
     <a href="./about.html">About</a>
     <a href="./blog.html">Blog</a>
   </div>
@@ -172,125 +159,109 @@ tbody tr:nth-child(even){background:#f6f6f6;}
 <h1>Wholesale Attar Price List</h1>
 
 <div class="controls">
-  <input type="range" id="priceRange" min="0" value="0" step="100">
-<span>₹<span id="priceVal">0</span></span>
-
-<div id="pagination" style="margin-top:15px;text-align:center;"></div>
   <input id="search" placeholder="Search fragrance">
   <select id="category">
     <option value="">All Categories</option>
   </select>
 
-  <!-- ✅ PRICE SLIDER (1 KG) -->
   <div class="range-wrap">
-    ₹0
-    <input type="range" id="priceRange" min="0" step="100">
-    ₹<span id="priceVal">0</span>
+    <span>₹0</span>
+    <input type="range" id="priceRange" min="0" step="500">
+    <span id="priceVal">₹0</span>
   </div>
 </div>
 
 <table id="table"></table>
-<div class="pagination" id="pagination"></div>
 </div>
 
-<a href="https://wa.me/917985494998" class="whatsapp-float">
-  <img src="whatsapp-icon.png">
+<a href="https://wa.me/917985494998" class="whatsapp-float" target="_blank">
+  <img src="whatsapp-icon.png" alt="WhatsApp">
 </a>
 
 <script>
-let DATA=[], PAGE=1;
-const PER_PAGE=50;
-
-const search=document.getElementById('search');
-const category=document.getElementById('category');
-const priceRange=document.getElementById('priceRange');
-const priceVal=document.getElementById('priceVal');
-const pagination=document.getElementById('pagination');
-const table=document.getElementById('table');
+let ROWS = [];
+let MAX_PRICE = 0;
 
 fetch('pricelist.csv')
 .then(r=>r.text())
 .then(text=>{
-  const rows=text.trim().split('\n').map(r=>r.split(','));
-  const headers=rows[0].map(h=>h.trim());
-  const col={};
+  const rows = text.trim().split('\n').map(r=>r.split(/\s{2,}|\t/));
+  const headers = rows[0];
+  const col = {};
   headers.forEach((h,i)=>col[h]=i);
 
-  let max=0;
+  const table = document.getElementById('table');
+  const catSel = document.getElementById('category');
+
+  // header
+  let thead='<thead><tr>';
+  headers.forEach(h=>thead+=`<th>${h}</th>`);
+  thead+='</tr></thead><tbody></tbody>';
+  table.innerHTML=thead;
+  const tbody=table.querySelector('tbody');
+
   const cats=new Set();
 
-  DATA=rows.slice(1).map(r=>{
-    const price=parseInt(r[col['1 Kg']]||0);
-    if(price>max) max=price;
-    cats.add(r[col['Category']]);
-    return{
-      r,
-      t:r.join(' ').toLowerCase(),
-      c:r[col['Category']],
-      p:price
-    };
-  });
+  rows.slice(1).forEach(r=>{
+    if(!r[col['Product Name']])return;
 
-  priceRange.max=max;
-  priceRange.value=max;
-  priceVal.textContent=max;
+    const priceKg = Number(r[col['1 Kg']]||0);
+    if(priceKg>MAX_PRICE)MAX_PRICE=priceKg;
+
+    const tr=document.createElement('tr');
+    headers.forEach(h=>{
+      const td=document.createElement('td');
+      td.dataset.label=h;
+      let v=r[col[h]]||'';
+      if(/Kg|g/.test(h)&&v)v='₹'+Number(v).toLocaleString('en-IN');
+      td.textContent=v;
+      tr.appendChild(td);
+    });
+
+    ROWS.push({
+      el:tr,
+      text:r.join(' ').toLowerCase(),
+      cat:r[col['Category']]?.toLowerCase(),
+      price:priceKg
+    });
+
+    cats.add(r[col['Category']]);
+    tbody.appendChild(tr);
+  });
 
   cats.forEach(c=>{
     const o=document.createElement('option');
-    o.value=c;o.textContent=c;
-    category.appendChild(o);
+    o.value=c.toLowerCase();
+    o.textContent=c;
+    catSel.appendChild(o);
   });
 
-  render();
-});
+  const slider=document.getElementById('priceRange');
+  slider.max=MAX_PRICE;
+  slider.value=MAX_PRICE;
+  document.getElementById('priceVal').textContent='₹'+MAX_PRICE.toLocaleString('en-IN');
 
-function render(){
-  if(!DATA.length) return;
+  function filter(){
+    const q=search.value.toLowerCase();
+    const c=catSel.value;
+    const p=Number(slider.value);
 
-  const q=search.value.toLowerCase();
-  const c=category.value;
-  const max=parseInt(priceRange.value||0);
-  priceVal.textContent=max;
-
-  const list=DATA.filter(d=>
-    (!q||d.t.includes(q)) &&
-    (!c||d.c===c) &&
-    d.p<=max
-  );
-
-  let html='<thead><tr>';
-  ['Product Name','1 Kg','500 g','250 g','100 g','50 g','25 g','Category']
-    .forEach(h=>html+=`<th>${h}</th>`);
-  html+='</tr></thead><tbody>';
-
-  list.slice((PAGE-1)*PER_PAGE,PAGE*PER_PAGE)
-  .forEach(d=>{
-    html+='<tr>';
-    ['Product Name','1 Kg','500 g','250 g','100 g','50 g','25 g','Category']
-    .forEach(h=>html+=`<td data-label="${h}">${d.r[col[h]]}</td>`);
-    html+='</tr>';
-  });
-
-  table.innerHTML=html+'</tbody>';
-  renderPages(list.length);
-}
-
-function renderPages(total){
-  pagination.innerHTML='';
-  const pages=Math.ceil(total/PER_PAGE);
-  for(let i=1;i<=pages;i++){
-    const b=document.createElement('button');
-    b.textContent=i;
-    if(i===PAGE) b.className='active';
-    b.onclick=()=>{PAGE=i;render();}
-    pagination.appendChild(b);
+    ROWS.forEach(r=>{
+      r.el.style.display=
+        (!q||r.text.includes(q)) &&
+        (!c||r.cat===c) &&
+        r.price<=p ? '' : 'none';
+    });
   }
-}
 
-search.oninput=()=>{PAGE=1;render();}
-category.onchange=()=>{PAGE=1;render();}
-priceRange.oninput=()=>{PAGE=1;render();}
+  search.oninput=filter;
+  catSel.onchange=filter;
+  slider.oninput=()=>{
+    priceVal.textContent='₹'+Number(slider.value).toLocaleString('en-IN');
+    filter();
+  };
+});
 </script>
-  
+
 </body>
 </html>
