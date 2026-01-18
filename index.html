@@ -200,6 +200,40 @@ body{
 /* ===== CTA + FOOTER ===== */
 .cta{text-align:center;padding:60px 20px;}
 .footer{text-align:center;padding:20px;font-size:14px;color:#777;}
+/* ===== FLOATING WHATSAPP BUTTON ===== */
+.whatsapp-float{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.whatsapp-float img{
+  width: 28px;
+  height: 28px;
+}
+
+.whatsapp-float:active{
+  transform: scale(0.95);
+}
+
+/* mobile fine tuning */
+@media(max-width:768px){
+  .whatsapp-float{
+    right: 14px;
+    bottom: 14px;
+    width: 52px;
+    height: 52px;
+  }
+}
 </style>
 </head>
 
