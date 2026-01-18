@@ -185,7 +185,7 @@ let MAX_PRICE = 0;
 fetch('pricelist.csv')
 .then(r=>r.text())
 .then(text=>{
-  const rows = text.trim().split('\n').map(r=>r.split(/\s{2,}|\t/));
+  const rows = text.trim().split('\n').map(r => r.split(','));
   const headers = rows[0];
   const col = {};
   headers.forEach((h,i)=>col[h]=i);
