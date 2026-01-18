@@ -262,63 +262,100 @@ tr:hover{background:#f1f1f1;}
 </a>
 
 <script>
+let ROW_CACHE = [];
+let CAT_INDEX = [];
+let FILTER_TIMER = null;
+
 fetch('pricelist.csv')
-.then(res => res.text())
-.then(text => {
-  const rows=text.trim().split('\n').map(r=>r.split(','));
-  const headers=rows[0].map(h=>h.trim());
-  const col={};headers.forEach((h,i)=>col[h]=i);
+  .then(r => r.text())
+  .then(text => {
+    const rows = text.trim().split('\n').map(r => r.split(','));
+    const headers = rows[0].map(h => h.trim());
+    const col = {};
+    headers.forEach((h,i)=>col[h]=i);
 
-  const table=document.getElementById('table');
-  const categories=new Set();
+    const table = document.getElementById('table');
+    const categories = new Set();
 
-  let thead='<thead><tr>';
-  headers.forEach(h=>{if(!['25 g','50 g'].includes(h)) thead+=`<th>${h}</th>`});
-  thead+='</tr></thead>';
-  table.innerHTML=thead+'<tbody></tbody>';
-
-  const tbody=table.querySelector('tbody');
-
-  rows.slice(1).forEach(r=>{
-    if(!r[col['Product Name']]) return;
-    let tr=document.createElement('tr');
+    /* ---------- TABLE HEADER ---------- */
+    let thead = '<thead><tr>';
     headers.forEach(h=>{
-      if(['25 g','50 g'].includes(h)) return;
-      let val=r[col[h]]||'';
-      if(['1 Kg','500 g','250 g','100 g'].includes(h)&&val){
-        val='₹'+Number(val).toLocaleString('en-IN');
-      }
-      let td=document.createElement('td');
-      td.dataset.label=h;
-      td.textContent=val;
-      tr.appendChild(td);
-      if(h==='Category') categories.add(val);
+      if(!['25 g','50 g'].includes(h)) thead += `<th>${h}</th>`;
     });
-    tbody.appendChild(tr);
-  });
+    thead += '</tr></thead>';
+    table.innerHTML = thead + '<tbody></tbody>';
 
-  const catSel=document.getElementById('category');
-  categories.forEach(c=>{
-    let o=document.createElement('option');
-    o.value=c;o.textContent=c;
-    catSel.appendChild(o);
-  });
+    const tbody = table.querySelector('tbody');
 
-  function filter(){
-    const q=document.getElementById('search').value.toLowerCase();
-    const c=catSel.value.toLowerCase();
-    document.querySelectorAll('#table tbody tr').forEach(tr=>{
-      const text=tr.innerText.toLowerCase();
-      const cat=tr.querySelector('td:last-child').innerText.toLowerCase();
-      tr.style.display=(!q||text.includes(q))&&(!c||cat===c)?'':'none';
+    /* ---------- ROW BUILD + CACHE ---------- */
+    rows.slice(1).forEach(r=>{
+      if(!r[col['Product Name']]) return;
+
+      const tr = document.createElement('tr');
+      let searchableText = '';
+      let categoryText = '';
+
+      headers.forEach(h=>{
+        if(['25 g','50 g'].includes(h)) return;
+
+        let val = r[col[h]] || '';
+        if(['1 Kg','500 g','250 g','100 g'].includes(h) && val){
+          val = '₹' + Number(val).toLocaleString('en-IN');
+        }
+
+        const td = document.createElement('td');
+        td.dataset.label = h;
+        td.textContent = val;
+        tr.appendChild(td);
+
+        searchableText += ' ' + val.toLowerCase();
+        if(h === 'Category') categoryText = val.toLowerCase();
+      });
+
+      ROW_CACHE.push({
+        el: tr,
+        text: searchableText,
+        category: categoryText
+      });
+
+      if(categoryText) categories.add(categoryText);
+      tbody.appendChild(tr);
     });
-  }
 
-  document.getElementById('search').addEventListener('input',filter);
-  catSel.addEventListener('change',filter);
-});
+    /* ---------- CATEGORY DROPDOWN ---------- */
+    const catSel = document.getElementById('category');
+    categories.forEach(c=>{
+      const o = document.createElement('option');
+      o.value = c;
+      o.textContent = c;
+      catSel.appendChild(o);
+    });
+
+    /* ---------- FAST FILTER ---------- */
+    function runFilter(){
+      const q = document.getElementById('search').value.toLowerCase();
+      const c = catSel.value;
+
+      requestAnimationFrame(()=>{
+        ROW_CACHE.forEach(row=>{
+          const show =
+            (!q || row.text.includes(q)) &&
+            (!c || row.category === c);
+
+          row.el.style.display = show ? '' : 'none';
+        });
+      });
+    }
+
+    function debounceFilter(){
+      clearTimeout(FILTER_TIMER);
+      FILTER_TIMER = setTimeout(runFilter, 120);
+    }
+
+    document.getElementById('search').addEventListener('input', debounceFilter);
+    catSel.addEventListener('change', runFilter);
+  });
 </script>
-
 <script>
 document.addEventListener('contextmenu',e=>e.preventDefault());
 document.addEventListener('keydown',e=>{
