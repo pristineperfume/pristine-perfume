@@ -4,57 +4,91 @@
 <meta charset="UTF-8">
 
 <title>Wholesale Attar Price List | Pristine Perfume Kannauj</title>
-
 <meta name="description" content="Wholesale attar and perfume oil price list from Pristine Perfume, Kannauj. Searchable categories and bulk pricing for retailers across India.">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-html,body{
-  margin:0;
-  padding:0;
-  width:100%;
-  overflow-x:hidden;
-}
+html,body{margin:0;padding:0;width:100%;overflow-x:hidden;}
 body{
   font-family:'Playfair Display', serif;
   padding-top:56px;
   background:#fafafa;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR (SAME AS INDEX) ===== */
 .navbar{
   position:fixed;
-  top:0;left:0;right:0;
-  height:56px;
+  top:0; left:0; right:0;
   background:#f8f6f2;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:0 20px;
+  justify-content:space-between;
+  padding:12px 20px;
   z-index:1000;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
+
 .navbar .logo img{height:36px;}
-.navbar .links a{
-  color:#333;
-  text-decoration:none;
-  margin-left:20px;
-  padding-bottom:4px;
+
+.nav-row{
+  margin:0 auto;
+  display:flex;
+  justify-content:center;
 }
-.navbar .links a.active,
-.navbar .links a:hover{
+
+.nav-row a{
+  position:relative;
+  text-decoration:none;
+  color:#333;
+  font-size:15px;
+  padding:6px 22px;
+  white-space:nowrap;
+}
+
+.nav-row a.active{
   border-bottom:2px solid #000;
 }
-.navbar .whatsapp{
-  background:#25D366;
-  color:#fff;
-  padding:8px 16px;
-  border-radius:20px;
-  font-weight:600;
+
+/* separators */
+.nav-row a:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  height:18px;
+  width:1px;
+  background:rgba(0,0,0,.35);
+}
+
+/* mobile nav */
+@media(max-width:768px){
+  body{padding-top:72px;}
+
+  .navbar{
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    padding:8px 12px;
+  }
+
+  .navbar .logo img{height:32px;}
+
+  .nav-row{
+    width:100%;
+    max-width:420px;
+    justify-content:space-between;
+    padding:0 6px;
+  }
+
+  .nav-row a{
+    flex:1;
+    text-align:center;
+    font-size:15px;
+  }
 }
 
 /* ===== CONTAINER ===== */
@@ -78,10 +112,7 @@ h1{text-align:center;margin-bottom:20px;}
   padding:10px;
   z-index:50;
 }
-input,select{
-  padding:8px 10px;
-  font-size:14px;
-}
+input,select{padding:8px 10px;font-size:14px;}
 
 /* ===== TABLE ===== */
 table{
@@ -96,14 +127,11 @@ th,td{
   text-align:center;
   font-size:14px;
 }
-th{
-  background:#111;
-  color:#fff;
-}
+th{background:#111;color:#fff;}
 tr:nth-child(even){background:#fafafa;}
 tr:hover{background:#f1f1f1;}
 
-/* ===== MOBILE TABLE ===== */
+/* mobile table */
 @media(max-width:768px){
   table,thead,tbody,th,td,tr{display:block}
   tr{margin-bottom:15px}
@@ -158,15 +186,32 @@ tr:hover{background:#f1f1f1;}
   );
 }
 
-/* ===== MOBILE ===== */
+/* ===== FLOATING WHATSAPP ===== */
+.whatsapp-float{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  width:56px;
+  height:56px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+.whatsapp-float img{
+  width:38px;
+  height:38px;
+}
 @media(max-width:768px){
-  body{padding-top:72px;}
-  .navbar{
-    flex-direction:column;
-    height:auto;
-    padding:10px;
+  .whatsapp-float{
+    right:14px;
+    bottom:14px;
+    width:52px;
+    height:52px;
   }
-  .navbar .links a{margin:0 10px;}
 }
 </style>
 </head>
@@ -177,18 +222,19 @@ tr:hover{background:#f1f1f1;}
   PRISTINE PERFUME • WHOLESALE PRICE LIST
 </div>
 
+<!-- NAVBAR -->
 <div class="navbar">
   <div class="logo">
-  <a href="./index.html">
-    <img src="logo.png" alt="Pristine Perfume">
-  </a>
-</div>
-  <div class="links">
+    <a href="./index.html">
+      <img src="logo.png" alt="Pristine Perfume">
+    </a>
+  </div>
+
+  <div class="nav-row">
     <a href="./index.html">Home</a>
     <a href="./pricelist.html" class="active">Price List</a>
     <a href="./about.html">About</a>
     <a href="./blog.html">Blog</a>
-    <a href="https://wa.me/917985494998" class="whatsapp">WhatsApp</a>
   </div>
 </div>
 
@@ -210,25 +256,24 @@ tr:hover{background:#f1f1f1;}
 <table id="table"></table>
 </div>
 
-<script>
-const params = new URLSearchParams(window.location.hash.replace('#','?'));
-const hashCat = params.get('') || location.hash.replace('#','');
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/917985494998" class="whatsapp-float" target="_blank">
+  <img src="whatsapp-icon.png" alt="WhatsApp">
+</a>
 
+<script>
 fetch('pricelist.csv')
 .then(res => res.text())
 .then(text => {
-  const rows = text.trim().split('\n').map(r => r.split(','));
-  const headers = rows[0].map(h => h.trim());
-  const col = {};
-  headers.forEach((h,i)=>col[h]=i);
+  const rows=text.trim().split('\n').map(r=>r.split(','));
+  const headers=rows[0].map(h=>h.trim());
+  const col={};headers.forEach((h,i)=>col[h]=i);
 
-  const table = document.getElementById('table');
-  const categories = new Set();
+  const table=document.getElementById('table');
+  const categories=new Set();
 
   let thead='<thead><tr>';
-  headers.forEach(h=>{
-    if(!['25 g','50 g'].includes(h)) thead+=`<th>${h}</th>`;
-  });
+  headers.forEach(h=>{if(!['25 g','50 g'].includes(h)) thead+=`<th>${h}</th>`});
   thead+='</tr></thead>';
   table.innerHTML=thead+'<tbody></tbody>';
 
@@ -240,7 +285,7 @@ fetch('pricelist.csv')
     headers.forEach(h=>{
       if(['25 g','50 g'].includes(h)) return;
       let val=r[col[h]]||'';
-      if(['1 Kg','500 g','250 g','100 g'].includes(h) && val){
+      if(['1 Kg','500 g','250 g','100 g'].includes(h)&&val){
         val='₹'+Number(val).toLocaleString('en-IN');
       }
       let td=document.createElement('td');
@@ -265,25 +310,19 @@ fetch('pricelist.csv')
     document.querySelectorAll('#table tbody tr').forEach(tr=>{
       const text=tr.innerText.toLowerCase();
       const cat=tr.querySelector('td:last-child').innerText.toLowerCase();
-      tr.style.display =
-        (!q || text.includes(q)) && (!c || cat===c) ? '' : 'none';
+      tr.style.display=(!q||text.includes(q))&&(!c||cat===c)?'':'none';
     });
   }
 
   document.getElementById('search').addEventListener('input',filter);
   catSel.addEventListener('change',filter);
-
-  if(hashCat){
-    catSel.value=hashCat.replace('#','');
-    filter();
-  }
 });
 </script>
 
 <script>
 document.addEventListener('contextmenu',e=>e.preventDefault());
 document.addEventListener('keydown',e=>{
-  if(e.ctrlKey && ['c','u','s','a'].includes(e.key)) e.preventDefault();
+  if(e.ctrlKey&&['c','u','s','a'].includes(e.key)) e.preventDefault();
 });
 </script>
 
