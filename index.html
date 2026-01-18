@@ -20,36 +20,56 @@ body{
   color:#222;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR (STYLE B – CENTER LOGO) ===== */
 .navbar{
-  position:fixed;top:0;left:0;right:0;
+  position:fixed;
+  top:0;left:0;right:0;
   height:56px;
   background:#f8f6f2;
-  display:flex;
-  justify-content:space-between;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
   align-items:center;
   padding:0 20px;
   z-index:1000;
   box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
-.navbar .logo img{height:36px;}
-.navbar .links a{
-  color:#333;text-decoration:none;
-  margin-left:20px;padding-bottom:4px;
+.nav-left,
+.nav-right{
+  display:flex;
+  gap:22px;
 }
-.navbar .links a.active,
-.navbar .links a:hover{border-bottom:2px solid #000;}
-.navbar .links .whatsapp{
-  background:#25D366;color:#fff;
-  padding:8px 16px;border-radius:20px;font-weight:600;
-}
+.nav-left{justify-content:flex-start;}
+.nav-right{justify-content:flex-end;}
 
+.navbar a{
+  color:#333;
+  text-decoration:none;
+  padding-bottom:4px;
+}
+.navbar a.active,
+.navbar a:hover{
+  border-bottom:2px solid #000;
+}
+.navbar .logo{
+  display:flex;
+  justify-content:center;
+}
+.navbar .logo img{height:36px;}
+
+/* ===== MOBILE NAVBAR ===== */
 @media(max-width:768px){
-  .navbar{flex-direction:column;height:auto;padding:10px;}
-  .navbar .logo{margin-bottom:6px;}
-  .navbar .links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
-  .navbar .links a{margin-left:0;}
   body{padding-top:72px;}
+  .navbar{
+    height:auto;
+    grid-template-columns:1fr;
+    padding:10px;
+    gap:8px;
+  }
+  .nav-left,
+  .nav-right{
+    justify-content:center;
+    flex-wrap:wrap;
+  }
 }
 
 /* ===== HERO ===== */
@@ -79,25 +99,10 @@ body{
 }
 .btn.primary{background:#000;color:#fff;}
 .btn.whatsapp{background:#25D366;color:#fff;}
-/* STEP 5C — Tap feedback */
-.btn:active,
-.bs-item:active,
-.blog-card:active{
-  transform:scale(0.97);
-  opacity:0.9;
-}
-/* STEP 5D — Desktop hover smoothness */
-.btn,
-.bs-item,
-.blog-card{
-  transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
-}
-
-@media(max-width:768px){
-  .hero{min-height:auto;padding:50px 16px 36px;}
-  .hero h1{font-size:32px;}
-  .hero-actions{margin-top:18px;}
-}
+/* STEP 5C */
+.btn:active,.bs-item:active,.blog-card:active{transform:scale(.97);opacity:.9;}
+/* STEP 5D */
+.btn,.bs-item,.blog-card{transition:transform .25s ease,box-shadow .25s ease,opacity .25s ease;}
 
 /* ===== TRUST ===== */
 .trust-badges{background:#111;padding:40px 20px;}
@@ -131,37 +136,14 @@ body{
   color:#000;
   font-weight:600;
   text-align:center;
-  transition:.3s;
 }
-.bs-item img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  border-radius:8px;
-}
+.bs-item img{width:100%;height:180px;object-fit:cover;border-radius:8px;}
 .bs-item span{display:block;margin-top:10px;}
-@media(max-width:768px){
-  .bs-item{
-    padding:22px;
-  }
-  .bs-item span{
-    font-size:18px;
-  }
-}
-.bs-item:hover{
-  transform:translateY(-6px);
-  box-shadow:0 12px 25px rgba(0,0,0,.12);
-}
-
-@media(max-width:768px){
-  .bs-item img{height:auto;}
-}
 
 /* ===== BLOG PREVIEW ===== */
 .blog-preview{background:#fff;padding:70px 20px;}
 .blog-preview h2{text-align:center;font-family:'Cinzel', serif;}
 .blog-preview p{text-align:center;color:#555;max-width:700px;margin:10px auto 40px;}
-
 .blog-grid{
   max-width:1100px;margin:auto;
   display:grid;
@@ -174,20 +156,11 @@ body{
   overflow:hidden;
   text-decoration:none;
   color:#000;
-  transition:.3s;
 }
-.blog-card img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
+.blog-card img{width:100%;height:220px;object-fit:cover;}
 .blog-card div{padding:18px;text-align:center;}
 .blog-card h3{font-family:'Cinzel', serif;font-size:18px;margin-bottom:6px;}
 .blog-card p{font-size:14px;color:#555;}
-.blog-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 12px 28px rgba(0,0,0,.15);
-}
 
 /* ===== LOCATION ===== */
 .location{background:#f8f6f2;padding:60px 20px;}
@@ -197,9 +170,7 @@ body{
   grid-template-columns:1fr 1fr;
   gap:30px;
 }
-@media(max-width:768px){
-  .location-inner{grid-template-columns:1fr;}
-}
+@media(max-width:768px){.location-inner{grid-template-columns:1fr;}}
 
 /* ===== CTA + FOOTER ===== */
 .cta{text-align:center;padding:60px 20px;}
@@ -209,17 +180,20 @@ body{
 
 <body>
 
+<!-- NAVBAR -->
 <div class="navbar">
-  <div class="logo"><img src="logo.png" alt="Pristine Perfume"></div>
-  <div class="links">
+  <div class="nav-left">
     <a href="./index.html" class="active">Home</a>
     <a href="./pricelist.html">Price List</a>
+  </div>
+  <div class="logo"><img src="logo.png" alt="Pristine Perfume"></div>
+  <div class="nav-right">
     <a href="./about.html">About</a>
     <a href="./blog.html">Blog</a>
-    <a href="https://wa.me/917985494998" class="whatsapp">WhatsApp</a>
   </div>
 </div>
 
+<!-- HERO -->
 <section class="hero">
   <h1>Pristine Perfume – Wholesale Attar & Perfume Supplier from Kannauj</h1>
   <p>Wholesale attar & perfume oil supplier from Kannauj, Uttar Pradesh. Trusted by retailers across India.</p>
@@ -229,6 +203,7 @@ body{
   </div>
 </section>
 
+<!-- TRUST -->
 <section class="trust-badges">
   <div class="trust-inner">
     <div class="badge">✔ Trusted Wholesale Supplier</div>
@@ -236,48 +211,32 @@ body{
     <div class="badge">✔ Kannauj Fragrance Heritage</div>
     <div class="badge">✔ Retailer Support</div>
   </div>
-  <div class="trust-note">
-    Google-verified perfume store from Kannauj supplying wholesale attars across India
-  </div>
+  <div class="trust-note">Google-verified perfume store from Kannauj supplying wholesale attars across India</div>
 </section>
 
+<!-- BEST SELLERS -->
 <section class="bestsellers">
   <h2>Best Sellers</h2>
   <div class="bs-grid">
-    <a href="./pricelist.html#french" class="bs-item">
-      <img src="./bs1.jpg"><span>French Collection</span>
-    </a>
-    <a href="./pricelist.html#arabian" class="bs-item">
-      <img src="./bs2.jpg"><span>Arabian Oud Range</span>
-    </a>
-    <a href="./pricelist.html#ajmal" class="bs-item">
-      <img src="./bs3.jpg"><span>Ajmal Inspired Attars</span>
-    </a>
-    <a href="./pricelist.html#indian" class="bs-item">
-      <img src="./bs4.jpg"><span>Indian Traditional Attars</span>
-    </a>
+    <a href="./pricelist.html#french" class="bs-item"><img src="./bs1.jpg"><span>French Collection</span></a>
+    <a href="./pricelist.html#arabian" class="bs-item"><img src="./bs2.jpg"><span>Arabian Oud Range</span></a>
+    <a href="./pricelist.html#ajmal" class="bs-item"><img src="./bs3.jpg"><span>Ajmal Inspired Attars</span></a>
+    <a href="./pricelist.html#indian" class="bs-item"><img src="./bs4.jpg"><span>Indian Traditional Attars</span></a>
   </div>
 </section>
 
+<!-- BLOG -->
 <section class="blog-preview">
   <h2>Fragrance Knowledge Hub</h2>
   <p>Learn about attars, perfume oils & Kannauj fragrance heritage.</p>
   <div class="blog-grid">
-    <a href="./blog.html#attar" class="blog-card">
-      <img src="./blog1.jpg" alt="What is attar meaning and uses">
-      <div><h3>What is Attar?</h3><p>Meaning, uses & benefits.</p></div>
-    </a>
-    <a href="./blog.html#kannauj" class="blog-card">
-      <img src="./blog2.jpg" alt="Kannauj perfume making heritage">
-      <div><h3>Why Kannauj is Perfume Capital</h3><p>History & heritage.</p></div>
-    </a>
-    <a href="./blog.html#attar-vs-perfume" class="blog-card">
-      <img src="./blog3.jpg" alt="Attar vs perfume oil comparison">
-      <div><h3>Attar vs Perfume</h3><p>Retailer comparison.</p></div>
-    </a>
+    <a href="./blog.html#attar" class="blog-card"><img src="./blog1.jpg"><div><h3>What is Attar?</h3><p>Meaning, uses & benefits.</p></div></a>
+    <a href="./blog.html#kannauj" class="blog-card"><img src="./blog2.jpg"><div><h3>Why Kannauj is Perfume Capital</h3><p>History & heritage.</p></div></a>
+    <a href="./blog.html#attar-vs-perfume" class="blog-card"><img src="./blog3.jpg"><div><h3>Attar vs Perfume</h3><p>Retailer comparison.</p></div></a>
   </div>
 </section>
 
+<!-- LOCATION -->
 <section class="location">
   <div class="location-inner">
     <div>
@@ -296,9 +255,7 @@ body{
   <a href="https://wa.me/917985494998" class="btn whatsapp">Chat on WhatsApp</a>
 </section>
 
-<footer class="footer">
-  © Pristine Perfume – Wholesale Attar Supplier
-</footer>
+<footer class="footer">© Pristine Perfume – Wholesale Attar Supplier</footer>
 
 </body>
 </html>
