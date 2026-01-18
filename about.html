@@ -4,21 +4,14 @@
 <meta charset="UTF-8">
 
 <title>About Pristine Perfume | Wholesale Attar Supplier in Kannauj</title>
-
 <meta name="description" content="Learn about Pristine Perfume, a wholesale attar and perfume oil supplier from Kannauj. Trusted by retailers across India for quality fragrances.">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-html,body{
-  margin:0;
-  padding:0;
-  width:100%;
-  overflow-x:hidden;
-}
+html,body{margin:0;padding:0;width:100%;overflow-x:hidden;}
 body{
   font-family:'Playfair Display', serif;
   padding-top:56px;
@@ -26,36 +19,72 @@ body{
   color:#333;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR (SYNCED) ===== */
 .navbar{
   position:fixed;
-  top:0; left:0; right:0;
-  height:56px;
+  top:0;left:0;right:0;
   background:#f8f6f2;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:0 20px;
+  justify-content:space-between;
+  padding:12px 20px;
   z-index:1000;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
+
 .navbar .logo img{height:36px;}
-.navbar .links a{
-  color:#333;
+
+.nav-row{
+  margin:0 auto;
+  display:flex;
+  justify-content:center;
+}
+
+.nav-row a{
   text-decoration:none;
-  margin-left:20px;
-  padding-bottom:4px;
+  color:#333;
+  font-size:15px;
+  padding:6px 22px;
+  position:relative;
+  white-space:nowrap;
 }
-.navbar .links a.active,
-.navbar .links a:hover{
-  border-bottom:2px solid #000;
+
+.nav-row a.active{border-bottom:2px solid #000;}
+
+.nav-row a:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  height:18px;
+  width:1px;
+  background:rgba(0,0,0,0.35);
 }
-.navbar .whatsapp{
-  background:#25D366;
-  color:#fff;
-  padding:8px 16px;
-  border-radius:20px;
-  font-weight:600;
+
+/* ===== MOBILE NAVBAR ===== */
+@media(max-width:768px){
+  body{padding-top:72px;}
+
+  .navbar{
+    flex-direction:column;
+    gap:6px;
+    padding:8px 12px;
+  }
+
+  .navbar .logo img{height:32px;}
+
+  .nav-row{
+    width:100%;
+    max-width:420px;
+    justify-content:space-between;
+    padding:0 6px;
+  }
+
+  .nav-row a{
+    flex:1;
+    text-align:center;
+    font-size:15px;
+  }
 }
 
 /* ===== CONTENT ===== */
@@ -64,52 +93,36 @@ body{
   margin:auto;
   padding:50px 20px;
 }
+
 h1{
   font-family:'Cinzel', serif;
   text-align:center;
   margin-bottom:30px;
 }
+
 h2{
   font-family:'Cinzel', serif;
   margin-top:40px;
   margin-bottom:10px;
 }
+
 p{
   font-size:17px;
   line-height:1.7;
   color:#444;
 }
-ul{
-  margin-left:20px;
-  line-height:1.7;
-}
-ul li{
-  margin-bottom:6px;
-}
+
+ul{margin-left:20px;line-height:1.7;}
+ul li{margin-bottom:6px;}
 
 /* ===== FAQ ===== */
-.faq{
-  max-width:900px;
-  margin:auto;
-  margin-top:50px;
-}
-.faq-item{
-  margin-bottom:22px;
-}
-.faq-item h3{
-  font-size:18px;
-  margin-bottom:6px;
-  color:#222;
-}
-.faq-item p{
-  color:#555;
-}
+.faq{margin-top:50px;}
+.faq-item{margin-bottom:22px;}
+.faq-item h3{font-size:18px;margin-bottom:6px;color:#222;}
+.faq-item p{color:#555;}
 
 /* ===== CTA ===== */
-.cta{
-  text-align:center;
-  margin-top:60px;
-}
+.cta{text-align:center;margin-top:60px;}
 .btn{
   display:inline-block;
   background:#25D366;
@@ -120,34 +133,55 @@ ul li{
   font-weight:600;
 }
 
-/* ===== MOBILE ===== */
+/* ===== FLOATING WHATSAPP ===== */
+.whatsapp-float{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  width:56px;
+  height:56px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.whatsapp-float img{
+  width:38px;
+  height:38px;
+}
+
+.whatsapp-float:active{transform:scale(.95);}
+
 @media(max-width:768px){
-  body{padding-top:72px;}
-  .navbar{
-    flex-direction:column;
-    height:auto;
-    padding:10px;
+  .whatsapp-float{
+    right:14px;
+    bottom:14px;
+    width:52px;
+    height:52px;
   }
-  .navbar .logo{margin-bottom:6px;}
-  .navbar .links a{margin:0 10px;}
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <div class="navbar">
- <div class="logo">
-  <a href="./index.html">
-    <img src="logo.png" alt="Pristine Perfume">
-  </a>
-</div>
-  <div class="links">
+  <div class="logo">
+    <a href="./index.html">
+      <img src="logo.png" alt="Pristine Perfume">
+    </a>
+  </div>
+
+  <div class="nav-row">
     <a href="./index.html">Home</a>
     <a href="./pricelist.html">Price List</a>
     <a href="./about.html" class="active">About</a>
     <a href="./blog.html">Blog</a>
-    <a href="https://wa.me/917985494998" class="whatsapp">WhatsApp</a>
   </div>
 </div>
 
@@ -158,106 +192,43 @@ ul li{
 <p>
 Pristine Perfume is a perfume store and wholesale supplier based in Kannauj,
 Uttar Pradesh. We deal in premium attars and perfume oils, supplying to
-retailers and fragrance businesses across India. Our focus is on quality,
-authentic fragrances and long-term wholesale relationships.
+retailers and fragrance businesses across India.
 </p>
 
 <p>
 Rooted in traditional fragrance knowledge and modern wholesale requirements,
-we focus on supplying consistent-quality, long-lasting perfume oils to
-retailers and distributors across India.
+we focus on supplying consistent-quality, long-lasting perfume oils.
 </p>
 
 <h2>What We Offer</h2>
 
-<p>
-At Pristine Perfume, we specialize in wholesale supply of premium-quality
-attars and perfume oils crafted for long-lasting performance and consistent fragrance profiles.
-</p>
-
 <ul>
-  <li>French-inspired perfume oils for modern retail demand</li>
-  <li>Arabian oud, musky and oriental fragrance blends</li>
-  <li>Ajmal-inspired and designer-style attars</li>
-  <li>Traditional Indian attars crafted using heritage methods</li>
-  <li>Bulk and wholesale supply for retailers, resellers and distributors</li>
+  <li>French-inspired perfume oils</li>
+  <li>Arabian oud & oriental blends</li>
+  <li>Ajmal-inspired attars</li>
+  <li>Traditional Indian attars</li>
+  <li>Wholesale & bulk supply</li>
 </ul>
 
-<p>
-All our products are supplied with a focus on quality consistency, competitive pricing
-and reliable wholesale support.
-</p>
-
-<h2>Wholesale Attar Supplier for Retailers</h2>
-
-<p>
-If you are a retailer, perfume shop owner or distributor looking for a reliable
-wholesale attar supplier from Kannauj, explore our updated price list or learn more
-about fragrance knowledge through our blog.
-</p>
-
-<p>
-👉 <a href="./pricelist.html">View Wholesale Attar Price List</a><br>
-👉 <a href="./blog.html">Read Our Fragrance Knowledge Blog</a>
-</p>
-
 <h2>Wholesale Only</h2>
-<p>
-Pristine Perfume operates strictly on a wholesale basis, working with retailers,
-resellers and bulk buyers looking for reliable supply and long-term partnerships.
-</p>
+<p>We operate strictly on a wholesale basis for retailers and distributors.</p>
 
 <h2>Pan-India Supply</h2>
-<p>
-With an established supply network, we serve fragrance businesses across multiple
-states in India with dependable dispatch and consistent availability.
-</p>
+<p>We supply fragrance businesses across India with reliable dispatch.</p>
 
-<p>
-Being based in Kannauj, the perfume capital of India, Pristine Perfume combines
-traditional fragrance knowledge with modern wholesale practices to help retailers
-grow their perfume business with authentic fragrance profiles.
-</p>
-
-<!-- FAQ SECTION -->
 <div class="faq">
   <h2>Frequently Asked Questions</h2>
 
   <div class="faq-item">
     <h3>Why is Kannauj famous for perfumes?</h3>
-    <p>Kannauj is known as the perfume capital of India due to its centuries-old tradition of attar making.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Is Pristine Perfume a wholesale attar supplier?</h3>
-    <p>Yes, Pristine Perfume is a wholesale attar and perfume oil supplier based in Kannauj.</p>
+    <p>Kannauj is known as the perfume capital of India.</p>
   </div>
 
   <div class="faq-item">
     <h3>Do you supply attars across India?</h3>
-    <p>Yes, we provide PAN-India wholesale supply of attars and perfume oils.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>How can retailers contact Pristine Perfume?</h3>
-    <p>Retailers can directly contact us via WhatsApp or phone for wholesale enquiries.</p>
+    <p>Yes, we provide PAN-India wholesale supply.</p>
   </div>
 </div>
-
-<hr style="margin:60px 0">
-
-<section class="about-links">
-  <h2>Explore More</h2>
-  <ul>
-    <li>👉 <a href="./pricelist.html">Wholesale Attar & Perfume Oil Price List</a></li>
-    <li>👉 <a href="./blog.html">Fragrance Knowledge Blog</a></li>
-    <li>👉 <a href="./index.html">Homepage – Pristine Perfume</a></li>
-  </ul>
-</section>
-
-<p class="trust-line">
-  Pristine Perfume is a trusted and Google-verified perfume store and wholesale attar supplier from Kannauj, Uttar Pradesh, known for authentic fragrance oils, transparent wholesale pricing, and consistent quality.
-</p>
 
 <div class="cta">
   <a href="https://wa.me/917985494998" class="btn">Request Wholesale Price List</a>
@@ -265,47 +236,10 @@ grow their perfume business with authentic fragrance profiles.
 
 </div>
 
-<!-- SINGLE FAQ SCHEMA (VALID) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Why is Kannauj famous for perfumes?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Kannauj is known as the perfume capital of India due to its centuries-old tradition of attar making."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Pristine Perfume a wholesale attar supplier?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, Pristine Perfume is a wholesale attar and perfume oil supplier based in Kannauj."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you supply attars across India?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, we provide PAN-India wholesale supply of attars and perfume oils."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can retailers contact Pristine Perfume?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Retailers can contact Pristine Perfume via WhatsApp for wholesale enquiries."
-      }
-    }
-  ]
-}
-</script>
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/917985494998" class="whatsapp-float" target="_blank">
+  <img src="whatsapp-icon.png" alt="WhatsApp">
+</a>
 
 </body>
 </html>
