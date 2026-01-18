@@ -141,76 +141,144 @@ tr:nth-child(even){background:#fafafa}
 </a>
 
 <script>
-const ROWS=[], PER_PAGE=50;
-let curPage=1, maxPrice=0, slider;
+const ROWS = [];
+const PER_PAGE = 50;
+let curPage = 1;
+let maxPrice = 0;
+let slider, search, categorySel, pagination;
 
-fetch('pricelist.csv').then(r=>r.text()).then(text=>{
-  const lines=text.trim().split('\n').map(r=>r.split(','));
-  const headers=lines[0], col={};
-  headers.forEach((h,i)=>col[h]=i);
+fetch('pricelist.csv')
+.then(r => r.text())
+.then(text => {
 
-  const table=document.getElementById('table');
-  table.innerHTML='<thead><tr>'+headers.filter(h=>!['25 g','50 g'].includes(h)).map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody></tbody>';
-  const tbody=table.querySelector('tbody');
+  const lines = text.trim().split('\n').map(r => r.split(','));
+  const headers = lines[0].map(h => h.trim());
+  const col = {};
+  headers.forEach((h,i)=>col[h.toLowerCase()] = i);
 
-  const cats=new Set();
+  /* auto-detect columns */
+  const categoryKey = Object.keys(col).find(k => k.includes('category'));
+  const priceKeys = Object.keys(col).filter(k =>
+    k.includes('kg') || k.includes('g')
+  );
 
-  lines.slice(1).forEach(r=>{
-    let tr=document.createElement('tr');
-    let price=0, text='';
-    headers.forEach(h=>{
-      if(['25 g','50 g'].includes(h)) return;
-      let val=r[col[h]]||'';
-      if(['1 Kg','500 g','250 g','100 g'].includes(h)&&val){
-        price=Math.max(price,+val);
-        maxPrice=Math.max(maxPrice,+val);
-        val='₹'+(+val).toLocaleString('en-IN');
+  const table = document.getElementById('table');
+  table.innerHTML =
+    '<thead><tr>' +
+    headers.filter(h=>!['25 g','50 g'].includes(h.toLowerCase()))
+      .map(h=>`<th>${h}</th>`).join('') +
+    '</tr></thead><tbody></tbody>';
+
+  const tbody = table.querySelector('tbody');
+  const categories = new Set();
+
+  lines.slice(1).forEach(r => {
+    if(!r[0]) return;
+
+    let tr = document.createElement('tr');
+    let textBlob = '';
+    let rowMaxPrice = 0;
+
+    headers.forEach((h,i)=>{
+      if(['25 g','50 g'].includes(h.toLowerCase())) return;
+
+      let val = r[i] || '';
+
+      if(priceKeys.includes(h.toLowerCase()) && val){
+        const num = parseFloat(val);
+        if(!isNaN(num)){
+          rowMaxPrice = Math.max(rowMaxPrice, num);
+          maxPrice = Math.max(maxPrice, num);
+          val = '₹' + num.toLocaleString('en-IN');
+        }
       }
-      let td=document.createElement('td');
-      td.dataset.label=h; td.textContent=val;
+
+      const td = document.createElement('td');
+      td.dataset.label = h;
+      td.textContent = val;
       tr.appendChild(td);
-      text+=val.toLowerCase();
-      if(h==='Category') cats.add(val);
+
+      textBlob += ' ' + val.replace(/[₹,]/g,'').toLowerCase();
     });
-    ROWS.push({el:tr,text,price,cat:r[col['Category']]?.toLowerCase()||''});
+
+    const cat = categoryKey ? (r[col[categoryKey]] || '').toLowerCase() : '';
+    if(cat) categories.add(cat);
+
+    ROWS.push({
+      el: tr,
+      text: textBlob,
+      price: rowMaxPrice,
+      category: cat
+    });
+
     tbody.appendChild(tr);
   });
 
-  const catSel=document.getElementById('category');
-  cats.forEach(c=>{let o=document.createElement('option');o.value=c.toLowerCase();o.textContent=c;catSel.appendChild(o)});
+  /* category dropdown */
+  categorySel = document.getElementById('category');
+  categories.forEach(c=>{
+    let o = document.createElement('option');
+    o.value = c;
+    o.textContent = c;
+    categorySel.appendChild(o);
+  });
 
-  slider=document.getElementById('priceRange');
-  slider.max=maxPrice; slider.value=maxPrice;
-  document.getElementById('maxVal').textContent=maxPrice;
+  /* slider setup */
+  slider = document.getElementById('priceRange');
+  search = document.getElementById('search');
+  pagination = document.getElementById('pagination');
+
+  slider.max = maxPrice;
+  slider.value = maxPrice;
+  document.getElementById('maxVal').textContent = maxPrice;
+
+  let timer;
+  function debounce(fn){
+    clearTimeout(timer);
+    timer = setTimeout(fn,120);
+  }
 
   function render(){
-    const q=search.value.toLowerCase();
-    const c=catSel.value;
-    const max=+slider.value;
-    let filtered=ROWS.filter(r=>(!q||r.text.includes(q))&&(!c||r.cat===c)&&r.price<=max);
-    let pages=Math.ceil(filtered.length/PER_PAGE);
-    filtered.forEach((r,i)=>r.el.style.display=(i>=(curPage-1)*PER_PAGE&&i<curPage*PER_PAGE)?'':'none');
-    pagination.innerHTML='';
+    const q = search.value.toLowerCase();
+    const c = categorySel.value;
+    const max = +slider.value;
+
+    const filtered = ROWS.filter(r =>
+      (!q || r.text.includes(q)) &&
+      (!c || r.category === c) &&
+      r.price <= max
+    );
+
+    const pages = Math.ceil(filtered.length / PER_PAGE);
+    pagination.innerHTML = '';
+
+    filtered.forEach((r,i)=>{
+      r.el.style.display =
+        (i >= (curPage-1)*PER_PAGE && i < curPage*PER_PAGE) ? '' : 'none';
+    });
+
     for(let i=1;i<=pages;i++){
-      let b=document.createElement('button');b.textContent=i;
-      if(i===curPage)b.classList.add('active');
+      const b=document.createElement('button');
+      b.textContent=i;
+      if(i===curPage) b.classList.add('active');
       b.onclick=()=>{curPage=i;render()};
       pagination.appendChild(b);
     }
   }
 
-  search.oninput=()=>{curPage=1;render()};
-  catSel.onchange=()=>{curPage=1;render()};
-  slider.oninput=()=>{minVal.textContent=0;maxVal.textContent=slider.value;render()};
+  search.addEventListener('input', ()=>debounce(()=>{curPage=1;render()}));
+  categorySel.addEventListener('change', ()=>{curPage=1;render()});
+  slider.addEventListener('input', ()=>{curPage=1;render()});
 
   document.querySelectorAll('.price-chips span').forEach(s=>{
     s.onclick=()=>{
-      document.querySelectorAll('.price-chips span').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.price-chips span')
+        .forEach(x=>x.classList.remove('active'));
       s.classList.add('active');
-      slider.value=s.dataset.max;
-      maxVal.textContent=slider.value;
+      slider.value = s.dataset.max;
+      document.getElementById('maxVal').textContent = slider.value;
       curPage=1;render();
-    }
+    };
   });
 
   render();
