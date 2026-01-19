@@ -13,89 +13,112 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-html,body{margin:0;padding:0;width:100%;overflow-x:hidden;}
-body{
-  font-family:'Playfair Display', serif;
-  padding-top:72px;
-  background:#fafafa;
-  color:#222;
-}
+  /* Reset & base */
+  *, *::before, *::after { box-sizing: border-box; }
+  html,body{margin:0;padding:0;width:100%;overflow-x:hidden;background:#fafafa;color:#222;}
+  body{
+    font-family:'Playfair Display', serif;
+    padding-top:72px;
+  }
 
-/* ===== NAVBAR (SYNCED) ===== */
-.navbar{
-  position:fixed;
-  top:0;left:0;right:0;
-  background:#f8f6f2;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 20px;
-  z-index:1000;
-}
-.navbar .logo img{height:36px;}
-.nav-row{margin:0 auto;display:flex;}
-.nav-row a{
-  position:relative;
-  text-decoration:none;
-  color:#333;
-  font-size:15px;
-  padding:6px 22px;
-}
-.nav-row a.active{border-bottom:2px solid #000;}
-.nav-row a:not(:last-child)::after{
-  content:"";
-  position:absolute;
-  right:0;
-  top:50%;
-  transform:translateY(-50%);
-  height:18px;
-  width:1px;
-  background:rgba(0,0,0,.35);
-}
-@media(max-width:768px){
-  .navbar{flex-direction:column;gap:6px;padding:8px 12px;}
-  .navbar .logo img{height:32px;}
-  .nav-row{width:100%;max-width:420px;justify-content:space-between;}
-  .nav-row a{flex:1;text-align:center;}
-}
+  /* ===== NAVBAR (SYNCED) ===== */
+  .navbar{
+    position:fixed;
+    top:0;left:0;right:0;
+    background:#f8f6f2;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 20px;
+    z-index:1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .navbar .logo img{height:36px;}
+  .nav-row{margin:0 auto;display:flex;}
+  .nav-row a{
+    position:relative;
+    text-decoration:none;
+    color:#333;
+    font-size:15px;
+    padding:6px 22px;
+  }
+  .nav-row a.active{border-bottom:2px solid #000;}
+  .nav-row a:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+    height:18px;
+    width:1px;
+    background:rgba(0,0,0,.35);
+  }
+  @media(max-width:768px){
+    .navbar{flex-direction:column;gap:6px;padding:8px 12px;}
+    .navbar .logo img{height:32px;}
+    .nav-row{width:100%;max-width:420px;justify-content:space-between;}
+    .nav-row a{flex:1;text-align:center;padding:8px 6px;}
+  }
 
-/* ===== HERO ===== */
-.hero{
-  min-height:60vh;
-  background:
-    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-    url('./hero-bg.jpg');
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:40px 20px;
-  text-align:center;
-  color:#fff;
-}
-.hero h1{font-family:'Cinzel', serif;font-size:42px;}
-.hero p{max-width:750px;margin:auto;font-size:18px;color:#eee;}
+  /* ===== HERO ===== */
+  .hero{
+    min-height:60vh;
+    background:
+      linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+      url('./hero-bg.jpg');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:40px 20px;
+    text-align:center;
+    color:#fff;
+  }
+  .hero h1{font-family:'Cinzel', serif;font-size:42px;margin:0;}
+  .hero p{max-width:750px;margin:18px auto 0;font-size:18px;color:#eee;}
 
-/* ===== CONTENT ===== */
-.container{max-width:900px;margin:auto;padding:60px 20px;}
-.article{margin-bottom:70px;}
-.article h2{
-  font-family:'Cinzel', serif;
-  font-size:32px;
-  margin-bottom:10px;
-}
-.article p{font-size:17px;line-height:1.7;color:#444;}
+  /* ===== CONTAINER & CONTENT =====
+     Fix: use a single container to control page width.
+  */
+  .container{
+    max-width:1100px;
+    width:100%;
+    margin:40px auto;
+    padding:40px 20px;
+  }
 
-/* ===== FAQ ===== */
-.faq{background:#f8f6f2;padding:40px 20px;border-radius:10px;}
-.faq h2{font-family:'Cinzel', serif;text-align:center;margin-bottom:30px;}
-.faq-item{margin-bottom:20px;}
-.faq-item h3{font-size:18px;margin-bottom:6px;}
-.faq-item p{font-size:16px;color:#555;}
+  .article{margin-bottom:40px;}
+  .article h2{
+    font-family:'Cinzel', serif;
+    font-size:28px;
+    margin:16px 0 8px;
+  }
+  .article p{font-size:17px;line-height:1.7;color:#444;margin:8px 0;}
 
-/* ===== FOOTER ===== */
-.footer{text-align:center;padding:20px;font-size:14px;color:#777;}
+  /* small tweaks for callouts/links inside articles */
+  .article p a{color:#0b6cc1;text-decoration:none;}
+  .article p a:hover{text-decoration:underline;}
+
+  /* ===== FAQ ===== */
+  .faq{background:#f8f6f2;padding:24px;border-radius:10px;margin:30px 0;}
+  .faq h2{font-family:'Cinzel', serif;text-align:center;margin-bottom:18px;}
+  .faq-item{margin-bottom:14px;}
+  .faq-item h3{font-size:16px;margin-bottom:6px;}
+  .faq-item p{font-size:15px;color:#555;margin:0;}
+
+  /* ===== PAA & blog-money consistency ===== */
+  .paa, .blog-money{margin:30px 0;padding:18px;background:transparent;}
+
+  /* ===== FOOTER ===== */
+  .footer{text-align:center;padding:24px;font-size:14px;color:#777;margin-top:30px;}
+
+  /* Responsive adjustments */
+  @media (max-width:900px){
+    .container{padding:28px 18px;margin:20px auto;}
+    .hero h1{font-size:34px;}
+    .article h2{font-size:22px;}
+  }
 </style>
 </head>
 
@@ -106,7 +129,7 @@ body{
   <div class="logo">
     <a href="./index.html"><img src="logo.png" alt="Pristine Perfume"></a>
   </div>
-  <div class="nav-row">
+  <div class="nav-row" role="navigation" aria-label="Main navigation">
     <a href="./index.html">Home</a>
     <a href="./pricelist.html">Price List</a>
     <a href="./about.html">About</a>
@@ -118,348 +141,344 @@ body{
 <section class="hero">
   <h1>Fragrance Knowledge Hub</h1>
   <p>
-    Authentic insights on attars, perfume oils, Kannauj fragrance heritage  
+    Authentic insights on attars, perfume oils, Kannauj fragrance heritage
     and the wholesale perfume business in India.
   </p>
 </section>
 
-<!-- BLOG CONTENT -->
-<div class="container">
+<!-- BLOG CONTENT: SINGLE CONTAINER TO CONTROL WIDTH -->
+<main class="container">
 
-<div class="article">
-  <p style="font-weight:600;">
-    Looking to start or scale a perfume business?
-    Explore our <a href="./pricelist.html">Wholesale Attar Price List</a> sourced
-    directly from Kannauj.
-  </p>
-</div>
-  
-</div>
-<div class="article">
-  <h2>What is Attar? Meaning, History & Uses</h2>
-  <p>
-    Attar is an oil-based, alcohol-free perfume traditionally produced using
-    natural botanical ingredients. Known for its longevity and purity, attar
-    has been used in India for centuries for personal wear, rituals and luxury perfumery.
-  </p>
-</div>
-
-<div class="article">
-  <h2>Why Kannauj is Called the Perfume Capital of India</h2>
-  <p>
-    Kannauj has preserved ancient fragrance-making traditions such as the
-    deg-bhapka distillation process. The city supplies natural attars and
-    perfume oils across India and global markets.
-  </p>
-</div>
-
-<div class="article">
-  <h2>How Traditional Attar is Made in Kannauj (Deg-Bhapka Process)</h2>
-  <p>
-    The deg-bhapka method uses copper vessels where natural ingredients are
-    slowly distilled. Aromatic vapors bind with sandalwood oil, creating
-    concentrated and long-lasting attars without alcohol.
-  </p>
-</div>
-
-<div class="article">
-  <h2>Why Attars Last Longer Than Alcohol-Based Perfumes</h2>
-  <p>
-    Attars evaporate slowly due to their oil base, while alcohol perfumes
-    evaporate quickly. This gives attars superior longevity and evolving
-    fragrance profiles on the skin.
-  </p>
-</div>
-
-<div class="article">
-  <h2>Why Retailers Prefer Buying Attars Directly from Kannauj</h2>
-  <p>
-    Retailers sourcing from Kannauj benefit from authenticity, stable quality,
-    competitive wholesale pricing and deep fragrance knowledge passed down
-    through generations.
-  </p>
-</div>
-<div class="article">
-  <h2>Attar Wholesale Price List – Complete Guide for Retailers</h2>
-
-  <p>
-    Retailers searching for an <strong>attar wholesale price list</strong> often want
-    clear pricing, consistent quality and reliable supply. Kannauj, known as the
-    perfume capital of India, remains the primary hub for bulk attar sourcing.
-  </p>
-
-  <p>
-    Wholesale attar prices depend on factors such as raw materials, fragrance
-    concentration, oil base and order quantity. Natural floral attars usually
-    cost more than synthetic blends due to longer distillation time and
-    botanical sourcing.
-  </p>
-
-  <p>
-    At Pristine Perfume, we provide <strong>bulk attar pricing</strong> suitable for
-    retailers, resellers and perfume shop owners looking to maintain healthy
-    margins without compromising fragrance performance.
-  </p>
-
-  <p>
-    Retailers looking for <strong>Kannauj attar wholesale</strong> suppliers should
-    focus on consistency, repeat availability and transparent pricing rather
-    than only the lowest rate.
-  </p>
-</div>
-<div class="article">
-  <h2>How Attar Is Made – Traditional Perfume Making Process Explained</h2>
-
-  <p>
-    Many people search for <strong>how attar is made</strong> to understand why
-    attars last longer than regular perfumes. Traditional attar making uses
-    a slow distillation process known as <em>deg-bhapka</em>.
-  </p>
-
-  <p>
-    In this method, natural ingredients such as flowers, herbs or woods are
-    distilled with water inside copper vessels. The aromatic vapours pass
-    through bamboo pipes and are absorbed into a natural oil base, usually
-    sandalwood oil.
-  </p>
-
-  <p>
-    This slow process allows the fragrance to mature naturally, resulting in
-    concentrated, alcohol-free perfume oils that develop beautifully on the skin.
-  </p>
-
-  <p>
-    Unlike modern spray perfumes, attars do not evaporate quickly and are
-    suitable for daily wear, religious use and sensitive skin.
-  </p>
-</div>
-
-<div class="article">
-  <h2>Why Kannauj Is Famous for Perfume & Attars</h2>
-
-  <p>
-    Kannauj is called the <strong>perfume capital of India</strong> due to its
-    centuries-old fragrance tradition. The region has preserved natural
-    perfume-making techniques that are rarely found elsewhere in the world.
-  </p>
-
-  <p>
-    The climate, availability of flowers and generational expertise make
-    Kannauj ideal for producing authentic attars and perfume oils. Many
-    Indian and international fragrance brands source oils from this region.
-  </p>
-
-  <p>
-    Even today, Kannauj remains a global reference point for natural attars,
-    floral distillations and heritage perfume craftsmanship.
-  </p>
-</div>
-<div class="article">
-  <h2>Best Attar for Resale – Which Fragrances Sell the Most?</h2>
-
-  <p>
-    Many new retailers search for the <strong>best attar for resale</strong>
-    when starting a perfume business. The most profitable attars are those
-    that offer strong projection, long-lasting performance and mass appeal.
-  </p>
-
-  <p>
-    Floral attars like rose and jasmine, musky blends and modern oud-inspired
-    fragrances consistently perform well in retail markets across India.
-    These fragrances attract repeat customers and generate stable margins.
-  </p>
-
-  <p>
-    Retailers often prefer oil-based attars because they require smaller
-    quantities per sale, increasing overall profit per bottle.
-  </p>
-  <p>
-  👉 <a href="./pricelist.html">View wholesale attar price list</a> for bulk rates  
-  👉 <a href="./index.html">Kannauj-based perfume supplier</a> trusted by retailers
-</p>
-</div>
-  
-<div class="article">
-  <h2>Is Perfume Business Profitable in India?</h2>
-
-  <p>
-    The perfume business in India is considered a <strong>high-margin retail
-    business</strong> when sourced correctly. Wholesale attars from Kannauj
-    allow retailers to maintain strong profit margins with low initial
-    investment.
-  </p>
-
-  <p>
-    Many perfume shop owners report consistent demand throughout the year,
-    especially for alcohol-free attars used for daily wear and religious
-    purposes.
-  </p>
-
-  <p>
-    Success depends on choosing reliable suppliers, offering popular
-    fragrance profiles and maintaining consistent quality.
-  </p>
-  <p>
-  Retailers looking for reliable sourcing can explore our
-  <a href="./about.html">Kannauj perfume industry background</a>
-  and wholesale supply model.
-</p>
-</div>
-<section class="paa">
-  <h2>People Also Ask About Attar & Perfume Business</h2>
-
-  <h3>Is attar business profitable in India?</h3>
-  <p>
-    Yes, attar business is highly profitable in India due to low raw material cost,
-    strong repeat demand and high margins in wholesale perfume oils.
-  </p>
-
-  <h3>Which attar sells the most?</h3>
-  <p>
-    Rose, oud, musk and amber-based attars are among the highest selling fragrances
-    in Indian wholesale and retail markets.
-  </p>
-
-  <h3>Why is Kannauj famous for attar?</h3>
-  <p>
-    Kannauj is famous for attar because of its centuries-old deg-bhapka distillation
-    process and heritage perfume industry.
-  </p>
-
-  <h3>What is the difference between attar and perfume?</h3>
-  <p>
-    Attars are alcohol-free oil-based fragrances, while perfumes usually contain alcohol
-    and evaporate faster.
-  </p>
-</section>
-
-<section class="blog-money">
-  <h2>Wholesale Attar Business & Pricing Insights</h2>
-
-  <p>
-    Retailers and resellers searching for an <strong>attar wholesale price list</strong>
-    often look for reliable suppliers from Kannauj offering consistent fragrance quality
-    and competitive bulk rates.
-  </p>
-
-  <p>
-    At Pristine Perfume, wholesale buyers can explore <strong>bulk attar prices</strong>
-    across multiple fragrance categories including French, Arabian, Indian and
-    oud-based perfume oils.
-  </p>
-
-  <p>
-    If you are planning to start or expand a perfume business, sourcing from a
-    <strong>Kannauj attar wholesale supplier</strong> helps ensure authenticity,
-    better margins and long-term customer trust.
-  </p>
-
-  <p>
-    👉 You may also refer to our
-    <a href="./pricelist.html">Wholesale Attar Price List</a>
-    for updated bulk perfume oil pricing.
-  </p>
-  
-</section>
-
-<div class="article">
-  <h2>Real Story from Kannauj’s Attar Industry</h2>
-
-  <p>
-    Kannauj is not just known as the perfume capital of India by name. For
-    generations, families here have been involved in traditional attar
-    distillation using the deg-bhapka method.
-  </p>
-
-  <p>
-    In local Kannauj markets, attar is still traded based on fragrance strength,
-    maturity and oil purity rather than branding. Many wholesale buyers and
-    perfume retailers across India source attars directly from Kannauj because
-    of consistent quality and authentic fragrance profiles.
-  </p>
-
-  <p>
-    Businesses dealing in wholesale attars from Kannauj benefit from strong
-    repeat demand, especially for oud, rose, jasmine and musk-based blends.
-    This deep-rooted fragrance culture makes Kannauj a trusted sourcing hub
-    for perfume businesses across India.
-  </p>
-</div>
-  
-<!-- PAA FAQ -->
-<div class="faq">
-  <h2>People Also Ask About Attars</h2>
-
-  <div class="faq-item">
-    <h3>Is attar alcohol-free?</h3>
-    <p>Yes, traditional attars are completely alcohol-free and oil-based.</p>
+  <div class="article">
+    <p style="font-weight:600;">
+      Looking to start or scale a perfume business?
+      Explore our <a href="./pricelist.html">Wholesale Attar Price List</a> sourced
+      directly from Kannauj.
+    </p>
   </div>
 
-  <div class="faq-item">
-    <h3>Can attar be used daily?</h3>
-    <p>Yes, attars are safe for daily use and suitable for sensitive skin.</p>
+  <div class="article">
+    <h2>What is Attar? Meaning, History & Uses</h2>
+    <p>
+      Attar is an oil-based, alcohol-free perfume traditionally produced using
+      natural botanical ingredients. Known for its longevity and purity, attar
+      has been used in India for centuries for personal wear, rituals and luxury perfumery.
+    </p>
   </div>
 
-  <div class="faq-item">
-    <h3>Which city is famous for attar in India?</h3>
-    <p>Kannauj in Uttar Pradesh is known worldwide for attar manufacturing.</p>
+  <div class="article">
+    <h2>Why Kannauj is Called the Perfume Capital of India</h2>
+    <p>
+      Kannauj has preserved ancient fragrance-making traditions such as the
+      deg-bhapka distillation process. The city supplies natural attars and
+      perfume oils across India and global markets.
+    </p>
   </div>
 
-  <div class="faq-item">
-    <h3>Is attar better than perfume?</h3>
-    <p>Attars last longer, are alcohol-free and offer a natural fragrance experience.</p>
+  <div class="article">
+    <h2>How Traditional Attar is Made in Kannauj (Deg-Bhapka Process)</h2>
+    <p>
+      The deg-bhapka method uses copper vessels where natural ingredients are
+      slowly distilled. Aromatic vapors bind with sandalwood oil, creating
+      concentrated and long-lasting attars without alcohol.
+    </p>
   </div>
 
-<div class="faq-item">
-  <h3>Is attar profitable for resale business?</h3>
-  <p>
-    Yes, attar has high profit margins in resale because it is concentrated,
-    long-lasting and requires small quantities per sale, making it ideal for
-    retail and wholesale perfume businesses.
-  </p>
-</div>
+  <div class="article">
+    <h2>Why Attars Last Longer Than Alcohol-Based Perfumes</h2>
+    <p>
+      Attars evaporate slowly due to their oil base, while alcohol perfumes
+      evaporate quickly. This gives attars superior longevity and evolving
+      fragrance profiles on the skin.
+    </p>
+  </div>
 
-<div class="faq-item">
-  <h3>How long does attar last on skin?</h3>
-  <p>
-    High-quality attars can last anywhere between 8 to 24 hours depending on
-    the ingredients, skin type and weather conditions.
-  </p>
-</div>
+  <div class="article">
+    <h2>Why Retailers Prefer Buying Attars Directly from Kannauj</h2>
+    <p>
+      Retailers sourcing from Kannauj benefit from authenticity, stable quality,
+      competitive wholesale pricing and deep fragrance knowledge passed down
+      through generations.
+    </p>
+  </div>
 
-<div class="faq-item">
-  <h3>Is attar alcohol-free?</h3>
-  <p>
-    Traditional attars are completely alcohol-free and are made using natural
-    botanical extracts, making them suitable for sensitive skin and religious use.
-  </p>
-</div>
+  <div class="article">
+    <h2>Attar Wholesale Price List – Complete Guide for Retailers</h2>
 
-<div class="faq-item">
-  <h3>Can I start a perfume business using attars?</h3>
-  <p>
-    Yes, many perfume businesses in India start with attars because of low
-    investment, strong demand and flexible pricing options for resale.
-  </p>
-</div>
-</div>
+    <p>
+      Retailers searching for an <strong>attar wholesale price list</strong> often want
+      clear pricing, consistent quality and reliable supply. Kannauj, known as the
+      perfume capital of India, remains the primary hub for bulk attar sourcing.
+    </p>
 
-</div>
+    <p>
+      Wholesale attar prices depend on factors such as raw materials, fragrance
+      concentration, oil base and order quantity. Natural floral attars usually
+      cost more than synthetic blends due to longer distillation time and
+      botanical sourcing.
+    </p>
 
-<div class="article">
-  <h2>Start Your Perfume Business with Wholesale Attars</h2>
+    <p>
+      At Pristine Perfume, we provide <strong>bulk attar pricing</strong> suitable for
+      retailers, resellers and perfume shop owners looking to maintain healthy
+      margins without compromising fragrance performance.
+    </p>
 
-  <p>
-    If you are looking for bulk attars, perfume oils or starting a
-    profitable perfume business, check our updated wholesale pricing.
-  </p>
+    <p>
+      Retailers looking for <strong>Kannauj attar wholesale</strong> suppliers should
+      focus on consistency, repeat availability and transparent pricing rather
+      than only the lowest rate.
+    </p>
+  </div>
 
-  <p>
-    👉 <a href="./pricelist.html">View Wholesale Attar Price List</a><br>
-    👉 <a href="https://wa.me/917985494998">Contact on WhatsApp for Bulk Orders</a>
-  </p>
-</div>
-  
+  <div class="article">
+    <h2>How Attar Is Made – Traditional Perfume Making Process Explained</h2>
+
+    <p>
+      Many people search for <strong>how attar is made</strong> to understand why
+      attars last longer than regular perfumes. Traditional attar making uses
+      a slow distillation process known as <em>deg-bhapka</em>.
+    </p>
+
+    <p>
+      In this method, natural ingredients such as flowers, herbs or woods are
+      distilled with water inside copper vessels. The aromatic vapours pass
+      through bamboo pipes and are absorbed into a natural oil base, usually
+      sandalwood oil.
+    </p>
+
+    <p>
+      This slow process allows the fragrance to mature naturally, resulting in
+      concentrated, alcohol-free perfume oils that develop beautifully on the skin.
+    </p>
+
+    <p>
+      Unlike modern spray perfumes, attars do not evaporate quickly and are
+      suitable for daily wear, religious use and sensitive skin.
+    </p>
+  </div>
+
+  <div class="article">
+    <h2>Why Kannauj Is Famous for Perfume & Attars</h2>
+
+    <p>
+      Kannauj is called the <strong>perfume capital of India</strong> due to its
+      centuries-old fragrance tradition. The region has preserved natural
+      perfume-making techniques that are rarely found elsewhere in the world.
+    </p>
+
+    <p>
+      The climate, availability of flowers and generational expertise make
+      Kannauj ideal for producing authentic attars and perfume oils. Many
+      Indian and international fragrance brands source oils from this region.
+    </p>
+
+    <p>
+      Even today, Kannauj remains a global reference point for natural attars,
+      floral distillations and heritage perfume craftsmanship.
+    </p>
+  </div>
+
+  <div class="article">
+    <h2>Best Attar for Resale – Which Fragrances Sell the Most?</h2>
+
+    <p>
+      Many new retailers search for the <strong>best attar for resale</strong>
+      when starting a perfume business. The most profitable attars are those
+      that offer strong projection, long-lasting performance and mass appeal.
+    </p>
+
+    <p>
+      Floral attars like rose and jasmine, musky blends and modern oud-inspired
+      fragrances consistently perform well in retail markets across India.
+      These fragrances attract repeat customers and generate stable margins.
+    </p>
+
+    <p>
+      Retailers often prefer oil-based attars because they require smaller
+      quantities per sale, increasing overall profit per bottle.
+    </p>
+
+    <p>
+      👉 <a href="./pricelist.html">View wholesale attar price list</a> for bulk rates<br>
+      👉 <a href="./index.html">Kannauj-based perfume supplier</a> trusted by retailers
+    </p>
+  </div>
+
+  <div class="article">
+    <h2>Is Perfume Business Profitable in India?</h2>
+
+    <p>
+      The perfume business in India is considered a <strong>high-margin retail
+      business</strong> when sourced correctly. Wholesale attars from Kannauj
+      allow retailers to maintain strong profit margins with low initial
+      investment.
+    </p>
+
+    <p>
+      Many perfume shop owners report consistent demand throughout the year,
+      especially for alcohol-free attars used for daily wear and religious
+      purposes.
+    </p>
+
+    <p>
+      Success depends on choosing reliable suppliers, offering popular
+      fragrance profiles and maintaining consistent quality.
+    </p>
+
+    <p>
+      Retailers looking for reliable sourcing can explore our
+      <a href="./about.html">Kannauj perfume industry background</a>
+      and wholesale supply model.
+    </p>
+  </div>
+
+  <section class="paa">
+    <h2>People Also Ask About Attar & Perfume Business</h2>
+
+    <h3>Is attar business profitable in India?</h3>
+    <p>
+      Yes, attar business is highly profitable in India due to low raw material cost,
+      strong repeat demand and high margins in wholesale perfume oils.
+    </p>
+
+    <h3>Which attar sells the most?</h3>
+    <p>
+      Rose, oud, musk and amber-based attars are among the highest selling fragrances
+      in Indian wholesale and retail markets.
+    </p>
+
+    <h3>Why is Kannauj famous for attar?</h3>
+    <p>
+      Kannauj is famous for attar because of its centuries-old deg-bhapka distillation
+      process and heritage perfume industry.
+    </p>
+
+    <h3>What is the difference between attar and perfume?</h3>
+    <p>
+      Attars are alcohol-free oil-based fragrances, while perfumes usually contain alcohol
+      and evaporate faster.
+    </p>
+  </section>
+
+  <section class="blog-money">
+    <h2>Wholesale Attar Business & Pricing Insights</h2>
+
+    <p>
+      Retailers and resellers searching for an <strong>attar wholesale price list</strong>
+      often look for reliable suppliers from Kannauj offering consistent fragrance quality
+      and competitive bulk rates.
+    </p>
+
+    <p>
+      At Pristine Perfume, wholesale buyers can explore <strong>bulk attar prices</strong>
+      across multiple fragrance categories including French, Arabian, Indian and
+      oud-based perfume oils.
+    </p>
+
+    <p>
+      If you are planning to start or expand a perfume business, sourcing from a
+      <strong>Kannauj attar wholesale supplier</strong> helps ensure authenticity,
+      better margins and long-term customer trust.
+    </p>
+
+    <p>
+      👉 You may also refer to our
+      <a href="./pricelist.html">Wholesale Attar Price List</a>
+      for updated bulk perfume oil pricing.
+    </p>
+  </section>
+
+  <div class="article">
+    <h2>Real Story from Kannauj’s Attar Industry</h2>
+
+    <p>
+      Kannauj is not just known as the perfume capital of India by name. For
+      generations, families here have been involved in traditional attar
+      distillation using the deg-bhapka method.
+    </p>
+
+    <p>
+      In local Kannauj markets, attar is still traded based on fragrance strength,
+      maturity and oil purity rather than branding. Many wholesale buyers and
+      perfume retailers across India source attars directly from Kannauj because
+      of consistent quality and authentic fragrance profiles.
+    </p>
+
+    <p>
+      Businesses dealing in wholesale attars from Kannauj benefit from strong
+      repeat demand, especially for oud, rose, jasmine and musk-based blends.
+      This deep-rooted fragrance culture makes Kannauj a trusted sourcing hub
+      for perfume businesses across India.
+    </p>
+  </div>
+
+  <!-- PAA FAQ -->
+  <div class="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">People Also Ask About Attars</h2>
+
+    <div class="faq-item">
+      <h3>Is attar alcohol-free?</h3>
+      <p>Yes, traditional attars are completely alcohol-free and oil-based.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can attar be used daily?</h3>
+      <p>Yes, attars are safe for daily use and suitable for sensitive skin.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Which city is famous for attar in India?</h3>
+      <p>Kannauj in Uttar Pradesh is known worldwide for attar manufacturing.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is attar better than perfume?</h3>
+      <p>Attars last longer, are alcohol-free and offer a natural fragrance experience.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is attar profitable for resale business?</h3>
+      <p>
+        Yes, attar has high profit margins in resale because it is concentrated,
+        long-lasting and requires small quantities per sale, making it ideal for
+        retail and wholesale perfume businesses.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How long does attar last on skin?</h3>
+      <p>
+        High-quality attars can last anywhere between 8 to 24 hours depending on
+        the ingredients, skin type and weather conditions.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I start a perfume business using attars?</h3>
+      <p>
+        Yes, many perfume businesses in India start with attars because of low
+        investment, strong demand and flexible pricing options for resale.
+      </p>
+    </div>
+  </div>
+
+  <div class="article">
+    <h2>Start Your Perfume Business with Wholesale Attars</h2>
+
+    <p>
+      If you are looking for bulk attars, perfume oils or starting a
+      profitable perfume business, check our updated wholesale pricing.
+    </p>
+
+    <p>
+      👉 <a href="./pricelist.html">View Wholesale Attar Price List</a><br>
+      👉 <a href="https://wa.me/917985494998">Contact on WhatsApp for Bulk Orders</a>
+    </p>
+  </div>
+
+</main>
+
 <footer class="footer">
   © Pristine Perfume – Wholesale Attar & Perfume Supplier
 </footer>
