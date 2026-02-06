@@ -3,36 +3,36 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://pristineperfume.github.io/pristine-perfume/</loc>
-    <lastmod>2026-01-18</lastmod>
+    <loc>https://www.pristineperfume.in/</loc>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
 
   <url>
-    <loc>https://pristineperfume.github.io/pristine-perfume/index.html</loc>
-    <lastmod>2026-01-18</lastmod>
+    <loc>https://www.pristineperfume.in/index.html</loc>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
 
   <url>
-    <loc>https://pristineperfume.github.io/pristine-perfume/pricelist.html</loc>
-    <lastmod>2026-01-18</lastmod>
+    <loc>https://www.pristineperfume.in/pricelist.html</loc>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
-    <loc>https://pristineperfume.github.io/pristine-perfume/about.html</loc>
-    <lastmod>2026-01-18</lastmod>
+    <loc>https://www.pristineperfume.in/about.html</loc>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
 
   <url>
-    <loc>https://pristineperfume.github.io/pristine-perfume/blog.html</loc>
-    <lastmod>2026-01-18</lastmod>
+    <loc>https://www.pristineperfume.in/blog.html</loc>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
