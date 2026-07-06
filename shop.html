@@ -272,7 +272,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="fallback-confirm" id="fallbackConfirmWrap" style="display:none;">
   <button class="fallback-close" onclick="hideFallbackBtn()" aria-label="Close">&times;</button>
-  <p>Didn't send automatically?</p>
+  <p>Payment initiated! Tap below to confirm your order with us:</p>
   <button class="fallback-notify-btn" onclick="sendSavedOrderOnWhatsapp()">Notify Us on WhatsApp</button>
 </div>
 
@@ -444,13 +444,7 @@ function sendSavedOrderOnWhatsapp(){
 
 function notifyOwnerOnWhatsapp(orderText){
   saveLastOrder(orderText);
-  const opened = window.open(buildOwnerWhatsappLink(orderText), '_blank');
-  if(!opened || opened.closed || typeof opened.closed === 'undefined'){
-    showFallbackBtn();
-    showToast('Popup blocked — tap the button below to notify us');
-  } else {
-    showFallbackBtn();
-  }
+  showFallbackBtn();
 }
 
 function buyNow(productId){
@@ -462,10 +456,7 @@ function buyNow(productId){
   const orderText = `New Order Request \n\nProduct: ${p.name}\nSize: ${size}\nAmount: ₹${price}\n\nI have initiated UPI payment for this order. Please confirm once received.`;
 
   notifyOwnerOnWhatsapp(orderText);
-
-  setTimeout(() => {
-    window.location.href = buildUpiLink(price, note);
-  }, 500);
+  window.location.href = buildUpiLink(price, note);
 }
 
 function checkoutCart(){
@@ -481,10 +472,7 @@ function checkoutCart(){
   const orderText = `New Order Request \n\n${itemLines}\n\nTotal: ₹${total}\n\nI have initiated UPI payment for this order. Please confirm once received.`;
 
   notifyOwnerOnWhatsapp(orderText);
-
-  setTimeout(() => {
-    window.location.href = buildUpiLink(total, note.substring(0,90));
-  }, 500);
+  window.location.href = buildUpiLink(total, note.substring(0,90));
 }
 
 function showToast(msg){
