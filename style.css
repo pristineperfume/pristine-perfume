@@ -1,0 +1,224 @@
+/* style.css - All Styles for Pristine Perfume */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
+
+/* ===== GLOBAL RESETS ===== */
+html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+body {
+  font-family: 'Playfair Display', serif;
+  padding-top: 56px;
+  background: #fafafa;
+  color: #222;
+}
+
+/* ===== NAVBAR (SHARED) ===== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: #f8f6f2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  z-index: 1000;
+}
+.navbar .logo img { height: 36px; }
+
+.nav-row { margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+.nav-row a {
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+  padding: 6px 22px;
+  white-space: nowrap;
+}
+.nav-row a.active { border-bottom: 2px solid #000; }
+.nav-row a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+  height: 18px; width: 1px;
+  background: rgba(0,0,0,.35);
+}
+
+@media(max-width:768px) {
+  body { padding-top: 72px; }
+  .navbar { flex-direction: column; gap: 6px; padding: 8px 12px; }
+  .navbar .logo img { height: 32px; }
+  .nav-row { width: 100%; max-width: 420px; justify-content: space-between; padding: 0 6px; }
+  .nav-row a { flex: 1; text-align: center; padding: 6px 0; }
+}
+
+/* ===== SHARED COMPONENTS ===== */
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-right: 12px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.btn.primary { background: #000; color: #fff; }
+.btn.whatsapp { background: #25D366; color: #fff; }
+.btn:active { transform: scale(.97); opacity: .9; }
+
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed;
+  right: 16px; bottom: 16px;
+  width: 56px; height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+.whatsapp-float img { width: 38px; height: 38px; }
+.whatsapp-float:active { transform: scale(.95); }
+@media(max-width:768px) {
+  .whatsapp-float { right: 14px; bottom: 14px; width: 52px; height: 52px; }
+}
+
+/* Footer */
+.footer { text-align: center; padding: 20px; font-size: 14px; color: #777; }
+
+/* ===== PAGE SPECIFIC: HOME (INDEX) ===== */
+.hero-home {
+  min-height: calc(100vh - 56px);
+  padding: 60px 20px 40px;
+  background: linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url('./hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+.hero-home h1 { font-family: 'Cinzel', serif; font-size: 42px; max-width: 900px; }
+.hero-home p { max-width: 650px; line-height: 1.6; color: #eee; }
+.hero-actions { margin-top: 22px; }
+
+.trust-badges { background: #111; padding: 40px 20px; }
+.trust-inner {
+  max-width: 1100px; margin: auto;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.badge { background: #1c1c1c; padding: 18px; border-radius: 10px; color: #fff; font-weight: 600; text-align: center; }
+.trust-note { text-align: center; margin-top: 24px; color: #ccc; font-size: 15px; }
+
+.bestsellers { padding: 60px 20px; text-align: center; }
+.bestsellers h2 { font-family: 'Cinzel', serif; margin-bottom: 30px; }
+.bs-grid {
+  max-width: 900px; margin: auto;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 22px;
+}
+.bs-item {
+  background: #f9f7f3; padding: 18px; border-radius: 10px;
+  text-decoration: none; color: #000; font-weight: 600; text-align: center; display: block;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.bs-item img { width: 100%; height: auto; object-fit: cover; border-radius: 8px; }
+.bs-item span { display: block; margin-top: 10px; }
+.bs-item:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(0,0,0,.12); }
+
+.blog-preview { background: #fff; padding: 70px 20px; }
+.blog-preview h2 { text-align: center; font-family: 'Cinzel', serif; }
+.blog-preview p { text-align: center; color: #555; max-width: 700px; margin: 10px auto 40px; }
+.blog-grid {
+  max-width: 1100px; margin: auto;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.blog-card {
+  background: #f8f6f2; border-radius: 14px; overflow: hidden;
+  text-decoration: none; color: #000; display: block;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.blog-card img { width: 100%; height: 220px; object-fit: cover; }
+.blog-card div { padding: 18px; text-align: center; }
+.blog-card h3 { font-family: 'Cinzel', serif; font-size: 18px; margin-bottom: 6px; }
+.blog-card p { font-size: 14px; color: #555; }
+.blog-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,.15); }
+
+.location { background: #f8f6f2; padding: 60px 20px; }
+.location-inner {
+  max-width: 1100px; margin: auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+}
+@media(max-width:768px){ .location-inner{ grid-template-columns: 1fr; } }
+.cta { text-align: center; padding: 60px 20px; }
+
+/* ===== PAGE SPECIFIC: PRICELIST ===== */
+.container-pricelist { max-width: 1200px; margin: auto; background: #fff; padding: 20px; }
+.container-pricelist h1 { text-align: center; margin-bottom: 20px; }
+
+.controls {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+  position: sticky; top: 70px; background: #fff; padding: 10px; z-index: 50;
+}
+input, select { padding: 8px 10px; font-size: 14px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+th, td { border: 1px solid #ddd; padding: 8px; text-align: center; font-size: 14px; }
+th { background: #111; color: #fff; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #f1f1f1; }
+
+@media(max-width:768px) {
+  table, thead, tbody, th, td, tr { display: block; }
+  tr { margin-bottom: 15px; }
+  td { text-align: right; position: relative; padding-left: 50%; }
+  td::before {
+    content: attr(data-label);
+    position: absolute; left: 10px; font-weight: bold;
+  }
+  th { display: none; }
+}
+
+.price-info { background: #f8f6f2; padding: 25px; margin: 20px 0; border-radius: 8px; text-align: center; }
+.whatsapp-btn {
+  display: inline-block; margin-top: 12px; background: #25D366; color: #fff;
+  padding: 10px 18px; border-radius: 20px; text-decoration: none; font-weight: 600;
+}
+
+.watermark {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; font-family: 'Cinzel', serif;
+  color: rgba(0,0,0,0.05); text-align: center;
+  background-image: repeating-linear-gradient(-30deg, rgba(0,0,0,0.04), rgba(0,0,0,0.04) 2px, transparent 2px, transparent 120px);
+}
+
+/* ===== PAGE SPECIFIC: ABOUT & BLOG CONTENT ===== */
+.container-content { max-width: 900px; margin: auto; padding: 50px 20px; }
+.container-content h1 { font-family: 'Cinzel', serif; text-align: center; margin-bottom: 30px; }
+.container-content h2 { font-family: 'Cinzel', serif; margin-top: 40px; margin-bottom: 10px; }
+.container-content p { font-size: 17px; line-height: 1.7; color: #444; }
+.container-content ul { margin-left: 20px; line-height: 1.7; }
+.container-content ul li { margin-bottom: 6px; }
+
+/* FAQ (About & Blog) */
+.faq { max-width: 900px; margin: auto; margin-top: 50px; background: #f8f6f2; padding: 40px 20px; border-radius: 10px; }
+.faq-item { margin-bottom: 22px; }
+.faq-item h3 { font-size: 18px; margin-bottom: 6px; color: #222; }
+.faq-item p { color: #555; font-size: 16px; }
+
+/* Blog Specific Hero */
+.hero-blog {
+  min-height: 60vh;
+  background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url('./hero-bg.jpg');
+  background-size: cover; background-position: center;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 40px 20px; text-align: center; color: #fff;
+}
+.hero-blog h1 { font-family: 'Cinzel', serif; font-size: 42px; }
+.hero-blog p { max-width: 750px; margin: auto; font-size: 18px; color: #eee; }
+
+/* Blog Articles */
+.article { margin-bottom: 70px; }
+.article h2 { font-family: 'Cinzel', serif; font-size: 32px; margin-bottom: 10px; }
+.article p { font-size: 17px; line-height: 1.7; color: #444; }

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "mitti-attar",
+    "name": "Mitti Attar",
+    "img": "mitti-attar.jpg",
+    "desc": "The iconic scent of rain-soaked earth, Kannauj's signature fragrance distilled from baked clay.",
+    "prices": {
+      "50ml": 660,
+      "100ml": 1285,
+      "250ml": 3125,
+      "500ml": 6250,
+      "1kg": 12500
+    }
+  },
+  {
+    "id": "rose-gulab-attar",
+    "name": "Rose (Gulab) Attar",
+    "img": "rose-gulab-attar.jpg",
+    "desc": "Pure, floral rose attar distilled from fresh petals \u2014 timeless, romantic and long-lasting.",
+    "prices": {
+      "50ml": 260,
+      "100ml": 485,
+      "250ml": 1125,
+      "500ml": 2250,
+      "1kg": 4500
+    }
+  },
+  {
+    "id": "sandal-chandan-attar",
+    "name": "Sandal (Chandan) Attar",
+    "img": "sandal-chandan-attar.jpg",
+    "desc": "Warm, woody sandalwood attar known for its calming, grounding aroma and daily-wear versatility.",
+    "prices": {
+      "50ml": 485,
+      "100ml": 935,
+      "250ml": 2250,
+      "500ml": 4500,
+      "1kg": 9000
+    }
+  },
+  {
+    "id": "oud-attar",
+    "name": "Oud Attar",
+    "img": "oud-attar.jpg",
+    "desc": "Rich, deep agarwood attar with bold, long-lasting projection \u2014 a favorite among connoisseurs.",
+    "prices": {
+      "50ml": 560,
+      "100ml": 1085,
+      "250ml": 2625,
+      "500ml": 5250,
+      "1kg": 10500
+    }
+  },
+  {
+    "id": "mogra-attar",
+    "name": "Mogra Attar",
+    "img": "mogra-attar.jpg",
+    "desc": "Sweet, heady jasmine-mogra attar capturing the essence of Indian summer blooms.",
+    "prices": {
+      "50ml": 185,
+      "100ml": 335,
+      "250ml": 780,
+      "500ml": 1500,
+      "1kg": 3000
+    }
+  }
+]
