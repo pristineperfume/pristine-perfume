@@ -185,6 +185,30 @@ body{
 }
 .toast.show{opacity:1;}
 
+.fallback-confirm{
+  position:fixed; bottom:80px; left:16px; right:16px; max-width:340px; margin:0 auto;
+  background:#fff; border:1px solid #e0ddd5; border-radius:12px;
+  padding:14px 16px; z-index:3500;
+  box-shadow:0 10px 28px rgba(0,0,0,0.15);
+  text-align:center;
+}
+.fallback-confirm p{
+  margin:0 0 10px; font-size:14px; color:#444;
+}
+.fallback-confirm{ position:fixed; }
+.fallback-close{
+  position:absolute; top:6px; right:10px;
+  background:none; border:none; font-size:18px; color:#999;
+  cursor:pointer; line-height:1; padding:4px;
+}
+.fallback-close:hover{ color:#333; }
+.fallback-notify-btn{
+  background:#25D366; color:#fff; border:none;
+  padding:10px 18px; border-radius:20px; font-weight:600;
+  font-size:14px; cursor:pointer; width:100%;
+}
+.fallback-notify-btn:active{ transform:scale(.97); }
+
 /* ===== FLOATING WHATSAPP ===== */
 .whatsapp-float{
   position:fixed; right:16px; bottom:16px; width:56px; height:56px;
@@ -245,6 +269,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <div class="toast" id="toast"></div>
+
+<div class="fallback-confirm" id="fallbackConfirmWrap" style="display:none;">
+  <button class="fallback-close" onclick="hideFallbackBtn()" aria-label="Close">&times;</button>
+  <p>Didn't send automatically?</p>
+  <button class="fallback-notify-btn" onclick="sendSavedOrderOnWhatsapp()">Notify Us on WhatsApp</button>
+</div>
 
 <a href="https://wa.me/917275266534" class="whatsapp-float" target="_blank">
   <img src="whatsapp-icon.png" alt="WhatsApp">
@@ -379,9 +409,48 @@ function buildOwnerWhatsappLink(orderText){
   return `https://wa.me/${OWNER_WHATSAPP}?text=${encoded}`;
 }
 
-function notifyOwnerOnWhatsapp(orderText){
+function saveLastOrder(orderText){
+  localStorage.setItem('pp_last_order', orderText);
+  localStorage.setItem('pp_last_order_time', Date.now().toString());
+}
+
+function getLastOrder(){
+  return localStorage.getItem('pp_last_order');
+}
+
+function clearLastOrder(){
+  localStorage.removeItem('pp_last_order');
+  localStorage.removeItem('pp_last_order_time');
+  hideFallbackBtn();
+}
+
+function showFallbackBtn(){
+  document.getElementById('fallbackConfirmWrap').style.display = 'block';
+}
+
+function hideFallbackBtn(){
+  document.getElementById('fallbackConfirmWrap').style.display = 'none';
+}
+
+function sendSavedOrderOnWhatsapp(){
+  const orderText = getLastOrder();
+  if(!orderText){
+    showToast('No pending order found');
+    return;
+  }
   const link = buildOwnerWhatsappLink(orderText);
   window.open(link, '_blank');
+}
+
+function notifyOwnerOnWhatsapp(orderText){
+  saveLastOrder(orderText);
+  const opened = window.open(buildOwnerWhatsappLink(orderText), '_blank');
+  if(!opened || opened.closed || typeof opened.closed === 'undefined'){
+    showFallbackBtn();
+    showToast('Popup blocked — tap the button below to notify us');
+  } else {
+    showFallbackBtn();
+  }
 }
 
 function buyNow(productId){
@@ -392,12 +461,11 @@ function buyNow(productId){
 
   const orderText = `New Order Request \n\nProduct: ${p.name}\nSize: ${size}\nAmount: ₹${price}\n\nI have initiated UPI payment for this order. Please confirm once received.`;
 
-  const upiLink = buildUpiLink(price, note);
-  window.location.href = upiLink;
+  notifyOwnerOnWhatsapp(orderText);
 
   setTimeout(() => {
-    notifyOwnerOnWhatsapp(orderText);
-  }, 600);
+    window.location.href = buildUpiLink(price, note);
+  }, 500);
 }
 
 function checkoutCart(){
@@ -412,12 +480,11 @@ function checkoutCart(){
   const itemLines = cart.map(i => `- ${i.name} (${i.size}) x${i.qty} — ₹${i.price * i.qty}`).join('\n');
   const orderText = `New Order Request \n\n${itemLines}\n\nTotal: ₹${total}\n\nI have initiated UPI payment for this order. Please confirm once received.`;
 
-  const upiLink = buildUpiLink(total, note.substring(0,90));
-  window.location.href = upiLink;
+  notifyOwnerOnWhatsapp(orderText);
 
   setTimeout(() => {
-    notifyOwnerOnWhatsapp(orderText);
-  }, 600);
+    window.location.href = buildUpiLink(total, note.substring(0,90));
+  }, 500);
 }
 
 function showToast(msg){
