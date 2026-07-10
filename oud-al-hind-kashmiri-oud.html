@@ -22,6 +22,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="keywords" content="Oud Al Hind, Kashmiri Oud, Kannauj oud, attar scent profiles, wholesale attar, authentic agarwood, heavy scent attar">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Scent of Royalty: Oud Al Hind & Kashmiri Oud Explained | Pristine Perfume">
+<meta property="og:description" content="Discover the rich history, sourcing, and deep scent profiles of authentic Kannauj Oud distillations.">
+<meta property="og:url" content="https://www.pristineperfume.in/oud-al-hind-kashmiri-oud.html">
+<meta property="og:image" content="https://www.pristineperfume.in/oud-attar.jpg">
+<meta property="og:site_name" content="Pristine Perfume">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Scent of Royalty: Oud Al Hind & Kashmiri Oud Explained | Pristine Perfume">
+<meta name="twitter:description" content="Discover the rich history, sourcing, and deep scent profiles of authentic Kannauj Oud distillations.">
+<meta name="twitter:image" content="https://www.pristineperfume.in/oud-attar.jpg">
 <link rel="icon" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -39,11 +49,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .nav-row a.active{border-bottom:2px solid #000;}
   .nav-row a:not(:last-child)::after{content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);height:18px;width:1px;background:rgba(0,0,0,.35);}
   @media(max-width:768px){
-    .navbar{flex-direction:column;gap:6px;padding:8px 12px;}
-    .navbar .logo img{height:32px;}
-    .nav-row{width:100%;max-width:420px;justify-content:space-between;}
-    .nav-row a{flex:1;text-align:center;padding:8px 6px;}
+  body{padding-top:64px;}
+  .navbar{
+    flex-direction:row;
+    align-items:center;
+    padding:8px 12px;
+    gap:8px;
   }
+  .navbar .logo img{height:28px;}
+  .nav-row{
+    flex:1;
+    display:flex;
+    justify-content:flex-start;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    max-width:100%;
+    padding:0 4px;
+  }
+  .nav-row::-webkit-scrollbar{display:none;}
+  .nav-row a{
+    flex:0 0 auto;
+    text-align:center;
+    padding:8px 12px;
+    font-size:13px;
+    white-space:nowrap;
+  }
+  .nav-row a:not(:last-child)::after{display:none;}
+}
 
   /* ===== HERO ===== */
   .hero{min-height:40vh;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('./hero-bg.jpg');background-size:cover;background-position:center;display:flex;flex-direction:column;justify-content:center;padding:40px 20px;text-align:center;color:#fff;}
@@ -78,11 +111,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="logo">
     <a href="./index.html"><img src="logo.png" alt="Pristine Perfume"></a>
   </div>
-  <div class="nav-row" role="navigation">
+  <div class="nav-row">
     <a href="./index.html">Home</a>
+    <a href="./shop.html">Shop</a>
     <a href="./pricelist.html">Price List</a>
     <a href="./about.html">About</a>
     <a href="./blog.html" class="active">Blog</a>
+    <a href="./contact.html">Contact</a>
+    <a href="./return-policy.html">Returns</a>
   </div>
 </div>
 

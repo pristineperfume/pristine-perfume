@@ -22,6 +22,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="description" content="Buy authentic Kannauj attars online — Mitti Attar, Rose, Sandal, Oud and Mogra. Natural, alcohol-free perfume oils. Pay easily via UPI. Pristine Perfume.">
 <meta name="keywords" content="buy attar online, kannauj attar, mitti attar, rose attar, sandal attar, oud attar, mogra attar, attar price">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shop Attars Online | Kannauj Mitti, Rose, Sandal, Oud, Mogra - Pristine Perfume">
+<meta property="og:description" content="Buy authentic Kannauj attars online — Mitti Attar, Rose, Sandal, Oud and Mogra. Natural, alcohol-free perfume oils.">
+<meta property="og:url" content="https://www.pristineperfume.in/shop.html">
+<meta property="og:image" content="https://www.pristineperfume.in/oud-attar.jpg">
+<meta property="og:site_name" content="Pristine Perfume">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shop Attars Online | Kannauj Mitti, Rose, Sandal, Oud, Mogra - Pristine Perfume">
+<meta name="twitter:description" content="Buy authentic Kannauj attars online — Mitti Attar, Rose, Sandal, Oud and Mogra. Natural, alcohol-free perfume oils.">
+<meta name="twitter:image" content="https://www.pristineperfume.in/oud-attar.jpg">
 <link rel="icon" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -63,11 +73,33 @@ body{
   display:flex; align-items:center; justify-content:center;
 }
 @media(max-width:768px){
-  body{padding-top:72px;}
-  .navbar{flex-direction:column; gap:6px; padding:8px 12px;}
-  .navbar .logo img{height:32px;}
-  .nav-row{width:100%; max-width:480px; justify-content:space-between; padding:0 6px;}
-  .nav-row a{flex:1; text-align:center; padding:6px 0; font-size:14px;}
+  body{padding-top:64px;}
+  .navbar{
+    flex-direction:row;
+    align-items:center;
+    padding:8px 12px;
+    gap:8px;
+  }
+  .navbar .logo img{height:28px;}
+  .nav-row{
+    flex:1;
+    display:flex;
+    justify-content:flex-start;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    max-width:100%;
+    padding:0 4px;
+  }
+  .nav-row::-webkit-scrollbar{display:none;}
+  .nav-row a{
+    flex:0 0 auto;
+    text-align:center;
+    padding:8px 12px;
+    font-size:13px;
+    white-space:nowrap;
+  }
+  .nav-row a:not(:last-child)::after{display:none;}
 }
 
 /* ===== HERO ===== */
@@ -511,5 +543,28 @@ function renderSchema(){
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Pristine Perfume",
+  "image": "https://www.pristineperfume.in/logo.png",
+  "url": "https://www.pristineperfume.in/",
+  "telephone": "+91-7275266534",
+  "priceRange": "₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bazariya Shekhana",
+    "addressLocality": "Kannauj",
+    "addressRegion": "Uttar Pradesh",
+    "postalCode": "209725",
+    "addressCountry": "IN"
+  },
+  "sameAs": [
+    "https://wa.me/917275266534"
+  ],
+  "description": "Pristine Perfume is a wholesale and retail attar and perfume oil supplier based in Kannauj, Uttar Pradesh, offering natural, alcohol-free fragrances including Mitti, Rose, Sandal, Oud, and Mogra attars, sourced using traditional deg-bhapka distillation."
+}
+</script>
 </body>
 </html>
