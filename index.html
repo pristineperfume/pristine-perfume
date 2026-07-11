@@ -24,17 +24,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wholesale Attar Supplier in Kannauj | Pristine Perfume">
-<meta property="og:description" content="Pristine Perfume is a wholesale attar and perfume oil supplier from Kannauj. Trusted by retailers across India.">
-<meta property="og:url" content="https://pristineperfume.in/">
-<meta property="og:image" content="https://pristineperfume.in/mitti-attar.jpg">
-<meta property="og:site_name" content="Pristine Perfume">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Wholesale Attar Supplier in Kannauj | Pristine Perfume">
-<meta name="twitter:description" content="Pristine Perfume is a wholesale attar and perfume oil supplier from Kannauj. Trusted by retailers across India.">
-<meta name="twitter:image" content="https://pristineperfume.in/mitti-attar.jpg">
 <link rel="icon" href="favicon.png">
+<link rel="preload" as="image" href="hero-bg.webp">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -84,94 +75,22 @@ body{
   background:rgba(0,0,0,.35);
 }
 
-.nav-toggle{
-  display:none;
-  background:none;
-  border:none;
-  cursor:pointer;
-  padding:6px;
-  z-index:1100;
-}
-.nav-toggle svg{width:26px;height:26px;}
-
-.pinned-mobile-links{display:none;}
 @media(max-width:768px){
-  .pinned-mobile-links{
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .pinned-mobile-links a{
-    text-decoration:none;
-    color:#333;
-    font-size:13px;
-    font-weight:600;
-    padding:6px 8px;
-    white-space:nowrap;
-  }
-  .pinned-cart{
-    position:relative;
-    padding:6px !important;
-  }
-  .pinned-cart svg{width:22px;height:22px;}
-  .pinned-cart .cart-count{
-    position:absolute;
-    top:-2px;
-    right:-2px;
-    background:#25D366;
-    color:#fff;
-    font-size:10px;
-    font-weight:700;
-    border-radius:50%;
-    width:16px;
-    height:16px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-}
-
-@media(max-width:768px){
-  body{padding-top:60px;}
   .navbar{
-    flex-direction:row;
-    align-items:center;
-    justify-content:space-between;
-    padding:10px 16px;
-  }
-  .navbar .logo img{height:28px;}
-  .nav-toggle{display:block;}
-  .nav-row{
-    position:fixed;
-    top:56px;
-    left:0;
-    right:0;
-    background:#f8f6f2;
     flex-direction:column;
-    align-items:stretch;
-    max-height:0;
-    overflow:hidden;
-    transition:max-height 0.3s ease;
-    box-shadow:0 6px 16px rgba(0,0,0,0.08);
-    z-index:1050;
-    padding:0;
+    gap:6px;
+    padding:8px 12px;
   }
-  .nav-row.open{
-    max-height:80vh;
-    overflow-y:auto;
-    padding:8px 0;
+  .navbar .logo img{height:32px;}
+  .nav-row{
+    width:100%;
+    max-width:420px;
+    justify-content:space-between;
+    padding:0 6px;
   }
   .nav-row a{
-    text-align:left;
-    padding:14px 22px;
-    font-size:15px;
-    width:100%;
-    border-bottom:1px solid rgba(0,0,0,0.06);
-  }
-  .nav-row a:not(:last-child)::after{display:none;}
-  .cart-icon-wrap{
-    justify-content:flex-start;
-    padding:14px 22px !important;
+    flex:1;
+    text-align:center;
   }
 }
 
@@ -362,32 +281,14 @@ body{
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="navbar">
   <div class="logo">
-    <a href="./index.html"><img src="logo.png" alt="Pristine Perfume"></a>
+    <a href="./index.html"><img src="logo.webp" alt="Pristine Perfume"></a>
   </div>
-
-  <div class="pinned-mobile-links">
-    <a href="./pricelist.html">Price List</a>
-    <a href="./blog.html">Blog</a>
-    <a class="cart-icon-wrap pinned-cart" href="./shop.html" aria-label="Cart">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.8"><path d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13L5.4 5M7 13l-1.6 6h13.2M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="cart-count" id="cartCountPinned">0</span>
-    </a>
-  </div>
-
-  <button class="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
-  </button>
-
   <div class="nav-row">
     <a href="./index.html" class="active">Home</a>
-    <a href="./shop.html">Shop</a>
     <a href="./pricelist.html">Price List</a>
     <a href="./about.html">About</a>
     <a href="./blog.html">Blog</a>
-    <a href="./contact.html">Contact</a>
-    <a href="./return-policy.html">Returns</a>
   </div>
-</div>
 </div>
 
 <section class="hero">
@@ -395,7 +296,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p>Wholesale attar & perfume oil supplier from Kannauj, Uttar Pradesh. Trusted by retailers across India.</p>
   <div class="hero-actions">
     <a href="./pricelist.html" class="btn primary">View Price List</a>
-    <a href="https://wa.me/917985494998" class="btn whatsapp">WhatsApp Us</a>
+    <a href="https://wa.me/917985494998" class="btn whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with Pristine Perfume on WhatsApp">WhatsApp Us</a>
   </div>
 </section>
 
@@ -464,59 +365,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="cta">
   <h2>Get the Latest Wholesale Price List</h2>
-  <a href="https://wa.me/917985494998" class="btn whatsapp">Chat on WhatsApp</a>
+  <a href="https://wa.me/917985494998" class="btn whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with Pristine Perfume on WhatsApp">Chat on WhatsApp</a>
 </section>
 
 <footer class="footer">© Pristine Perfume – Wholesale Attar Supplier</footer>
 
 <a href="https://wa.me/917985494998" class="whatsapp-float" target="_blank">
-  <img src="whatsapp-icon.png" alt="WhatsApp">
+  <img src="whatsapp-icon.webp" alt="WhatsApp">
 </a>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Pristine Perfume",
-  "image": "https://pristineperfume.in/logo.png",
-  "url": "https://pristineperfume.in/",
-  "telephone": "+91-7985494998",
-  "priceRange": "₹₹",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Bazariya Shekhana",
-    "addressLocality": "Kannauj",
-    "addressRegion": "Uttar Pradesh",
-    "postalCode": "209725",
-    "addressCountry": "IN"
-  },
-  "sameAs": [
-    "https://wa.me/917985494998"
-  ],
-  "description": "Pristine Perfume is a wholesale and retail attar and perfume oil supplier based in Kannauj, Uttar Pradesh, offering natural, alcohol-free fragrances including Mitti, Rose, Sandal, Oud, and Mogra attars, sourced using traditional deg-bhapka distillation."
-}
-</script>
-
-<script>
-function toggleMobileNav(){
-  const nav = document.querySelector('.nav-row');
-  nav.classList.toggle('open');
-}
-</script>
-
-<script>
-(function(){
-  function syncPinnedCartBadge(){
-    try{
-      const cart = JSON.parse(localStorage.getItem('pp_cart') || '[]');
-      const totalQty = cart.reduce((s,i)=>s+(i.qty||0),0);
-      const el = document.getElementById('cartCountPinned');
-      if(el) el.textContent = totalQty;
-    }catch(e){}
-  }
-  syncPinnedCartBadge();
-  window.addEventListener('storage', syncPinnedCartBadge);
-})();
-</script>
 </body>
 </html>
