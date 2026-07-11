@@ -26,14 +26,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:title" content="Shop Attars Online | Kannauj Mitti, Rose, Sandal, Oud, Mogra - Pristine Perfume">
 <meta property="og:description" content="Buy authentic Kannauj attars online — Mitti Attar, Rose, Sandal, Oud and Mogra. Natural, alcohol-free perfume oils.">
 <meta property="og:url" content="https://pristineperfume.in/shop.html">
-<meta property="og:image" content="https://pristineperfume.in/oud-attar.webp">
+<meta property="og:image" content="https://pristineperfume.in/oud-attar.jpg">
 <meta property="og:site_name" content="Pristine Perfume">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Shop Attars Online | Kannauj Mitti, Rose, Sandal, Oud, Mogra - Pristine Perfume">
 <meta name="twitter:description" content="Buy authentic Kannauj attars online — Mitti Attar, Rose, Sandal, Oud and Mogra. Natural, alcohol-free perfume oils.">
-<meta name="twitter:image" content="https://pristineperfume.in/oud-attar.webp">
+<meta name="twitter:image" content="https://pristineperfume.in/oud-attar.jpg">
 <link rel="icon" href="favicon.png">
-<link rel="preload" as="image" href="hero-bg.webp">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -417,7 +416,7 @@ function renderProducts(){
     const firstPrice = p.prices[sizes[0]];
     return `
     <div class="product-card" data-id="${p.id}">
-      <img src="${p.img.replace(/\.jpg$/i, ".webp")}" alt="${p.name} - Kannauj Attar" loading="lazy" decoding="async" width="400" height="260">
+      <img src="${p.img}" alt="${p.name} - Kannauj Attar" loading="lazy">
       <div class="product-info">
         <h3>${p.name}</h3>
         <p class="desc">${p.desc}</p>
@@ -488,7 +487,7 @@ function updateCartUI(){
   } else {
     itemsEl.innerHTML = cart.map((item, idx) => `
       <div class="cart-item">
-        <img src="${item.img.replace(/\.jpg$/i, ".webp")}" alt="${item.name}" loading="lazy" decoding="async" width="60" height="60">
+        <img src="${item.img}" alt="${item.name}">
         <div class="cart-item-info">
           <h4>${item.name}</h4>
           <p>${item.size} × ${item.qty} — ₹${item.price * item.qty}</p>
